@@ -4,8 +4,5 @@ using UnityEngine;
 
 public interface IOnLateUpdate
 {
-    public void OnLateUpdate()
-    {
-
-    }
+    public void OnLateUpdate();
 }

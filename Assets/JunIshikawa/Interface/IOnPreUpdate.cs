@@ -4,8 +4,5 @@ using UnityEngine;
 
 public interface IOnPreUpdate
 {
-    public void PreUpdate()
-    {
-
-    }
+    public void PreUpdate();
 }

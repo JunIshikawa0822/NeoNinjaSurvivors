@@ -4,8 +4,5 @@ using UnityEngine;
 
 public interface IOnUpdate
 {
-    public void OnUpdate()
-    {
-
-    }
+    public void OnUpdate();
 }
