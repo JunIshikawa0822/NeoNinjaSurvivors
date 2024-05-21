@@ -10,17 +10,21 @@ public class GameMain : MonoBehaviour
     List<SystemBase> allSystems;
 
     List<IOnUpdate> allUpdateSystems;
-    
+    List<IOnPreUpdate> allPreUpdateSystems;
+
 
     private void Awake()
     {
         allSystems = new List<SystemBase>()
         {
             new MoveSystem(),
-            new EnemySystem()
+            new EnemySystem(),
+            new InputSystem(),
+            new AttackSystem()
         };
 
         allUpdateSystems = new List<IOnUpdate>();
+        allPreUpdateSystems = new List<IOnPreUpdate>();
 
         foreach (SystemBase system in allSystems)
         {
@@ -29,7 +33,7 @@ public class GameMain : MonoBehaviour
 
             //SystemたちをallSystemに一旦ぶち込んだ後で、それぞれのInterfaceに従って分類する
             //if (system is IOnFixedUpdate) allFixedUpdateSystems.Add(system as IOnFixedUpdate);
-            //if (system is IOnPreUpdate) allPreUpdateSystems.Add(system as IOnPreUpdate);
+            if (system is IOnPreUpdate) allPreUpdateSystems.Add(system as IOnPreUpdate);
             if (system is IOnUpdate) allUpdateSystems.Add(system as IOnUpdate);
             //if (system is IOnLateUpdate) allLateUpdateSystems.Add(system as IOnLateUpdate);
         }
@@ -45,6 +49,7 @@ public class GameMain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        foreach (IOnPreUpdate system in allPreUpdateSystems) system.OnPreUpdate();
         foreach (IOnUpdate system in allUpdateSystems) system.OnUpdate();
     }
 }

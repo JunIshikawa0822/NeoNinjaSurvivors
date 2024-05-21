@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IOnPreUpdate
 {
-    public void PreUpdate();
+    //PreUpdate‚É‚È‚Á‚Ä‚½‚¯‚Ç•ÏX‚µ‚Ü‚µ‚½
+    public void OnPreUpdate();
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class InputSystem : SystemBase, IOnPreUpdate
 {
-    public void PreUpdate()
+    public void OnPreUpdate()
     {
-
+        MouseAttackInput();
     }
 
     private void GetMoveInput(bool _isMoveInput)
@@ -33,7 +33,22 @@ public class InputSystem : SystemBase, IOnPreUpdate
         //{
 
         //}
-
         return isInput;
+    }
+
+    //マウスを右クリックした時
+    private void MouseAttackInput()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            gameStat.attackVector = gameStat.player.transform.up;
+            //攻撃字のインプットをtrue
+            gameStat.isAttackInput = true;
+        }
+        else
+        {
+            gameStat.isAttackInput = false;
+        }
+
     }
 }
