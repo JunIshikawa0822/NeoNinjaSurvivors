@@ -42,13 +42,13 @@ public class InputSystem : SystemBase, IOnPreUpdate
         if(Input.GetMouseButtonDown(0))
         {
             gameStat.attackVector = gameStat.player.transform.up;
-            //攻撃字のインプットをtrue
+            //攻撃のインプットをtrue
             gameStat.isAttackInput = true;
         }
         else
         {
+            //攻撃のインプットをfalse
             gameStat.isAttackInput = false;
         }
-
     }
 }
