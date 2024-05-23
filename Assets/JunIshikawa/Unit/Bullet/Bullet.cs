@@ -49,9 +49,9 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision _collision)
     {
-        if (bulletCollideEvent == null) return;
+       // if (bulletCollideEvent == null) return;
         if (bulletDestroyEvent == null) return;
-        bulletCollideEvent?.Invoke(_collision);
+       // bulletCollideEvent?.Invoke(_collision);
         bulletDestroyEvent?.Invoke(this);
     }
 }
