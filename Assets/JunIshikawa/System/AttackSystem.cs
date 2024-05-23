@@ -22,20 +22,20 @@ public class AttackSystem : SystemBase, IOnUpdate
 
     private void BulletInstantiate()
     {
-        //’eŠÛ‚ğ¶¬
+        //å¼¾ä¸¸ã‚’ç”Ÿæˆ
         Bullet bulletInstance = GameObject.Instantiate(gameStat.bullet,gameStat.player.transform.position,Quaternion.identity);
         bulletInstance.Init(gameStat.attackVector, gameStat.bulletSpeed, gameStat.maxDistance);
-        //Action‚É’eŠÛ‚ğ”jŠüEíœ‚·‚éŠÖ”
+        //Actionã«å¼¾ä¸¸ã‚’ç ´æ£„ãƒ»å‰Šé™¤ã™ã‚‹é–¢æ•°ã‚’ç™»éŒ²
         bulletInstance.bulletDestroyEvent += BulletDestroyAndRemove;
-        //’eŠÛ‚ÌƒŠƒXƒg‚É’Ç‰Á
+        //å¼¾ä¸¸ã®ãƒªã‚¹ãƒˆã«è¿½åŠ 
         gameStat.bulletList.Add(bulletInstance);
     }
 
-    //“Á’è‚Ì’eŠÛ‚ğ”jŠü‚µƒŠƒXƒg‚©‚çíœ
+    //ç‰¹å®šã®å¼¾ä¸¸ã‚’ç ´æ£„ã—ãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤
     private void BulletDestroyAndRemove(Bullet _bullet)
     {
-        //’eŠÛ‚ÉƒAƒ^ƒbƒ`‚³‚ê‚½©”šˆ—
+        //å¼¾ä¸¸ã«ã‚¢ã‚¿ãƒƒãƒã•ã‚ŒãŸè‡ªçˆ†å‡¦ç†
         _bullet.OnDestroy();
         gameStat.bulletList.Remove(_bullet);
-    }
+}
 }
