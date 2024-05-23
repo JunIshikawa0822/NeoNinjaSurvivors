@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +10,13 @@ public class Bullet : MonoBehaviour
     private float maxDistance;
     private float bulletSpeed;
 
-    //íeä€Ç™îjâÛÇ≥ÇÍÇÈAction
+    //Âºæ‰∏∏„ÅåÁ†¥Â£ä„Åï„Çå„ÇãAction
     public event Action<Bullet> bulletDestroyEvent;
     //public event Action<Collision> bulletCollideEvent;
 
     public void Init(Vector3 _moveDir , float _bulletSpeed , float _maxDistance)
     {
-        //attackVectorÇ™ë„ì¸Ç≥ÇÍÇÈ
+        //attackVector„Åå‰ª£ÂÖ•„Åï„Çå„Çã
         this.moveDir = _moveDir;
         this.bulletSpeed = _bulletSpeed;
         this.maxDistance = _maxDistance;
@@ -31,8 +31,7 @@ public class Bullet : MonoBehaviour
     {
         if(moveDistance > maxDistance)
         {
-            if (bulletDestroyEvent == null) return;
-            bulletDestroyEvent?.Invoke(this);
+            OnDestroy();
         }
         else
         {
@@ -42,8 +41,10 @@ public class Bullet : MonoBehaviour
         }    
     }
 
-    public void OnDestroy()
+    private void OnDestroy()
     {
+        if (bulletDestroyEvent == null) return;
+        bulletDestroyEvent?.Invoke(this);
         Destroy(this.gameObject);
     }
 

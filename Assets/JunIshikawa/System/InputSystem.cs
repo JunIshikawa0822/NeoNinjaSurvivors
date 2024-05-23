@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,18 +36,18 @@ public class InputSystem : SystemBase, IOnPreUpdate
         return isInput;
     }
 
-    //ƒ}ƒEƒX‚ğ‰EƒNƒŠƒbƒN‚µ‚½
+    //ãƒã‚¦ã‚¹ã‚’å³ã‚¯ãƒªãƒƒã‚¯ã—ãŸæ™‚
     private void MouseAttackInput()
     {
         if(Input.GetMouseButtonDown(0))
         {
             gameStat.attackVector = gameStat.player.transform.up;
-            //UŒ‚‚ÌƒCƒ“ƒvƒbƒg‚ğtrue
+            //æ”»æ’ƒã®ã‚¤ãƒ³ãƒ—ãƒƒãƒˆã‚’true
             gameStat.isAttackInput = true;
         }
         else
         {
-            //UŒ‚‚ÌƒCƒ“ƒvƒbƒg‚ğfalse
+            //æ”»æ’ƒã®ã‚¤ãƒ³ãƒ—ãƒƒãƒˆã‚’false
             gameStat.isAttackInput = false;
         }
     }

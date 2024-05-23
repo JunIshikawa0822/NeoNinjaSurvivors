@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,7 +35,6 @@ public class AttackSystem : SystemBase, IOnUpdate
     private void BulletDestroyAndRemove(Bullet _bullet)
     {
         //弾丸にアタッチされた自爆処理
-        _bullet.OnDestroy();
         gameStat.bulletList.Remove(_bullet);
 }
 }
