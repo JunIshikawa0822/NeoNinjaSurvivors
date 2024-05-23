@@ -25,7 +25,7 @@ public class AttackSystem : SystemBase, IOnUpdate
         //’eŠÛ‚ğ¶¬
         Bullet bulletInstance = GameObject.Instantiate(gameStat.bullet,gameStat.player.transform.position,Quaternion.identity);
         bulletInstance.Init(gameStat.attackVector, gameStat.bulletSpeed, gameStat.maxDistance);
-        //Action‚É’eŠÛ‚ğ”jŠüEíœ‚·‚éŠÖ”‚ğ‘ã“ü
+        //Action‚É’eŠÛ‚ğ”jŠüEíœ‚·‚éŠÖ”
         bulletInstance.bulletDestroyEvent += BulletDestroyAndRemove;
         //’eŠÛ‚ÌƒŠƒXƒg‚É’Ç‰Á
         gameStat.bulletList.Add(bulletInstance);
