@@ -49,7 +49,8 @@ public class GameStatus
         MouseButtonRight,
         MouseButtonLeft,
         space,
-        right_shift
+        right_shift,
+        left_shift
     }
 
 }
