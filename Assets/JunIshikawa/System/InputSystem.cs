@@ -6,48 +6,91 @@ public class InputSystem : SystemBase, IOnPreUpdate
 {
     public void OnPreUpdate()
     {
-        MouseAttackInput();
+        //MouseAttackInput();
+
+        GetMoveInput(gameStat.moveInputName);
+        GetAttackInput(gameStat.attackInputName);
+        GetFootHoldInput(gameStat.footHoldInputName);
     }
 
-    private void GetMoveInput(bool _isMoveInput)
+    //押されたキーがMoveのキーならMoveをオンにする
+    private void GetMoveInput(GameStatus.InputName _isMoveInput)
     {
-        
+        gameStat.isMoveInput = IsInput(_isMoveInput);
     }
 
-    private void GetAttackInput(bool _isAttackInput)
+    //押されたキーがAttackのキーならAttackをオンにする
+    private void GetAttackInput(GameStatus.InputName _isAttackInput)
     {
-
+        gameStat.isAttackInput = IsInput(_isAttackInput);
     }
 
-    private void GetFootHoldInput(bool _isHootHoldInput)
+    //押されたキーがFootHoldのキーならFootHoldをオンにする
+    private void GetFootHoldInput(GameStatus.InputName _isFootHoldInput)
     {
-
+        gameStat.isFootHoldInput = IsInput(_isFootHoldInput);
     }
 
-    private bool isInput(GameStatus.InputName _inputName)
+    //引数のキー（マウスボタン）が押されたかどうかを確認
+    private bool IsInput(GameStatus.InputName _inputName)
     {
-        bool isInput = false;
-        int indexNum = (int)_inputName;
+        bool isInputBool = false;
 
-        //if (Input.GetButtonDown())
-        //{
+        if (_inputName == GameStatus.InputName.MouseButtonRight)
+        {
+            isInputBool = MouseBool(1);
+        }
+        else if (_inputName == GameStatus.InputName.MouseButtonLeft)
+        {
+            isInputBool = MouseBool(0);
+        }
+        else
+        {
+            isInputBool = KeyBool(_inputName.ToString());
+        }
 
-        //}
-        return isInput;
+        return isInputBool;
+
+        bool MouseBool(int _mouseNumber)
+        {
+            if (Input.GetMouseButtonDown(_mouseNumber))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool KeyBool(string _keyName)
+        {
+            string[] words = _keyName.Split("_");
+            string conventionKeyName = string.Join(" ", words);
+
+            if (Input.GetKeyDown(conventionKeyName))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
-    //マウスを右クリックした時
+    //�}�E�X���E�N���b�N������
     private void MouseAttackInput()
     {
         if(Input.GetMouseButtonDown(0))
         {
             gameStat.attackVector = gameStat.player.transform.up;
-            //攻撃のインプットをtrue
+            //�U���̃C���v�b�g��true
             gameStat.isAttackInput = true;
         }
         else
         {
-            //攻撃のインプットをfalse
+            //�U���̃C���v�b�g��false
             gameStat.isAttackInput = false;
         }
     }

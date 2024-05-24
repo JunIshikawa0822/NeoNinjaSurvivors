@@ -20,32 +20,36 @@ public class GameStatus
     public float maxDistance = 100f;
 
     [Header("Input")]
-    [System.NonSerialized]
+    //[System.NonSerialized]
+    [SerializeField]
     public bool isMoveInput = false;
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
+    [SerializeField]
     public bool isAttackInput = false;
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
+    [SerializeField]
     public bool isFootHoldInput = false;
 
     [SerializeField]
-    public InputName moveInput;
+    public InputName moveInputName;
 
     [SerializeField]
-    public InputName attackInput;
+    public InputName attackInputName;
 
     [SerializeField]
-    public InputName hootHoldInput;
+    public InputName footHoldInputName;
 
     [System.NonSerialized]
     public Vector3 attackVector;
 
     public enum InputName
     {
-
-        Space,
-        RightShift,
+        MouseButtonRight,
+        MouseButtonLeft,
+        space,
+        right_shift
     }
 
 }
