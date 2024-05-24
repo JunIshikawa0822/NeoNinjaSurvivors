@@ -79,18 +79,18 @@ public class InputSystem : SystemBase, IOnPreUpdate
         }
     }
 
-    //�}�E�X���E�N���b�N������
+
     private void MouseAttackInput()
     {
         if(Input.GetMouseButtonDown(0))
         {
             gameStat.attackVector = gameStat.player.transform.up;
-            //�U���̃C���v�b�g��true
+            //isAttackInputをtrueにするよ
             gameStat.isAttackInput = true;
         }
         else
         {
-            //�U���̃C���v�b�g��false
+            //isAttackInputをfalseにするよ
             gameStat.isAttackInput = false;
         }
     }

@@ -36,5 +36,5 @@ public class AttackSystem : SystemBase, IOnUpdate
     {
         //弾丸にアタッチされた自爆処理
         gameStat.bulletList.Remove(_bullet);
-}
+    }
 }
