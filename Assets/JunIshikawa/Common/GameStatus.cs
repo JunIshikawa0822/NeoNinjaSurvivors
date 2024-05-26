@@ -44,6 +44,17 @@ public class GameStatus
     [System.NonSerialized]
     public Vector3 attackVector;
 
+    [System.NonSerialized]
+    public Vector3 playerMouseVector;
+
+    [Header("PlayerMove")]
+    [System.NonSerialized]
+    public float playerMoveMaxDistance = 20;
+
+    [SerializeField]
+    public LayerMask playerMoveRayHitLayer;
+
+
     public enum InputName
     {
         MouseButtonRight,

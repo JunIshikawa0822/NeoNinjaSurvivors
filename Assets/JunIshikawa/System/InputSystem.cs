@@ -8,7 +8,8 @@ public class InputSystem : SystemBase, IOnPreUpdate
     {
         //MouseAttackInput();
         //gameStat.attackVector = MouseVec(gameStat.player.transform, Camera.main, Input.mousePosition, gameStat.player);
-        gameStat.attackVector = RestrictVector(gameStat.player.transform, MouseVec(gameStat.player.transform, Camera.main, Input.mousePosition, gameStat.player), 150);
+        gameStat.playerMouseVector = RestrictVector(gameStat.player.transform, MouseVec(gameStat.player.transform, Camera.main, Input.mousePosition, gameStat.player), 150);
+
 
         GetMoveInput(gameStat.moveInputName);
         GetAttackInput(gameStat.attackInputName);
@@ -19,21 +20,18 @@ public class InputSystem : SystemBase, IOnPreUpdate
     private void GetMoveInput(GameStatus.InputName _isMoveInput)
     {
         gameStat.isMoveInput = IsInput(_isMoveInput);
-        //Debug.Log("JunIshikawa");
     }
 
     //押されたキーがAttackのキーならAttackをオンにする
     private void GetAttackInput(GameStatus.InputName _isAttackInput)
     {
         gameStat.isAttackInput = IsInput(_isAttackInput);
-        //Debug.Log("JunIshikawa");
     }
 
     //押されたキーがFootHoldのキーならFootHoldをオンにする
     private void GetFootHoldInput(GameStatus.InputName _isFootHoldInput)
     {
         gameStat.isFootHoldInput = IsInput(_isFootHoldInput);
-        //Debug.Log("JunIshikawa");
     }
 
     //引数のキー（マウスボタン）が押されたかどうかを確認
@@ -138,7 +136,6 @@ public class InputSystem : SystemBase, IOnPreUpdate
 
         return restVec.normalized;
     }
-
 
     private void MouseAttackInput()
     {
