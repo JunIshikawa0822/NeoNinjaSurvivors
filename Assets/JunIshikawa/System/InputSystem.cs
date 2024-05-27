@@ -123,7 +123,7 @@ public class InputSystem : SystemBase, IOnPreUpdate
         Vector3 toVec = Vector3.ProjectOnPlane(_baseVec, -_originTransform.forward);
 
         float Angle = Vector3.SignedAngle(fromVec, toVec, _originTransform.up);
-        Debug.Log(Angle);
+        //Debug.Log(Angle);
 
         if (Mathf.Abs(Angle) > _restrictAngle)
         {

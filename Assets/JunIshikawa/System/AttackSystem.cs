@@ -19,7 +19,7 @@ public class AttackSystem : SystemBase, IOnUpdate
             BulletInstantiate(
                 gameStat.bullet,
                 gameStat.player.transform.position,
-                gameStat.attackVector, 
+                gameStat.playerMouseVector, 
                 gameStat.bulletSpeed, 
                 gameStat.maxDistance, 
                 gameStat.bulletDamage, 
@@ -49,8 +49,29 @@ public class AttackSystem : SystemBase, IOnUpdate
     }
 
     //弾丸が敵に当たった時に実行（エフェクトetc...）
-    private void BulletCollide(Collision _collision)
+    private void BulletCollide(Collision _collision , Bullet _bullet)
     {
+        if(_collision.gameObject.CompareTag("Wall"))
+        {
+            //壁にぶつかったときの破壊
+
+            _bullet.OnTriggerNextAction();//リストから削除
+            _bullet.BulletDestroy();//オブジェクトを破壊
+        }
+        else if(_collision.gameObject.CompareTag("Enemy"))
+        {
+            var enemy = _collision.gameObject.GetComponent<EnemyBase>();
+            if(enemy == null) return;
+            //敵のダメージ関数を起動
+            enemy.TakeDamage(_bullet.BulletDamage());
+            //弾丸の貫通可能回数を１減らす
+            int p = _bullet.PenetrateCount - 1;
+            _bullet.PenetrateCount = p;
+            //これ以上貫通できる場合ここでreturn
+            if(_bullet.PenetrateCount !< 1) return;
+            _bullet.OnTriggerNextAction();//リストから削除
+            _bullet.BulletDestroy();//オブジェクトを破壊
+        }
         
     }
 }
