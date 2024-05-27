@@ -17,27 +17,27 @@ public class InputSystem : SystemBase, IOnPreUpdate
     private void GetMoveInput(GameStatus.InputName _isMoveInput)
     {
         gameStat.isMoveInput = IsInput(_isMoveInput);
-        Debug.Log("JunIshikawa");
+        //Debug.Log("JunIshikawa");
     }
 
     //押されたキーがAttackのキーならAttackをオンにする
     private void GetAttackInput(GameStatus.InputName _isAttackInput)
     {
         gameStat.isAttackInput = IsInput(_isAttackInput);
-        Debug.Log("JunIshikawa");
+        //Debug.Log("JunIshikawa");
     }
 
     //押されたキーがFootHoldのキーならFootHoldをオンにする
     private void GetFootHoldInput(GameStatus.InputName _isFootHoldInput)
     {
         gameStat.isFootHoldInput = IsInput(_isFootHoldInput);
-        Debug.Log("JunIshikawa");
+        //Debug.Log("JunIshikawa");
     }
 
     //引数のキー（マウスボタン）が押されたかどうかを確認
     private bool IsInput(GameStatus.InputName _inputName)
     {
-        Debug.Log("JunIshikawa");
+        //Debug.Log("JunIshikawa");
         bool isInputBool = false;
 
         if (_inputName == GameStatus.InputName.MouseButtonRight)

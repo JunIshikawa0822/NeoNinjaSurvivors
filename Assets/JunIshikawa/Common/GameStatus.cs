@@ -19,6 +19,12 @@ public class GameStatus
     [System.NonSerialized] 
     public float maxDistance = 100f;
 
+    [System.NonSerialized] 
+    public int bulletDamage = 1;
+
+    [System.NonSerialized] 
+    public int penetrateCount = 1;
+
     [Header("Input")]
     //[System.NonSerialized]
     [SerializeField]

@@ -16,25 +16,41 @@ public class AttackSystem : SystemBase, IOnUpdate
 
         if(gameStat.isAttackInput == true)
         {
-            BulletInstantiate();
+            BulletInstantiate(
+                gameStat.bullet,
+                gameStat.player.transform.position,
+                gameStat.attackVector, 
+                gameStat.bulletSpeed, 
+                gameStat.maxDistance, 
+                gameStat.bulletDamage, 
+                gameStat.penetrateCount,
+                gameStat.bulletList);
         }
     }
 
-    private void BulletInstantiate()
+    private void BulletInstantiate(Bullet _bullet , Vector3 _playerPos , Vector3 _attackVector , float _bulletSpeed , float _maxDistance , int _bulletDamage , int _penetrateCount , List<Bullet> _bulletList)
     {
         //弾丸を生成
-        Bullet bulletInstance = GameObject.Instantiate(gameStat.bullet,gameStat.player.transform.position,Quaternion.identity);
-        bulletInstance.Init(gameStat.attackVector, gameStat.bulletSpeed, gameStat.maxDistance);
-        //Actionに弾丸を破棄・削除する関数を登録
-        bulletInstance.bulletDestroyEvent += BulletDestroyAndRemove;
+        Bullet bulletInstance = GameObject.Instantiate(_bullet,_playerPos,Quaternion.identity);
+        bulletInstance.Init(_attackVector, _bulletSpeed, _maxDistance, _bulletDamage , _penetrateCount);
+        //Actionに弾丸をListから削除する関数を登録
+        bulletInstance.bulletRemoveEvent += BulletRemove;
+        //Actionに被弾時に実行する処理を登録
+        bulletInstance.bulletCollideEvent += BulletCollide;
         //弾丸のリストに追加
-        gameStat.bulletList.Add(bulletInstance);
+        _bulletList.Add(bulletInstance);
     }
 
-    //特定の弾丸を破棄しリストから削除
-    private void BulletDestroyAndRemove(Bullet _bullet)
+    //弾丸をリストから削除
+    private void BulletRemove(Bullet _bullet)
     {
         //弾丸にアタッチされた自爆処理
         gameStat.bulletList.Remove(_bullet);
+    }
+
+    //弾丸が敵に当たった時に実行（エフェクトetc...）
+    private void BulletCollide(Collision _collision)
+    {
+        
     }
 }
