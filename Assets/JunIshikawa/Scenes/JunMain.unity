@@ -276,9 +276,15 @@ MonoBehaviour:
     player: {fileID: 490424603}
     bullet: {fileID: 3671571798621069525, guid: e71e9727882cc7b41ba82001ff1a4b2b, type: 3}
     bulletList: []
-    moveInputName: 0
-    attackInputName: 2
-    footHoldInputName: 0
+    isMoveInput: 0
+    isAttackInput: 0
+    isFootHoldInput: 0
+    moveInputName: 3
+    attackInputName: 1
+    footHoldInputName: 4
+    playerMoveRayHitLayer:
+      serializedVersion: 2
+      m_Bits: 0
 --- !u!4 &610661458
 Transform:
   m_ObjectHideFlags: 0
@@ -448,8 +454,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 12.8471985
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

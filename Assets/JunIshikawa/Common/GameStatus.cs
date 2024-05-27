@@ -50,12 +50,51 @@ public class GameStatus
     [System.NonSerialized]
     public Vector3 attackVector;
 
+    [System.NonSerialized]
+    public Vector3 playerMouseVector;
+
+    [Header("PlayerMove")]
+    [System.NonSerialized]
+    public float playerMoveMaxDistance = 20;
+
+    [SerializeField]
+    public LayerMask playerMoveRayHitLayer;
+
+    [Header("Level")]
+    //レベル1から2に必要な経験値（初項）
+    [Range(3, 10), System.NonSerialized]
+    public int playerPrimeDemandExp = 3;
+
+    //レベルが上がるにつれて、レベルアップまでに必要な経験値を増やすための公比
+    [Range(1, 2), System.NonSerialized]
+    public float playerExpRatio = 1.5f;
+
+    [System.NonSerialized]
+    public int playerTotalExp = 0;
+
+    [System.NonSerialized]
+    public int playerLevel = 0;
+
+    [System.NonSerialized]
+    public int barMaxValue;
+
+    [System.NonSerialized]
+    public int barProgressValue;
+
+    [System.NonSerialized]
+    public int playerPreLevel = 0;
+
+    [System.NonSerialized]
+    public bool isLevelUp = false;
+
+
     public enum InputName
     {
         MouseButtonRight,
         MouseButtonLeft,
         space,
-        right_shift
+        right_shift,
+        left_shift
     }
 
 }
