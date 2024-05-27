@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class LevelSystem : SystemBase, IOnLateUpdate
 {
+    
     public void OnLateUpdate()
     {
+        //playerのリアルタイムのレベル
         gameStat.playerLevel = ConvertExpToLevel(gameStat.playerTotalExp, gameStat.playerExpRatio, gameStat.playerPrimeDemandExp);
-        gameStat.barMaxValue = DemandExpForLevelUp(gameStat.playerLevel, gameStat.playerExpRatio);
-        gameStat.accumeExpUntilNowLevel = AccumeExpToSpecificLevel(gameStat.playerLevel, gameStat.playerPrimeDemandExp, gameStat.playerExpRatio);
 
-        gameStat.barProgressValue = BarProgress(gameStat.playerTotalExp, gameStat.accumeExpUntilNowLevel);
+        //次のレベルアップまでに必要な経験値を計算
+        gameStat.barMaxValue = DemandExpForLevelUp(gameStat.playerLevel, gameStat.playerExpRatio);
+
+        //現在までの経験値の累積から今のレベルまでに必要な経験値の累積を引くことで、今のレベルに達してから獲得した経験値の量を計算
+        int accumeExpUntilNowLevel = AccumeExpToSpecificLevel(gameStat.playerLevel, gameStat.playerPrimeDemandExp, gameStat.playerExpRatio);
+        gameStat.barProgressValue = BarProgress(gameStat.playerTotalExp, accumeExpUntilNowLevel);
+
+        //レベルアップしているか確認
+        gameStat.isLevelUp = LevelUpCheck(gameStat.playerPreLevel, gameStat.playerLevel);
+
+        //レベルアップした時の処理
+        if (!gameStat.isLevelUp) return;
+        gameStat.playerPreLevel = gameStat.playerLevel;
     }
 
     //経験値からレベルを計算
@@ -54,5 +66,21 @@ public class LevelSystem : SystemBase, IOnLateUpdate
         int expToNextLevel = _playerTotalExp - _accumeExp;
 
         return expToNextLevel;
+    }
+
+    private bool LevelUpCheck(int _preLevel, int _playerLevel)
+    {
+        bool isLevelUp = false;
+        
+        if(_preLevel !< _playerLevel)
+        {
+            isLevelUp = false;
+        }
+        else
+        {
+            isLevelUp = true;
+        }
+
+        return isLevelUp;
     }
 }

@@ -75,8 +75,14 @@ public class GameStatus
     [System.NonSerialized]
     public int barProgressValue;
 
+    //[System.NonSerialized]
+    //public int accumeExpUntilNowLevel;
+
     [System.NonSerialized]
-    public int accumeExpUntilNowLevel;
+    public int playerPreLevel = 0;
+
+    [System.NonSerialized]
+    public bool isLevelUp = false;
 
 
     public enum InputName
