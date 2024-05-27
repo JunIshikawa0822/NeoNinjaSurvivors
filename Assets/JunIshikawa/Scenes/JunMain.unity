@@ -274,8 +274,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStat:
     player: {fileID: 490424603}
-    mouseObject: {fileID: 0}
-    normalObject: {fileID: 0}
     bullet: {fileID: 3671571798621069525, guid: e71e9727882cc7b41ba82001ff1a4b2b, type: 3}
     bulletList: []
     isMoveInput: 0
@@ -284,6 +282,9 @@ MonoBehaviour:
     moveInputName: 3
     attackInputName: 1
     footHoldInputName: 4
+    playerMoveRayHitLayer:
+      serializedVersion: 2
+      m_Bits: 0
 --- !u!4 &610661458
 Transform:
   m_ObjectHideFlags: 0
