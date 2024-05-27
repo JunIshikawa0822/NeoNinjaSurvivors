@@ -54,6 +54,30 @@ public class GameStatus
     [SerializeField]
     public LayerMask playerMoveRayHitLayer;
 
+    [Header("Level")]
+    //レベル1から2に必要な経験値（初項）
+    [Range(3, 10), System.NonSerialized]
+    public int playerPrimeDemandExp = 3;
+
+    //レベルが上がるにつれて、レベルアップまでに必要な経験値を増やすための公比
+    [Range(1, 2), System.NonSerialized]
+    public float playerExpRatio = 1.5f;
+
+    [System.NonSerialized]
+    public int playerTotalExp = 0;
+
+    [System.NonSerialized]
+    public int playerLevel = 0;
+
+    [System.NonSerialized]
+    public int barMaxValue;
+
+    [System.NonSerialized]
+    public int barProgressValue;
+
+    [System.NonSerialized]
+    public int accumeExpUntilNowLevel;
+
 
     public enum InputName
     {

@@ -4,29 +4,19 @@ using UnityEngine;
 
 public class LevelSystem : SystemBase, IOnLateUpdate
 {
-    [System.NonSerialized]
-    public int totalPlayerEXP = 0;
-
-    //[System.NonSerialized]
-    public int playerLevel = 0;
-
-    //レベル1から2に必要な経験値（初項）
-    [Range(3, 10), System.NonSerialized]
-    int demandEXPprime = 3;
-
-    //レベルが上がるにつれて、レベルアップまでに必要な経験値を増やすための公比
-    [Range(1, 2), System.NonSerialized]
-    float EXPRatio = 1.5f;
-
     public void OnLateUpdate()
     {
+        gameStat.playerLevel = ConvertExpToLevel(gameStat.playerTotalExp, gameStat.playerExpRatio, gameStat.playerPrimeDemandExp);
+        gameStat.barMaxValue = DemandExpForLevelUp(gameStat.playerLevel, gameStat.playerExpRatio);
+        gameStat.accumeExpUntilNowLevel = AccumeExpToSpecificLevel(gameStat.playerLevel, gameStat.playerPrimeDemandExp, gameStat.playerExpRatio);
 
+        gameStat.barProgressValue = BarProgress(gameStat.playerTotalExp, gameStat.accumeExpUntilNowLevel);
     }
 
     //経験値からレベルを計算
-    private int EXPtoLevel(int _playerTotalExp, float _expRatio, int _primeDemandExp)
+    private int ConvertExpToLevel(int _playerTotalExp, float _expRatio, int _primeDemandExp)
     {
-        //レベル1から2に必要な経験値（初項） = primeEXP
+        //レベル1から2に必要な経験値（初項） = primeExp
         //公比 = ratio
         int level = (int)Mathf.Log(((_playerTotalExp * _expRatio - _playerTotalExp) / _primeDemandExp) + 1, _expRatio);
 
@@ -34,7 +24,7 @@ public class LevelSystem : SystemBase, IOnLateUpdate
     }
 
     //レベルから次のレベルアップに必要な経験値を計算
-    private int demandEXPtoNextLevel(int _playerLevel, float _expRatio)
+    private int DemandExpForLevelUp(int _playerLevel, float _expRatio)
     {
         int demandEXP = Mathf.FloorToInt(_expRatio * Mathf.Pow(_expRatio, _playerLevel - 1));
 
@@ -42,7 +32,7 @@ public class LevelSystem : SystemBase, IOnLateUpdate
     }
 
     //指定したレベルまでの累積経験値計算
-    private int AccumulationEXP(int _playerLevel, int _primeDemandExp, float _expRatio)
+    private int AccumeExpToSpecificLevel(int _playerLevel, int _primeDemandExp, float _expRatio)
     {
         int accumeExp;
 
@@ -58,16 +48,11 @@ public class LevelSystem : SystemBase, IOnLateUpdate
         return accumeExp;
     }
 
-    //private float BarPersent(int nowLevel)
-    //{
-    //    int EXPtoNextLevel = totalPlayerEXP - (int)AccumulationEXP(nowLevel);
+    //現在の進行度
+    private int BarProgress(int _playerTotalExp, int _accumeExp)
+    {
+        int expToNextLevel = _playerTotalExp - _accumeExp;
 
-    //    //Debug.Log("nowEXP" + EXPtoNextLevel + ", dem：" + demandEXPtoNextLevel(nowLevel));
-
-    //    float persent = Mathf.FloorToInt(((float)EXPtoNextLevel / (float)demandEXPtoNextLevel(nowLevel)) * 1000);
-
-    //    //Debug.Log(persent);
-
-    //    return persent;
-    //}
+        return expToNextLevel;
+    }
 }
