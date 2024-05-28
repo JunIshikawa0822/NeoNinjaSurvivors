@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 //変数のみを格納するクラス
 [System.Serializable]
@@ -40,79 +38,77 @@ public class GameStatus
     //レベルに応じた角度の設定
     public int[] bulletAngleLevelArray = new int[] { 0 , 5, 7, 10, 12, 15, 17, 20 };
 
+    [Header("LineRenderer")]
+    [SerializeField]
+    public LineRenderer playerLineRenderer;
+
+    [Range(5,15)]
+    public float lineMaxDistance = 5f;
+
     [Header("Input")]
     //[System.NonSerialized]
     [SerializeField]
-    public bool isMoveInput = false;//変数
+    public bool isMoveInput = false;
 
     //[System.NonSerialized]
     [SerializeField]
-    public bool isAttackInput = false;//変数
+    public bool isAttackInput = false;
 
     //[System.NonSerialized]
     [SerializeField]
-    public bool isFootHoldInput = false;//変数
+    public bool isFootHoldInput = false;
 
     [SerializeField]
-    public InputName moveInputName;//Scriptable行き
+    public InputName moveInputName;
 
     [SerializeField]
-    public InputName attackInputName;//Scriptable行き
+    public InputName attackInputName;
 
     [SerializeField]
-    public InputName footHoldInputName;//Scriptable行き
+    public InputName footHoldInputName;
 
     [System.NonSerialized]
-    public Vector3 attackVector;//削除
+    public Vector3 attackVector;
 
     [System.NonSerialized]
-    public Vector3 playerMouseVector;//変数
+    public Vector3 playerMouseVector;
 
     [Header("PlayerMove")]
     [System.NonSerialized]
-    public float playerMoveMaxDistance = 20;//Scriptable行き
+    public float playerMoveMaxDistance = 20;
 
     [SerializeField]
-    public LayerMask playerMoveRayHitLayer;//Scriptable行き
+    public LayerMask playerMoveRayHitLayer;
 
     [Header("Level")]
     //レベル1から2に必要な経験値（初項）
-    [Range(3, 10), SerializeField]
-    public int playerPrimeDemandExp = 3;//Scriptable行き
+    [Range(3, 10), System.NonSerialized]
+    public int playerPrimeDemandExp = 3;
 
     //レベルが上がるにつれて、レベルアップまでに必要な経験値を増やすための公比
-    [Range(1, 2), SerializeField]
-    public float playerExpRatio = 1.5f;//Scriptable行き
-
-    [SerializeField]
-    public int playerTotalExp = 0;//変数
+    [Range(1, 2), System.NonSerialized]
+    public float playerExpRatio = 1.5f;
 
     [System.NonSerialized]
-    public int playerLevel = 0;//変数
+    public int playerTotalExp = 0;
 
     [System.NonSerialized]
-    public int expSliderMaxValue;//変数
+    public int playerLevel = 0;
 
     [System.NonSerialized]
-    public int expSliderProgressValue;//変数
+    public int barMaxValue;
 
     [System.NonSerialized]
-    public int accumeExpUntilNowLevel;
+    public int barProgressValue;
 
     [System.NonSerialized]
-    public int playerPreLevel = 1;//変数
+    public int playerPreLevel = 0;
 
     [System.NonSerialized]
-    public bool isLevelUp = false;//変数
+    public bool isLevelUp = false;
 
-    [Header("UI")]
-    [SerializeField]
-    public Slider playerExpSlider;//アタッチ
 
-    [SerializeField]
-    public TextMeshProUGUI playerLevelText;//アタッチ
-
-    public enum InputName//Scriptable行き
+    public enum InputName
     {
         MouseButtonRight,
         MouseButtonLeft,

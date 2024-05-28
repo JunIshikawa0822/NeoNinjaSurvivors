@@ -6,10 +6,7 @@ public class MoveSystem : SystemBase, IOnUpdate
 {
     public void OnUpdate()
     {
-        if (gameStat.isMoveInput)
-        {
-            PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
-        }
+        PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
     }
 
     private void PlayerMove(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
