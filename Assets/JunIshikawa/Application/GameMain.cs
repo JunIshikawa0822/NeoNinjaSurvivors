@@ -20,7 +20,8 @@ public class GameMain : MonoBehaviour
             new MoveSystem(),
             new EnemySystem(),
             new InputSystem(),
-            new AttackSystem()
+            new AttackSystem(),
+            new DrawSystem()
         };
 
         allUpdateSystems = new List<IOnUpdate>();

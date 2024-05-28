@@ -38,6 +38,13 @@ public class GameStatus
     //レベルに応じた角度の設定
     public int[] bulletAngleLevelArray = new int[] { 0 , 5, 7, 10, 12, 15, 17, 20 };
 
+    [Header("LineRenderer")]
+    [SerializeField]
+    public LineRenderer playerLineRenderer;
+
+    [Range(5,15)]
+    public float lineMaxDistance = 5f;
+
     [Header("Input")]
     //[System.NonSerialized]
     [SerializeField]
