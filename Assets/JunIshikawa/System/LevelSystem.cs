@@ -72,13 +72,13 @@ public class LevelSystem : SystemBase, IOnLateUpdate
     {
         bool isLevelUp = false;
         
-        if(_preLevel !< _playerLevel)
+        if(_preLevel < _playerLevel)
         {
-            isLevelUp = false;
+            isLevelUp = true;
         }
         else
         {
-            isLevelUp = true;
+            isLevelUp = false;
         }
 
         return isLevelUp;
