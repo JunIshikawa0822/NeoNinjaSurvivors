@@ -22,8 +22,21 @@ public class GameStatus
     [System.NonSerialized] 
     public int bulletDamage = 1;
 
-    [System.NonSerialized] 
+    [Range(1, 7)] 
+    //貫通力レベル
     public int penetrateCount = 1;
+
+    [Range(1, 7)]
+    //同時発射数レベル
+    public int simulNumLevel = 1;
+
+    [Range(1, 7)]
+    //同時発射角度レベル
+    public int angleLevel = 1;
+
+    [System.NonSerialized]
+    //レベルに応じた角度の設定
+    public int[] bulletAngleLevelArray = new int[] { 0 , 5, 7, 10, 12, 15, 17, 20 };
 
     [Header("Input")]
     //[System.NonSerialized]
