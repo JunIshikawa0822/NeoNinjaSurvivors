@@ -11,18 +11,19 @@ public class LevelSystem : SystemBase, IOnLateUpdate
         gameStat.playerLevel = ConvertExpToLevel(gameStat.playerTotalExp, gameStat.playerExpRatio, gameStat.playerPrimeDemandExp);
 
         //次のレベルアップまでに必要な経験値を計算
-        gameStat.barMaxValue = DemandExpForLevelUp(gameStat.playerLevel, gameStat.playerExpRatio);
+        gameStat.expSliderMaxValue = DemandExpForLevelUp(gameStat.playerLevel, gameStat.playerExpRatio, gameStat.playerPrimeDemandExp);
 
         //現在までの経験値の累積から今のレベルまでに必要な経験値の累積を引くことで、今のレベルに達してから獲得した経験値の量を計算
-        int accumeExpUntilNowLevel = AccumeExpToSpecificLevel(gameStat.playerLevel, gameStat.playerPrimeDemandExp, gameStat.playerExpRatio);
-        gameStat.barProgressValue = BarProgress(gameStat.playerTotalExp, accumeExpUntilNowLevel);
+        gameStat.accumeExpUntilNowLevel = AccumeExpToSpecificLevel(gameStat.playerLevel, gameStat.playerExpRatio, gameStat.playerPrimeDemandExp);
+
+        gameStat.expSliderProgressValue = BarProgress(gameStat.playerTotalExp, gameStat.accumeExpUntilNowLevel);
 
         //レベルアップしているか確認
-        gameStat.isLevelUp = LevelUpCheck(gameStat.playerPreLevel, gameStat.playerLevel);
+        //gameStat.isLevelUp = LevelUpCheck(gameStat.expSliderProgressValue, gameStat.expSliderMaxValue);
 
         //レベルアップした時の処理
-        if (!gameStat.isLevelUp) return;
-        gameStat.playerPreLevel = gameStat.playerLevel;
+        //if (!gameStat.isLevelUp) return;
+        //gameStat.playerPreLevel = gameStat.playerLevel;
     }
 
     //経験値からレベルを計算
@@ -36,25 +37,25 @@ public class LevelSystem : SystemBase, IOnLateUpdate
     }
 
     //レベルから次のレベルアップに必要な経験値を計算
-    private int DemandExpForLevelUp(int _playerLevel, float _expRatio)
+    private int DemandExpForLevelUp(int _playerLevel, float _expRatio, int _primeDemandExp)
     {
-        int demandEXP = Mathf.FloorToInt(_expRatio * Mathf.Pow(_expRatio, _playerLevel - 1));
+        int demandEXP = Mathf.FloorToInt(_primeDemandExp * Mathf.Pow(_expRatio, _playerLevel - 1));
 
         return demandEXP;
     }
 
     //指定したレベルまでの累積経験値計算
-    private int AccumeExpToSpecificLevel(int _playerLevel, int _primeDemandExp, float _expRatio)
+    private int AccumeExpToSpecificLevel(int _Level, float _expRatio, int _primeDemandExp)
     {
         int accumeExp;
 
-        if (_playerLevel == 1)
+        if (_Level == 1)
         {
             accumeExp = 0;
         }
         else
         {
-            accumeExp = Mathf.FloorToInt(_primeDemandExp * ((Mathf.Pow(_expRatio, _playerLevel - 1) - 1) / (_expRatio - 1)));
+            accumeExp = Mathf.FloorToInt(_primeDemandExp * ((Mathf.Pow(_expRatio, _Level - 1) - 1) / (_expRatio - 1)));
         }
 
         return accumeExp;
@@ -68,17 +69,19 @@ public class LevelSystem : SystemBase, IOnLateUpdate
         return expToNextLevel;
     }
 
-    private bool LevelUpCheck(int _preLevel, int _playerLevel)
+    //未定
+    private bool LevelUpCheck(int _barProgress, int _barMax)
     {
         bool isLevelUp = false;
         
-        if(_preLevel !< _playerLevel)
+        if(_barMax == _barProgress)
         {
-            isLevelUp = false;
+            isLevelUp = true;
+            Debug.Log("Level Up!!!!!!!!!");
         }
         else
         {
-            isLevelUp = true;
+            isLevelUp = false;
         }
 
         return isLevelUp;
