@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttackSystem : SystemBase, IOnUpdate
 {
+    
     public void OnUpdate()
     {
         if(gameStat.bulletList.Count > 0)
@@ -57,6 +58,7 @@ public class AttackSystem : SystemBase, IOnUpdate
     //弾丸単体生成
     private void BulletInstantiate(Bullet _bullet , Vector3 _playerPos , Vector3 _attackVector , float _bulletSpeed , float _maxDistance , int _bulletDamage , int _penetrateCount , List<Bullet> _bulletList)
     {
+        Debug.Log("発射！！！");
         //弾丸を生成
         Bullet bulletInstance = GameObject.Instantiate(_bullet,_playerPos,Quaternion.identity);
         bulletInstance.Init(_attackVector, _bulletSpeed, _maxDistance, _bulletDamage , _penetrateCount);
