@@ -14,7 +14,7 @@ public class LevelSystem : SystemBase, IOnLateUpdate
         gameStat.barMaxValue = DemandExpForLevelUp(gameStat.playerLevel, gameStat.playerExpRatio);
 
         //現在までの経験値の累積から今のレベルまでに必要な経験値の累積を引くことで、今のレベルに達してから獲得した経験値の量を計算
-        int accumeExpUntilNowLevel = AccumeExpToSpecificLevel(gameStat.playerLevel, gameStat.playerPrimeDemandExp, gameStat.playerExpRatio);
+        accumeExpUntilNowLevel = AccumeExpToSpecificLevel(gameStat.playerLevel, gameStat.playerPrimeDemandExp, gameStat.playerExpRatio);
         gameStat.barProgressValue = BarProgress(gameStat.playerTotalExp, accumeExpUntilNowLevel);
 
         //レベルアップしているか確認
