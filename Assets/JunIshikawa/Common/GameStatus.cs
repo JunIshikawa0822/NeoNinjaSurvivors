@@ -96,6 +96,9 @@ public class GameStatus
     public int playerLevel = 0;
 
     [System.NonSerialized]
+    public int accumeExpUntilNowLevel;
+
+    [System.NonSerialized]
     public int barMaxValue;
 
     [System.NonSerialized]

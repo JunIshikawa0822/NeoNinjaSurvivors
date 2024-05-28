@@ -11,7 +11,7 @@ public class SystemBase
         this.gameStat = _gameStat;
     }
 
-    public virtual void Setup()
+    public virtual void SetUp()
     {
 
     }

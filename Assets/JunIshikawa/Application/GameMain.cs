@@ -11,6 +11,7 @@ public class GameMain : MonoBehaviour
 
     List<IOnUpdate> allUpdateSystems;
     List<IOnPreUpdate> allPreUpdateSystems;
+    List<IOnLateUpdate> allLateUpdateSystems;
 
 
     private void Awake()
@@ -26,6 +27,7 @@ public class GameMain : MonoBehaviour
 
         allUpdateSystems = new List<IOnUpdate>();
         allPreUpdateSystems = new List<IOnPreUpdate>();
+        allLateUpdateSystems = new List<IOnLateUpdate>();
 
         foreach (SystemBase system in allSystems)
         {
@@ -36,7 +38,7 @@ public class GameMain : MonoBehaviour
             //if (system is IOnFixedUpdate) allFixedUpdateSystems.Add(system as IOnFixedUpdate);
             if (system is IOnPreUpdate) allPreUpdateSystems.Add(system as IOnPreUpdate);
             if (system is IOnUpdate) allUpdateSystems.Add(system as IOnUpdate);
-            //if (system is IOnLateUpdate) allLateUpdateSystems.Add(system as IOnLateUpdate);
+            if (system is IOnLateUpdate) allLateUpdateSystems.Add(system as IOnLateUpdate);
         }
 
         //Debug.Log(string.Join(",", allUpdateSystems));
@@ -44,7 +46,7 @@ public class GameMain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach (SystemBase system in allSystems) system.SetUp();
     }
 
     // Update is called once per frame
@@ -52,5 +54,10 @@ public class GameMain : MonoBehaviour
     {
         foreach (IOnPreUpdate system in allPreUpdateSystems) system.OnPreUpdate();
         foreach (IOnUpdate system in allUpdateSystems) system.OnUpdate();
+    }
+
+    void LateUpdate()
+    {
+        foreach (IOnLateUpdate system in allLateUpdateSystems) system.OnLateUpdate();
     }
 }
