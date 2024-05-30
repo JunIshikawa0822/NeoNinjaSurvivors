@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 //変数のみを格納するクラス
 [System.Serializable]
@@ -46,7 +48,7 @@ public class GameStatus
     public float lineMaxDistance = 5f;
 
     [Header("Input")]
-    //[System.NonSerialized]
+
     [SerializeField]
     public bool isMoveInput = false;
 
@@ -74,35 +76,35 @@ public class GameStatus
     public Vector3 playerMouseVector;
 
     [Header("PlayerMove")]
-    [System.NonSerialized]
-    public float playerMoveMaxDistance = 20;
-
     [SerializeField]
     public LayerMask playerMoveRayHitLayer;
 
+    [System.NonSerialized]
+    public float playerMoveMaxDistance = 20;
+
     [Header("Level")]
+    [Range(3, 10), SerializeField]
     //レベル1から2に必要な経験値（初項）
-    [Range(3, 10), System.NonSerialized]
     public int playerPrimeDemandExp = 3;
 
     //レベルが上がるにつれて、レベルアップまでに必要な経験値を増やすための公比
     [Range(1, 2), System.NonSerialized]
     public float playerExpRatio = 1.5f;
 
-    [System.NonSerialized]
+    [SerializeField]
     public int playerTotalExp = 0;
 
     [System.NonSerialized]
-    public int playerLevel = 0;
+    public int playerLevel = 1;
 
     [System.NonSerialized]
     public int accumeExpUntilNowLevel;
 
     [System.NonSerialized]
-    public int barMaxValue;
+    public int playerExpSliderMaxValue;
 
     [System.NonSerialized]
-    public int barProgressValue;
+    public int playerExpSliderProgressValue;
 
     [System.NonSerialized]
     public int playerPreLevel = 0;
@@ -110,6 +112,11 @@ public class GameStatus
     [System.NonSerialized]
     public bool isLevelUp = false;
 
+    [SerializeField]
+    public TextMeshProUGUI playerLevelText;
+
+    [SerializeField]
+    public Slider playerExpSlider;
 
     public enum InputName
     {

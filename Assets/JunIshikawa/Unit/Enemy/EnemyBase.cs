@@ -5,6 +5,53 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+    protected int enemyCurrentHp;
+    protected int enemyMaxHp;
+
+    protected int enemyAttackPoint;
+    protected int enemyMoveSpeed;
+
+    protected event Action<EnemyBase> onDestroyEvent;
+
+    public virtual void Init(int _enemyMaxHp, int _enemyAttackPoint)
+    {
+        enemyMaxHp = _enemyMaxHp;
+        enemyAttackPoint = _enemyAttackPoint;
+
+        enemyCurrentHp = enemyMaxHp;
+    }
+
+    public virtual void OnUpdate()
+    {
+
+    }
+
+    protected void EnemyHpControl(int _currentHp, EnemyBase _enemy)
+    {
+        if (_currentHp < 1)
+        {
+            _enemy.EnemyDead(_enemy);
+        }
+    }
+
+    public void EnemyDead(EnemyBase _enemy)
+    {
+        Destroy(_enemy.gameObject);
+    }
+
+    public void EnemyDamage(EnemyBase _enemy, int _damage)
+    {
+        _enemy.enemyCurrentHp -= _damage;
+    }
+
+    public int SetGetEnemyAttack
+    {
+        get
+        {
+            return enemyAttackPoint;
+        }
+    }
+
     //public event Action<EnemyBase> enemyDead;
     public void TakeDamage(int _bulletDamage)
     {   

@@ -13,7 +13,6 @@ public class GameMain : MonoBehaviour
     List<IOnPreUpdate> allPreUpdateSystems;
     List<IOnLateUpdate> allLateUpdateSystems;
 
-
     private void Awake()
     {
         allSystems = new List<SystemBase>()
@@ -22,7 +21,9 @@ public class GameMain : MonoBehaviour
             new EnemySystem(),
             new InputSystem(),
             new AttackSystem(),
-            new DrawSystem()
+            new DrawSystem(),
+            new LevelSystem(),
+            new UISystem()
         };
 
         allUpdateSystems = new List<IOnUpdate>();
@@ -59,5 +60,13 @@ public class GameMain : MonoBehaviour
     void LateUpdate()
     {
         foreach (IOnLateUpdate system in allLateUpdateSystems) system.OnLateUpdate();
+    }
+
+    private void OnGUI()
+    {
+        GUI.Box(new Rect(Screen.width - 260, 10, 250, 150), "Debug");
+        GUI.Label(new Rect(Screen.width - 245, 30, 250, 30), "playerLevel : " + gameStat.playerLevel.ToString());
+        GUI.Label(new Rect(Screen.width - 245, 40, 250, 30), "progress : " + gameStat.playerExpSliderProgressValue.ToString() + "/" + gameStat.playerExpSliderMaxValue.ToString());
+
     }
 }
