@@ -8,6 +8,7 @@ public class EnemySystem : SystemBase, IOnUpdate
     {
         if (gameStat.enemyList.Count > 0)
         {
+            
             for (int i = gameStat.enemyList.Count - 1; i >= 0; i--)
             {
                 gameStat.enemyList[i].OnUpdate();
@@ -17,6 +18,7 @@ public class EnemySystem : SystemBase, IOnUpdate
                 //動かす
                 gameStat.enemyList[i].NavMeshDestinationSet(gameStat.player.transform.position);
             }
+            
         }
     }
 
