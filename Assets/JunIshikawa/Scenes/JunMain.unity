@@ -1071,6 +1071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStat:
     player: {fileID: 490424603}
+    eyeballEnemy: {fileID: 4223328558822195411, guid: ff1e2e529910e4c6f871fc32be5e61a9, type: 3}
     bullet: {fileID: 3671571798621069525, guid: e71e9727882cc7b41ba82001ff1a4b2b, type: 3}
     bulletList: []
     penetrateCount: 1

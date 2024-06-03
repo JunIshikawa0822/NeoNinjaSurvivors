@@ -11,6 +11,12 @@ public class GameStatus
     [Header("player")]
     [SerializeField] public Player player;
 
+    [Header("Enemy")]
+    [SerializeField] public EyeballEnemy eyeballEnemy;
+
+    [System.NonSerialized]
+    public List<EnemyBase> enemyList = new List<EnemyBase>();
+
     [Header("Bullet")]
     [SerializeField] public Bullet bullet;
     public List<Bullet> bulletList = new List<Bullet>();
