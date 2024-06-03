@@ -23,15 +23,12 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void OnUpdate()
     {
-
+        
     }
 
-    protected void EnemyHpControl(int _currentHp, EnemyBase _enemy)
+    public virtual void EnemyMove()
     {
-        if (_currentHp < 1)
-        {
-            _enemy.EnemyDead(_enemy);
-        }
+
     }
 
     public void EnemyDead(EnemyBase _enemy)
