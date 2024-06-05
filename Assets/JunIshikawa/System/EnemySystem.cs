@@ -8,17 +8,23 @@ public class EnemySystem : SystemBase, IOnUpdate
     {
         if (gameStat.enemyList.Count > 0)
         {
-            
             for (int i = gameStat.enemyList.Count - 1; i >= 0; i--)
             {
-                gameStat.enemyList[i].OnUpdate();
+                if (!gameStat.isLevelUp)
+                {
+                    gameStat.enemyList[i].OnUpdate();
 
-                gameStat.enemyList[i].EnemyMove();
+                    gameStat.enemyList[i].EnemyMove();
 
-                //動かす
-                gameStat.enemyList[i].NavMeshDestinationSet(gameStat.player.transform.position);
+                    //動かす
+                    gameStat.enemyList[i].NavMeshAgentIsStopped(true);
+                    gameStat.enemyList[i].NavMeshDestinationSet(gameStat.player.transform.position);
+                }
+                else
+                {
+                    gameStat.enemyList[i].NavMeshAgentIsStopped(false);
+                }
             }
-            
         }
     }
 
@@ -34,5 +40,14 @@ public class EnemySystem : SystemBase, IOnUpdate
         EnemyBase enemy = GameObject.Instantiate(_greenEnemy, _instantiatePos, Quaternion.identity);
         enemy.Init(_enemyMaxHp, _enemyAttackPoint);
         _enemyList.Add(enemy);
+    }
+
+    //敵が何かに当たった時に発動
+    private void EnemyCollide(Collision _collision, EnemyBase _enemy)
+    {
+        if(!_collision.transform.CompareTag("Player"))return;
+
+        Player player = _collision.transform.GetComponent<Player>();
+        
     }
 }

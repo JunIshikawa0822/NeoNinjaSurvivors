@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LevelSystem : SystemBase, IOnLateUpdate
 {
-    
     public void OnLateUpdate()
     {
         //playerのリアルタイムのレベル
@@ -18,7 +17,7 @@ public class LevelSystem : SystemBase, IOnLateUpdate
         gameStat.playerExpSliderProgressValue = PlayerExpProgress(gameStat.playerTotalExp, gameStat.accumeExpUntilNowLevel);
 
         //レベルアップしているか確認
-        gameStat.isLevelUp = LevelUpCheck(gameStat.playerExpSliderProgressValue, gameStat.playerExpSliderMaxValue);
+        LevelUpCheck(gameStat.playerExpSliderProgressValue, gameStat.playerExpSliderMaxValue, gameStat.isLevelUp);
 
         //レベルアップした時の処理
         if (!gameStat.isLevelUp) return;
@@ -67,19 +66,11 @@ public class LevelSystem : SystemBase, IOnLateUpdate
         return expToNextLevel;
     }
 
-    private bool LevelUpCheck(int _sliderProgressValue, int _sliderMaxValue)
+    private void LevelUpCheck(int _sliderProgressValue, int _sliderMaxValue, bool _isLevelUp)
     {
-        bool isLevelUp = false;
-        
-        if(_sliderMaxValue > _sliderProgressValue)
+        if(_sliderMaxValue <= _sliderProgressValue)
         {
-            isLevelUp = false;
+            _isLevelUp = true;
         }
-        else
-        {
-            isLevelUp = true;
-        }
-
-        return isLevelUp;
     }
 }
