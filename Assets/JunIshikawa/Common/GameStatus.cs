@@ -8,8 +8,6 @@ using TMPro;
 [System.Serializable]
 public class GameStatus
 {
-    [Header("GameState")]
-    [SerializeField] public GamePhase gamePhase;
 
     [Header("player")]
     [SerializeField] public Player player;
@@ -134,14 +132,5 @@ public class GameStatus
         space,
         right_shift,
         left_shift
-    }
-
-    public enum GamePhase
-    {
-        Start,
-        InGame,
-        LevelUp,
-        GameOver,
-        GameClear
     }
 }

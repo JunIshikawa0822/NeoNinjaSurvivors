@@ -32,6 +32,9 @@ public class EnemySystem : SystemBase, IOnUpdate
     {
         EnemyBase enemy = GameObject.Instantiate(_eyeballEnemy, _instantiatePos, Quaternion.identity);
         enemy.Init(_enemyMaxHp, _enemyAttackPoint);
+
+        enemy.onCollideEvent += EnemyCollide;
+
         _enemyList.Add(enemy);
     }
 
@@ -39,6 +42,9 @@ public class EnemySystem : SystemBase, IOnUpdate
     {
         EnemyBase enemy = GameObject.Instantiate(_greenEnemy, _instantiatePos, Quaternion.identity);
         enemy.Init(_enemyMaxHp, _enemyAttackPoint);
+
+        enemy.onCollideEvent += EnemyCollide;
+        
         _enemyList.Add(enemy);
     }
 
@@ -48,6 +54,9 @@ public class EnemySystem : SystemBase, IOnUpdate
         if(!_collision.transform.CompareTag("Player"))return;
 
         Player player = _collision.transform.GetComponent<Player>();
-        
+        if (player == null) return;
+
+        //プレイヤーのダメージ関数を起動
+        player.EntityGetDamage(_enemy.SetGetEnemyAttack);
     }
 }

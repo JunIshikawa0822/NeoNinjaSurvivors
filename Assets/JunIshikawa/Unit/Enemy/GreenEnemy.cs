@@ -11,6 +11,6 @@ public class GreenEnemy : EnemyBase
 
     public override void OnUpdate()
     {
-        
+        base.OnUpdate();
     }
 }

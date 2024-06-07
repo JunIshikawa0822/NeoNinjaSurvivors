@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : EntityBase
 {
-    protected int enemyCurrentHp;
-    protected int enemyMaxHp;
+    //protected int enemyCurrentHp;
+    //protected int enemyMaxHp;
 
     protected int enemyAttackPoint;
     protected int enemyMoveSpeed;
 
-    public event Action<EnemyBase> onDestroyEvent;
+    //public event Action<EnemyBase> onDestroyEvent;
     public event Action<Collision, EnemyBase> onCollideEvent;
 
     protected UnityEngine.AI.NavMeshAgent navMeshAgent;
@@ -20,10 +21,12 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void Init(int _enemyMaxHp, int _enemyAttackPoint)
     {
-        enemyMaxHp = _enemyMaxHp;
+        entityMaxHp = _enemyMaxHp;
         enemyAttackPoint = _enemyAttackPoint;
 
-        enemyCurrentHp = enemyMaxHp;
+        entityCurrentHp = entityMaxHp;
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     public virtual void OnUpdate()
@@ -44,16 +47,6 @@ public class EnemyBase : MonoBehaviour
     public void NavMeshAgentIsStopped(bool _isStopped)
     {
         navMeshAgent.isStopped = _isStopped;
-    }
-
-    public void EnemyDead(EnemyBase _enemy)
-    {
-        Destroy(_enemy.gameObject);
-    }
-
-    public void EnemyGetDamage(EnemyBase _enemy, int _damage)
-    {
-        _enemy.enemyCurrentHp -= _damage;
     }
 
     public int SetGetEnemyAttack

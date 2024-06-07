@@ -8,7 +8,10 @@ public class EyeballEnemy : EnemyBase
     public override void Init(int _enemyMaxHp, int _enemyAttackPoint)
     {
         base.Init(_enemyMaxHp, _enemyAttackPoint);
+    }
 
-        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
     }
 }

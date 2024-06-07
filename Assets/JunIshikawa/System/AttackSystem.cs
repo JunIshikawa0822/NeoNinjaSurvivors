@@ -89,8 +89,9 @@ public class AttackSystem : SystemBase, IOnUpdate
         }
         else if(_collision.gameObject.CompareTag("Enemy"))
         {
-            var enemy = _collision.gameObject.GetComponent<EnemyBase>();
+            EnemyBase enemy = _collision.gameObject.GetComponent<EnemyBase>();
             if(enemy == null) return;
+
             //敵のダメージ関数を起動
             enemy.TakeDamage(_bullet.BulletDamage());
             //弾丸の貫通可能回数を１減らす
