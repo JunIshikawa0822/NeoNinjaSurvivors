@@ -10,32 +10,54 @@ public class InputSystem : SystemBase, IOnPreUpdate
         //gameStat.attackVector = MouseVec(gameStat.player.transform, Camera.main, Input.mousePosition, gameStat.player);
         gameStat.playerMouseVector = RestrictVector(gameStat.player.transform, MouseVec(gameStat.player.transform, Camera.main, Input.mousePosition, gameStat.player), 150);
 
+        //各種ボタンが押されたか
+        //InputDown(gameStat.isMoveInput, gameStat.moveInputName);
+        //InputDown(gameStat.isAttackInput, gameStat.attackInputName);
+        //InputDown(gameStat.isFootHoldInput, gameStat.footHoldInputName);
 
         GetMoveInput(gameStat.moveInputName);
         GetAttackInput(gameStat.attackInputName);
         GetFootHoldInput(gameStat.footHoldInputName);
+
+        //Debug.Log(gameStat.isMoveInput);
+
+        //moveボタンが離されたか
+        InputUp(gameStat.isMoveInputUp, gameStat.moveInputName);
+        //Debug.Log(gameStat.isMoveInputUp);
     }
 
     //押されたキーがMoveのキーならMoveをオンにする
     private void GetMoveInput(GameStatus.InputName _isMoveInput)
     {
-        gameStat.isMoveInput = IsInput(_isMoveInput);
+        gameStat.isMoveInput = IsInputDown(_isMoveInput);
     }
 
     //押されたキーがAttackのキーならAttackをオンにする
     private void GetAttackInput(GameStatus.InputName _isAttackInput)
     {
-        gameStat.isAttackInput = IsInput(_isAttackInput);
+        gameStat.isAttackInput = IsInputDown(_isAttackInput);
     }
 
     //押されたキーがFootHoldのキーならFootHoldをオンにする
     private void GetFootHoldInput(GameStatus.InputName _isFootHoldInput)
     {
-        gameStat.isFootHoldInput = IsInput(_isFootHoldInput);
+        gameStat.isFootHoldInput = IsInputDown(_isFootHoldInput);
     }
 
-    //引数のキー（マウスボタン）が押されたかどうかを確認
-    private bool IsInput(GameStatus.InputName _inputName)
+    //押下されたらオンにする
+    private void InputDown(bool _inputDown, GameStatus.InputName _isInput)
+    {
+        _inputDown = IsInputDown(_isInput);
+    }
+
+    //離されたらオンにする
+    private void InputUp(bool _inputUp, GameStatus.InputName _isInput)
+    {
+        _inputUp = IsInputUp(_isInput);
+    }
+
+    //引数のキー（マウスボタン）が押下されたかどうかを確認
+    private bool IsInputDown(GameStatus.InputName _inputName)
     {
         //Debug.Log("JunIshikawa");
         bool isInputBool = false;
@@ -73,6 +95,104 @@ public class InputSystem : SystemBase, IOnPreUpdate
             string conventionKeyName = string.Join(" ", words);
 
             if (Input.GetKeyDown(conventionKeyName))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    //引数のキー（マウスボタン）が押下されたかどうかを確認
+    private bool IsInput(GameStatus.InputName _inputName)
+    {
+        //Debug.Log("JunIshikawa");
+        bool isInputBool = false;
+
+        if (_inputName == GameStatus.InputName.MouseButtonRight)
+        {
+            isInputBool = MouseBool(1);
+        }
+        else if (_inputName == GameStatus.InputName.MouseButtonLeft)
+        {
+            isInputBool = MouseBool(0);
+        }
+        else
+        {
+            isInputBool = KeyBool(_inputName.ToString());
+        }
+
+        return isInputBool;
+
+        bool MouseBool(int _mouseNumber)
+        {
+            if (Input.GetMouseButton(_mouseNumber))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool KeyBool(string _keyName)
+        {
+            string[] words = _keyName.Split("_");
+            string conventionKeyName = string.Join(" ", words);
+
+            if (Input.GetKey(conventionKeyName))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    //引数のキー（マウスボタン）が離されたかどうかを確認
+    private bool IsInputUp(GameStatus.InputName _inputName)
+    {
+        //Debug.Log("JunIshikawa");
+        bool isInputBool = false;
+
+        if (_inputName == GameStatus.InputName.MouseButtonRight)
+        {
+            isInputBool = MouseUpBool(1);
+        }
+        else if (_inputName == GameStatus.InputName.MouseButtonLeft)
+        {
+            isInputBool = MouseUpBool(0);
+        }
+        else
+        {
+            isInputBool = KeyUpBool(_inputName.ToString());
+        }
+
+        return isInputBool;
+
+        bool MouseUpBool(int _mouseNumber)
+        {
+            if (Input.GetMouseButtonUp(_mouseNumber))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        bool KeyUpBool(string _keyName)
+        {
+            string[] words = _keyName.Split("_");
+            string conventionKeyName = string.Join(" ", words);
+
+            if (Input.GetKeyUp(conventionKeyName))
             {
                 return true;
             }

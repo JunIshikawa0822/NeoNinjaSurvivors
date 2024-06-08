@@ -17,7 +17,7 @@ public class GameMain : MonoBehaviour
     {
         allSystems = new List<SystemBase>()
         {
-            new MoveSystem(),
+            new PlayerSystem(),
             new EnemySystem(),
             new InputSystem(),
             new AttackSystem(),

@@ -17,7 +17,6 @@ public class EnemyBase : EntityBase
     public event Action<Collision, EnemyBase> onCollideEvent;
 
     protected UnityEngine.AI.NavMeshAgent navMeshAgent;
-    protected Rigidbody enemyRigidbody;
 
     public virtual void Init(int _enemyMaxHp, int _enemyAttackPoint)
     {
@@ -27,16 +26,6 @@ public class EnemyBase : EntityBase
         entityCurrentHp = entityMaxHp;
 
         navMeshAgent = GetComponent<NavMeshAgent>();
-    }
-
-    public virtual void OnUpdate()
-    {
-        
-    }
-
-    public virtual void EnemyMove()
-    {
-
     }
 
     public void NavMeshDestinationSet(Vector3 _destinationPos)

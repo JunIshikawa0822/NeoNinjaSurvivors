@@ -9,7 +9,7 @@ public class UISystem : SystemBase, IOnLateUpdate
     public override void SetUp()
     {
         SliderMaxValueSet(gameStat.playerExpSlider, gameStat.playerPrimeDemandExp);
-        Debug.Log("ha");
+        //Debug.Log("ha");
     }
 
     public void OnLateUpdate()

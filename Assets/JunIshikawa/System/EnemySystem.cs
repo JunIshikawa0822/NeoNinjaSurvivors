@@ -12,9 +12,9 @@ public class EnemySystem : SystemBase, IOnUpdate
             {
                 if (!gameStat.isLevelUp)
                 {
-                    gameStat.enemyList[i].OnUpdate();
+                    //gameStat.enemyList[i].OnUpdate();
 
-                    gameStat.enemyList[i].EnemyMove();
+                    //gameStat.enemyList[i].EnemyMove();
 
                     //動かす
                     gameStat.enemyList[i].NavMeshAgentIsStopped(true);
@@ -31,6 +31,9 @@ public class EnemySystem : SystemBase, IOnUpdate
     private void EyeballEnemyInstantiate(EyeballEnemy _eyeballEnemy, Vector3 _instantiatePos, int _enemyMaxHp, int _enemyAttackPoint, List<EnemyBase> _enemyList)
     {
         EnemyBase enemy = GameObject.Instantiate(_eyeballEnemy, _instantiatePos, Quaternion.identity);
+        if (enemy == null) return;
+
+        enemy.EntityComponentSetUp();
         enemy.Init(_enemyMaxHp, _enemyAttackPoint);
 
         enemy.onCollideEvent += EnemyCollide;
@@ -41,6 +44,10 @@ public class EnemySystem : SystemBase, IOnUpdate
     private void GreenEnemyInstantiate(GreenEnemy _greenEnemy, Vector3 _instantiatePos, int _enemyMaxHp, int _enemyAttackPoint, List<EnemyBase> _enemyList)
     {
         EnemyBase enemy = GameObject.Instantiate(_greenEnemy, _instantiatePos, Quaternion.identity);
+
+        if (enemy == null) return;
+
+        enemy.EntityComponentSetUp();
         enemy.Init(_enemyMaxHp, _enemyAttackPoint);
 
         enemy.onCollideEvent += EnemyCollide;

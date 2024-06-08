@@ -9,9 +9,4 @@ public class EyeballEnemy : EnemyBase
     {
         base.Init(_enemyMaxHp, _enemyAttackPoint);
     }
-
-    public override void OnUpdate()
-    {
-        base.OnUpdate();
-    }
 }

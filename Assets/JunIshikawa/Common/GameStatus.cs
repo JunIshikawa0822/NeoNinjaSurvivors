@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Cinemachine;
 
 //変数のみを格納するクラス
 [System.Serializable]
@@ -81,6 +82,10 @@ public class GameStatus
 
     [System.NonSerialized]
     public Vector3 playerMouseVector;
+
+    [Header("Animation")]
+    [SerializeField]
+    public bool isMoveInputUp = false;
 
     [Header("PlayerMove")]
     [SerializeField]

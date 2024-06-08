@@ -9,8 +9,20 @@ public class EntityBase : MonoBehaviour
     protected int entityMaxHp;
 
     protected Rigidbody entityRigidbody;
+    protected Animator entityAnimator;
 
     public event Action<EntityBase> onEntityDestroyEvent;
+
+    public virtual void OnUpdate()
+    {
+
+    }
+
+    public virtual void EntityComponentSetUp()
+    {
+        entityRigidbody = GetComponent<Rigidbody>();
+        entityAnimator = GetComponent<Animator>();
+    }
 
     public virtual void EntityHeal(int _healPoint)
     {
