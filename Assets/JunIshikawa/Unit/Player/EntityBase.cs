@@ -13,11 +13,6 @@ public class EntityBase : MonoBehaviour
 
     public event Action<EntityBase> onEntityDestroyEvent;
 
-    public virtual void OnUpdate()
-    {
-
-    }
-
     public virtual void EntityComponentSetUp()
     {
         entityRigidbody = GetComponent<Rigidbody>();

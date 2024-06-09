@@ -9,7 +9,12 @@ public class Player : EntityBase
     private bool moveWaitAnimParam;
     private bool attackAnimParam;
 
-    public override void OnUpdate()
+    public void Init(bool _moveWaitAnimParam, bool _attackAnimParam)
+    {
+        ParameterSet(_moveWaitAnimParam, _attackAnimParam);
+    }
+
+    public void OnUpdate()
     {
         ParamSetToAnimator();
     }
