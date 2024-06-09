@@ -11,49 +11,43 @@ public class InputSystem : SystemBase, IOnPreUpdate
         gameStat.playerMouseVector = RestrictVector(gameStat.player.transform, MouseVec(gameStat.player.transform, Camera.main, Input.mousePosition, gameStat.player), 150);
 
         //各種ボタンが押されたか
-        //InputDown(gameStat.isMoveInput, gameStat.moveInputName);
-        //InputDown(gameStat.isAttackInput, gameStat.attackInputName);
-        //InputDown(gameStat.isFootHoldInput, gameStat.footHoldInputName);
-
-        GetMoveInput(gameStat.moveInputName);
-        GetAttackInput(gameStat.attackInputName);
-        GetFootHoldInput(gameStat.footHoldInputName);
-
-        //Debug.Log(gameStat.isMoveInput);
+        gameStat.isMoveInput = InputDown(gameStat.moveInputName);
+        gameStat.isAttackInput = InputDown(gameStat.attackInputName);
+        gameStat.isFootHoldInput = InputDown(gameStat.footHoldInputName);
 
         //moveボタンが離されたか
-        InputUp(gameStat.isMoveInputUp, gameStat.moveInputName);
+        gameStat.isMoveInputUp = InputUp(gameStat.moveInputName);
         //Debug.Log(gameStat.isMoveInputUp);
     }
 
-    //押されたキーがMoveのキーならMoveをオンにする
-    private void GetMoveInput(GameStatus.InputName _isMoveInput)
-    {
-        gameStat.isMoveInput = IsInputDown(_isMoveInput);
-    }
+    ////押されたキーがMoveのキーならMoveをオンにする
+    //private void GetMoveInput(GameStatus.InputName _isMoveInput)
+    //{
+    //    gameStat.isMoveInput = IsInputDown(_isMoveInput);
+    //}
 
-    //押されたキーがAttackのキーならAttackをオンにする
-    private void GetAttackInput(GameStatus.InputName _isAttackInput)
-    {
-        gameStat.isAttackInput = IsInputDown(_isAttackInput);
-    }
+    ////押されたキーがAttackのキーならAttackをオンにする
+    //private void GetAttackInput(GameStatus.InputName _isAttackInput)
+    //{
+    //    gameStat.isAttackInput = IsInputDown(_isAttackInput);
+    //}
 
-    //押されたキーがFootHoldのキーならFootHoldをオンにする
-    private void GetFootHoldInput(GameStatus.InputName _isFootHoldInput)
-    {
-        gameStat.isFootHoldInput = IsInputDown(_isFootHoldInput);
-    }
+    ////押されたキーがFootHoldのキーならFootHoldをオンにする
+    //private void GetFootHoldInput(GameStatus.InputName _isFootHoldInput)
+    //{
+    //    gameStat.isFootHoldInput = IsInputDown(_isFootHoldInput);
+    //}
 
     //押下されたらオンにする
-    private void InputDown(bool _inputDown, GameStatus.InputName _isInput)
+    private bool InputDown(GameStatus.InputName _isInput)
     {
-        _inputDown = IsInputDown(_isInput);
+        return IsInputDown(_isInput);
     }
 
     //離されたらオンにする
-    private void InputUp(bool _inputUp, GameStatus.InputName _isInput)
+    private bool InputUp(GameStatus.InputName _isInput)
     {
-        _inputUp = IsInputUp(_isInput);
+        return IsInputUp(_isInput);
     }
 
     //引数のキー（マウスボタン）が押下されたかどうかを確認
