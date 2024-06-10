@@ -5,6 +5,5 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    public Transform generatePosition;
-    public Transform[] allTargetPositions;
+    
 }

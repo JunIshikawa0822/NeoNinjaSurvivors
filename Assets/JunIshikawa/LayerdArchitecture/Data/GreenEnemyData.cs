@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class EyeBallEnemyData
+public class GreenEnemyData
 {
     public int enemyMaxHp;
     public int enemyAttackPoint;

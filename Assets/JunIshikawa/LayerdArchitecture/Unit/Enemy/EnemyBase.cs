@@ -19,7 +19,7 @@ public class EnemyBase : EntityBase
 
     protected UnityEngine.AI.NavMeshAgent navMeshAgent;
 
-    public virtual void Init(int _enemyAttackPoint)
+    public virtual void EnemyInit(int _enemyAttackPoint)
     {
         enemyAttackPoint = _enemyAttackPoint;
 

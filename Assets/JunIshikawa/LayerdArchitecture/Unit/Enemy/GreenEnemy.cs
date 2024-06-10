@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class GreenEnemy : EnemyBase
 {
-    public override void Init(int _enemyAttackPoint)
-    {
-        base.Init(_enemyAttackPoint);
-    }
+    public GreenEnemyData data;
 }

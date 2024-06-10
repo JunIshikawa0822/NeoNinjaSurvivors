@@ -28,31 +28,31 @@ public class EnemySystem : SystemBase, IOnUpdate
         }
     }
 
-    private void EyeballEnemyInstantiate(EyeballEnemy _eyeballEnemy, Vector3 _instantiatePos, int _enemyMaxHp, int _enemyAttackPoint, List<EnemyBase> _enemyList)
+    private void EyeballEnemyInstantiate(EyeballEnemy _eyeballEnemy, EyeBallEnemyData _data, List<EnemyBase> _enemyList)
     {
-        EnemyBase enemy = GameObject.Instantiate(_eyeballEnemy, _instantiatePos, Quaternion.identity);
+        EnemyBase enemy = GameObject.Instantiate<EyeballEnemy>(_eyeballEnemy, _data.instantiatePos, Quaternion.identity);
         if (enemy == null) return;
 
         enemy.EntityComponentSetUp();
-        enemy.EntityHpSetUp(_enemyMaxHp);
+        enemy.EntityHpSetUp(_data.enemyMaxHp);
 
-        enemy.Init(_enemyAttackPoint);
+        enemy.EnemyInit(_data.enemyAttackPoint);
 
         enemy.onCollideEvent += EnemyCollide;
 
         _enemyList.Add(enemy);
     }
 
-    private void GreenEnemyInstantiate(GreenEnemy _greenEnemy, Vector3 _instantiatePos, int _enemyMaxHp, int _enemyAttackPoint, List<EnemyBase> _enemyList)
+    private void GreenEnemyInstantiate(GreenEnemy _greenEnemy, GreenEnemyData _data, List<EnemyBase> _enemyList)
     {
-        EnemyBase enemy = GameObject.Instantiate(_greenEnemy, _instantiatePos, Quaternion.identity);
+        EnemyBase enemy = GameObject.Instantiate<GreenEnemy>(_greenEnemy, _data.instantiatePos, Quaternion.identity);
 
         if (enemy == null) return;
 
         enemy.EntityComponentSetUp();
-        enemy.EntityHpSetUp(_enemyMaxHp);
+        enemy.EntityHpSetUp(_data.enemyMaxHp);
 
-        enemy.Init(_enemyAttackPoint);
+        enemy.EnemyInit(_data.enemyAttackPoint);
 
         enemy.onCollideEvent += EnemyCollide;
         
