@@ -6,29 +6,51 @@ public class Player : EntityBase
 {
     //animation用ステータス
     //private bool normalWaitAnimParam;
-    private bool moveWaitAnimParam;
+    //ワープ
+    private bool warpAnimParam;
+    //攻撃
     private bool attackAnimParam;
+    //ワープ待機
+    private bool moveWaitAnimParam;
+    //攻撃時のダメージ
+    private bool damageAnimParam;
+    //ワープ待機中のダメージ
+    private bool warpDamageAnimParam;
 
-    public void Init(bool _moveWaitAnimParam, bool _attackAnimParam)
+    public void Init(bool _attackAnimParam)
     {
-        ParameterSet(_moveWaitAnimParam, _attackAnimParam);
+        ParameterSet(_attackAnimParam);
     }
 
     public void OnUpdate()
     {
-        ParamSetToAnimator();
+
     }
 
-    private void ParamSetToAnimator()
+    
+    //ワープ
+    public void warpSetTrigger()
     {
-        entityAnimator.SetBool("isWait", moveWaitAnimParam);
-        entityAnimator.SetBool("isAttack", attackAnimParam);
+        entityAnimator.SetTrigger("isWarp");
+    }
+    //ワープ待機
+    public void moveWaitSetBool(bool _moveWaitBool)
+    {
+        entityAnimator.SetBool("isMoveWait", _moveWaitBool);
+    }
+    //攻撃
+    public void attackSetBool(bool _attackBool)
+    {
+        entityAnimator.SetBool("isAttack", _attackBool);
+    }
+    //ダメージ
+    private void damageSetTrigger()
+    {
+        entityAnimator.SetTrigger("isDamage");
     }
 
-    public void ParameterSet(bool _moveWaitAnimParam, bool _attackAnimParam)
+    public void ParameterSet(bool _attackAnimParam)
     {
-        //normalWaitAnimParam = _normalWaitAnimParam;
-        moveWaitAnimParam = _moveWaitAnimParam;
         attackAnimParam = _attackAnimParam;
     }
 }

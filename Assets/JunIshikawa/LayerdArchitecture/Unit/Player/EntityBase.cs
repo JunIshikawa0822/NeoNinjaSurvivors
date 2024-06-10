@@ -23,7 +23,7 @@ public class EntityBase : MonoBehaviour
     public virtual void EntityComponentSetUp()
     {
         entityRigidbody = GetComponent<Rigidbody>();
-        entityAnimator = GetComponent<Animator>();
+        entityAnimator = GetComponentInChildren<Animator>();
     }
 
     //public virtual void EntityHeal(int _healPoint)

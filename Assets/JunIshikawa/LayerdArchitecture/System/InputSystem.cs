@@ -11,7 +11,7 @@ public class InputSystem : SystemBase, IOnPreUpdate
         gameStat.playerMouseVector = RestrictVector(gameStat.player.transform, MouseVec(gameStat.player.transform, Camera.main, Input.mousePosition, gameStat.player), 150);
 
         //各種ボタンが押されたか
-        gameStat.isMoveInput = InputDown(gameStat.moveInputName);
+        gameStat.isMoveInput = InputHold(gameStat.moveInputName);
         gameStat.isAttackInput = InputDown(gameStat.attackInputName);
         gameStat.isFootHoldInput = InputDown(gameStat.footHoldInputName);
 
@@ -48,6 +48,11 @@ public class InputSystem : SystemBase, IOnPreUpdate
     private bool InputUp(GameStatus.InputName _isInput)
     {
         return IsInputUp(_isInput);
+    }
+
+    private bool InputHold(GameStatus.InputName _isInput)
+    {
+        return IsInput(_isInput);
     }
 
     //引数のキー（マウスボタン）が押下されたかどうかを確認
