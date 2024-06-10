@@ -11,7 +11,7 @@ public class InputSystem : SystemBase, IOnPreUpdate
         gameStat.playerMouseVector = RestrictVector(gameStat.player.transform, MouseVec(gameStat.player.transform, Camera.main, Input.mousePosition, gameStat.player), 150);
 
         //各種ボタンが押されたか
-        gameStat.isMoveInput = InputHold(gameStat.moveInputName);
+        gameStat.isMoveInput = InputHold(gameStat.moveInputName);//ここ書き換えた
         gameStat.isAttackInput = InputDown(gameStat.attackInputName);
         gameStat.isFootHoldInput = InputDown(gameStat.footHoldInputName);
 
