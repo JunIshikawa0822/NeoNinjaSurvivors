@@ -15,15 +15,13 @@ public class EnemyBase : EntityBase
 
     //public event Action<EnemyBase> onDestroyEvent;
     public event Action<Collision, EnemyBase> onCollideEvent;
+    public event Action<EnemyBase> enemyRemoveEvent;
 
     protected UnityEngine.AI.NavMeshAgent navMeshAgent;
 
-    public virtual void Init(int _enemyMaxHp, int _enemyAttackPoint)
+    public virtual void Init(int _enemyAttackPoint)
     {
-        entityMaxHp = _enemyMaxHp;
         enemyAttackPoint = _enemyAttackPoint;
-
-        entityCurrentHp = entityMaxHp;
 
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
@@ -38,18 +36,18 @@ public class EnemyBase : EntityBase
         navMeshAgent.isStopped = _isStopped;
     }
 
-    public int SetGetEnemyAttack
+    public void OnTriggerNextAction()
+    {
+        if (enemyRemoveEvent == null) return;
+        enemyRemoveEvent?.Invoke(this);
+    }
+
+    public int GetEnemyAttack
     {
         get
         {
             return enemyAttackPoint;
         }
-    }
-
-    //public event Action<EnemyBase> enemyDead;
-    public void TakeDamage(int _bulletDamage)
-    {   
-        Debug.Log("被弾した！　ダメージ：" + _bulletDamage);
     }
 
     private void OnCollisionEnter(Collision _collision)

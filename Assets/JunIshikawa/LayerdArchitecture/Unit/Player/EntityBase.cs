@@ -13,19 +13,34 @@ public class EntityBase : MonoBehaviour
 
     public event Action<EntityBase> onEntityDestroyEvent;
 
+    public virtual void EntityHpSetUp(int _enemyMaxHp)
+    {
+        entityMaxHp = _enemyMaxHp;
+
+        entityCurrentHp = entityMaxHp;
+    }
+
     public virtual void EntityComponentSetUp()
     {
         entityRigidbody = GetComponent<Rigidbody>();
         entityAnimator = GetComponent<Animator>();
     }
 
-    public virtual void EntityHeal(int _healPoint)
-    {
-        entityCurrentHp += _healPoint;
+    //public virtual void EntityHeal(int _healPoint)
+    //{
+    //    entityCurrentHp += _healPoint;
 
-        if(entityCurrentHp > entityMaxHp)
+    //    if(entityCurrentHp > entityMaxHp)
+    //    {
+    //        entityCurrentHp = entityMaxHp;
+    //    }
+    //}
+
+    public int GetEntityHp
+    {
+        get
         {
-            entityCurrentHp = entityMaxHp;
+            return entityCurrentHp;
         }
     }
 

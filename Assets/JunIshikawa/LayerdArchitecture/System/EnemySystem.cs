@@ -34,7 +34,9 @@ public class EnemySystem : SystemBase, IOnUpdate
         if (enemy == null) return;
 
         enemy.EntityComponentSetUp();
-        enemy.Init(_enemyMaxHp, _enemyAttackPoint);
+        enemy.EntityHpSetUp(_enemyMaxHp);
+
+        enemy.Init(_enemyAttackPoint);
 
         enemy.onCollideEvent += EnemyCollide;
 
@@ -48,7 +50,9 @@ public class EnemySystem : SystemBase, IOnUpdate
         if (enemy == null) return;
 
         enemy.EntityComponentSetUp();
-        enemy.Init(_enemyMaxHp, _enemyAttackPoint);
+        enemy.EntityHpSetUp(_enemyMaxHp);
+
+        enemy.Init(_enemyAttackPoint);
 
         enemy.onCollideEvent += EnemyCollide;
         
@@ -64,6 +68,8 @@ public class EnemySystem : SystemBase, IOnUpdate
         if (player == null) return;
 
         //プレイヤーのダメージ関数を起動
-        player.EntityGetDamage(_enemy.SetGetEnemyAttack);
+        player.EntityGetDamage(_enemy.GetEnemyAttack);
+
+        if (_enemy.GetEntityHp > 0) return;
     }
 }

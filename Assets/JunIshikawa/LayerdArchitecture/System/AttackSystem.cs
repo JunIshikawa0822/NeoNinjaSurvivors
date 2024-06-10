@@ -93,7 +93,7 @@ public class AttackSystem : SystemBase, IOnUpdate
             if(enemy == null) return;
 
             //敵のダメージ関数を起動
-            enemy.TakeDamage(_bullet.BulletDamage());
+            enemy.EntityGetDamage(_bullet.BulletDamage());
             //弾丸の貫通可能回数を１減らす
             int p = _bullet.PenetrateCount - 1;
             _bullet.PenetrateCount = p;

@@ -9,6 +9,7 @@ public class PlayerSystem : SystemBase, IOnUpdate
         base.SetUp();
 
         gameStat.player.EntityComponentSetUp();
+        //gameStat.player.EntityHpSetUp();
         gameStat.player.Init(false, false);
     }
 

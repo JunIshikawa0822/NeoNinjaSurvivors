@@ -12,8 +12,6 @@ public class Bullet : MonoBehaviour
     private int bulletDamage;//弾丸のダメージ量
     private int penetrateCount;//貫通可能回数
 
-
-
     //弾丸がListから削除されるAction
     public event Action<Bullet> bulletRemoveEvent;
     //
