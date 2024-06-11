@@ -52,7 +52,7 @@ public class GameStatus
     [SerializeField]
     public LineRenderer playerLineRenderer;
 
-    [Range(5,15)]
+    [Range(2, 15)]
     public float lineMaxDistance = 5f;
 
     [Header("Input")]

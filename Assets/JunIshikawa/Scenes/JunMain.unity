@@ -1248,7 +1248,7 @@ MonoBehaviour:
     simulNumLevel: 1
     angleLevel: 6
     playerLineRenderer: {fileID: 1514023290}
-    lineMaxDistance: 10.86
+    lineMaxDistance: 2
     isMoveInput: 0
     isAttackInput: 0
     isFootHoldInput: 0
@@ -1892,7 +1892,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.11811066
+        value: 0.048110962
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2892,7 +2892,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

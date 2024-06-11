@@ -6,13 +6,27 @@ public class DrawSystem : SystemBase, IOnUpdate
 {
     public void OnUpdate()
     {
-        LineDraw(
-            gameStat.player.transform.position,
-            gameStat.playerMouseVector,
-            gameStat.playerMoveMaxDistance,
-            gameStat.playerMoveRayHitLayer,
-            gameStat.playerLineRenderer
-        );
+        if(gameStat.isMoveInput)
+        {
+            LineDraw(
+                gameStat.player.transform.position,
+                EndPos(
+                    gameStat.player.transform.position,
+                    gameStat.playerMouseVector,
+                    gameStat.playerMoveMaxDistance,
+                    gameStat.playerMoveRayHitLayer
+                    ),
+                gameStat.playerLineRenderer
+            );
+        }
+        else
+        {
+            LineDraw(
+                gameStat.player.transform.position,
+                gameStat.player.transform.position + gameStat.playerMouseVector * gameStat.lineMaxDistance,
+                gameStat.playerLineRenderer
+            );
+        }
     }
 
     //Lineの終点
@@ -29,9 +43,9 @@ public class DrawSystem : SystemBase, IOnUpdate
     }
     
     //Lineの描画
-    private void LineDraw(Vector3 _originPos, Vector3 _directionVec, float _maxDistance, int _layerMask , LineRenderer _lineRenderer)
+    private void LineDraw(Vector3 _originPos, Vector3 _endPos, LineRenderer _lineRenderer)
     {
-        Vector3[] positions = new Vector3[] {_originPos , EndPos(_originPos , _directionVec , _maxDistance , _layerMask)};
+        Vector3[] positions = new Vector3[] {_originPos , _endPos};
 
         _lineRenderer.SetPositions(positions);
     }

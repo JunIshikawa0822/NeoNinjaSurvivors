@@ -17,7 +17,6 @@ public class UISystem : SystemBase, IOnLateUpdate
         SliderMaxValueSet(gameStat.playerExpSlider, gameStat.playerExpSliderMaxValue);
         SliderValueSet(gameStat.playerExpSlider, gameStat.playerExpSliderProgressValue);
 
-        Debug.Log(gameStat.player.GetEntityHp);
         SliderValueSet(gameStat.playerHpSlider, gameStat.player.GetEntityHp);
         TextSet(gameStat.playerLevelText, gameStat.playerLevel.ToString());
     }
