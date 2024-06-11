@@ -9,28 +9,15 @@ public class PlayerSystem : SystemBase, IOnUpdate
         base.SetUp();
 
         gameStat.player.EntityComponentSetUp();
+        //gameStat.player.EntityHpSetUp();
         gameStat.player.Init(false);
     }
 
     public void OnUpdate()
     {
-        if (gameStat.isMoveInputUp)
-        {
-            PlayerMoveWait(gameStat.player, false);
-            PlayerWarp(gameStat.player);
-            PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
-        }
         if (gameStat.isMoveInput)
         {
-            PlayerMoveWait(gameStat.player, true);
-        }
-        if(gameStat.isAttackInput)
-        {
-            PlayerAttack(gameStat.player, true);
-        }
-        else
-        {
-            PlayerAttack(gameStat.player, false);
+            PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
         }
 
         //PlayerAnimation(gameStat.player);
@@ -57,18 +44,9 @@ public class PlayerSystem : SystemBase, IOnUpdate
         }
     }
 
-    private void PlayerAttack(Player _player, bool _attackBool)
+    private void PlayerAnimation(Player _player, bool _moveWaitAnimParam, bool _attackAnimParam)
     {
-        _player.attackSetBool(_attackBool);
-    }
-
-    private void PlayerMoveWait(Player _player, bool _moveWaitBool)
-    {
-        _player.moveWaitSetBool(_moveWaitBool);
-    }
-
-    private void PlayerWarp(Player _player)
-    {
-        _player.warpSetTrigger();
+        Debug.Log("aaa");
+        _player.ParameterSet(_moveWaitAnimParam, _attackAnimParam);
     }
 }
