@@ -10,20 +10,37 @@ public class EnemyBase : EntityBase
     //protected int enemyCurrentHp;
     //protected int enemyMaxHp;
 
+    protected int enemyExp;
     protected int enemyAttackPoint;
     protected int enemyMoveSpeed;
 
+    public event Action<EnemyBase> onDestroyEnemyEvent;
+
     //public event Action<EnemyBase> onDestroyEvent;
     public event Action<Collision, EnemyBase> onCollideEvent;
-    public event Action<EnemyBase> enemyRemoveEvent;
 
     protected UnityEngine.AI.NavMeshAgent navMeshAgent;
 
-    public virtual void EnemyInit(int _enemyAttackPoint)
+    public virtual void EnemyInit(int _enemyAttackPoint, int _enemyExp)
     {
         enemyAttackPoint = _enemyAttackPoint;
+        enemyExp = _enemyExp;
 
         navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    public void OnUpdate()
+    {
+        if (entityCurrentHp < 1)
+        {
+            OnDestroyThisEnemy();
+        }
+    }
+
+    private void OnDestroyThisEnemy()
+    {
+        if (onDestroyEnemyEvent == null) return;
+        onDestroyEnemyEvent?.Invoke(this);
     }
 
     public void NavMeshDestinationSet(Vector3 _destinationPos)
@@ -36,18 +53,25 @@ public class EnemyBase : EntityBase
         navMeshAgent.isStopped = _isStopped;
     }
 
-    public void OnTriggerNextAction()
-    {
-        if (enemyRemoveEvent == null) return;
-        enemyRemoveEvent?.Invoke(this);
-    }
-
     public int GetEnemyAttack
     {
         get
         {
             return enemyAttackPoint;
         }
+    }
+
+    public int GetEnemyExp
+    {
+        get
+        {
+            return enemyExp;
+        }
+    }
+
+    public void EnemyObjectDestroy()
+    {
+        Destroy(this.gameObject);
     }
 
     private void OnCollisionEnter(Collision _collision)

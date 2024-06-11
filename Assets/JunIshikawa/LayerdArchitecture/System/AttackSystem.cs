@@ -92,6 +92,7 @@ public class AttackSystem : SystemBase, IOnUpdate
             EnemyBase enemy = _collision.gameObject.GetComponent<EnemyBase>();
             if(enemy == null) return;
 
+            Debug.Log("当たった");
             //敵のダメージ関数を起動
             enemy.EntityGetDamage(_bullet.BulletDamage());
             //弾丸の貫通可能回数を１減らす

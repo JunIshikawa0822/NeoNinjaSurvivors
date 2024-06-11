@@ -14,6 +14,11 @@ public class PlayerSystem : SystemBase, IOnUpdate
 
     public void OnUpdate()
     {
+        if (gameStat.player.GetEntityHp < 1)
+        {
+            //ここでゲーム終了の処理
+        }
+
         if (gameStat.isMoveInputUp)
         {
             //ワープ

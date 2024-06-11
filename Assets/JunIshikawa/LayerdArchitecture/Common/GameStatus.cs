@@ -15,6 +15,21 @@ public class GameStatus
 
     [Header("Enemy")]
     [SerializeField] public EyeballEnemy eyeballEnemy;
+    [SerializeField] public GreenEnemy greenEnemy;
+    [SerializeField] public ArmEnemy armEnemy;
+    [SerializeField] public BlackEnemy blackEnemy;
+    [SerializeField] public FlyingEnemy flyingEnemy;
+    [SerializeField] public GoldEnemy goldEnemy;
+
+    public enum EnemyType
+    {
+        EyeBallEnemy,
+        GreenEnemy,
+        ArmEnemy,
+        BlackEnemy,
+        FlyingEnemy,
+        GoldEnemy
+    }
 
     [System.NonSerialized]
     public List<EnemyBase> enemyList = new List<EnemyBase>();
@@ -23,7 +38,7 @@ public class GameStatus
     [SerializeField] public Bullet bullet;
     public List<Bullet> bulletList = new List<Bullet>();
 
-    [System.NonSerialized] 
+    [SerializeField] 
     public float bulletSpeed = 0.2f;
 
     [System.NonSerialized] 
@@ -68,13 +83,13 @@ public class GameStatus
     public bool isFootHoldInput = false;
 
     [SerializeField]
-    public InputName moveInputName;
+    public InputNameType moveInputName;
 
     [SerializeField]
-    public InputName attackInputName;
+    public InputNameType attackInputName;
 
     [SerializeField]
-    public InputName footHoldInputName;
+    public InputNameType footHoldInputName;
 
     [System.NonSerialized]
     public Vector3 attackVector;
@@ -137,7 +152,7 @@ public class GameStatus
     public List<EnemyData> enemyDataList;
     public List<PlayerData> playerDataList;
 
-    public enum InputName
+    public enum InputNameType
     {
         MouseButtonRight,
         MouseButtonLeft,

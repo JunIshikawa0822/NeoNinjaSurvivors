@@ -5,5 +5,5 @@ using UnityEngine.AI;
 
 public class EyeballEnemy : EnemyBase
 {
-    public EyeBallEnemyData _data;
+    
 }

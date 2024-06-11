@@ -39,33 +39,33 @@ public class InputSystem : SystemBase, IOnPreUpdate
     //}
 
     //押下されたらオンにする
-    private bool InputDown(GameStatus.InputName _isInput)
+    private bool InputDown(GameStatus.InputNameType _isInput)
     {
         return IsInputDown(_isInput);
     }
 
     //離されたらオンにする
-    private bool InputUp(GameStatus.InputName _isInput)
+    private bool InputUp(GameStatus.InputNameType _isInput)
     {
         return IsInputUp(_isInput);
     }
 
-    private bool InputHold(GameStatus.InputName _isInput)
+    private bool InputHold(GameStatus.InputNameType _isInput)
     {
         return IsInput(_isInput);
     }
 
     //引数のキー（マウスボタン）が押下されたかどうかを確認
-    private bool IsInputDown(GameStatus.InputName _inputName)
+    private bool IsInputDown(GameStatus.InputNameType _inputName)
     {
         //Debug.Log("JunIshikawa");
         bool isInputBool = false;
 
-        if (_inputName == GameStatus.InputName.MouseButtonRight)
+        if (_inputName == GameStatus.InputNameType.MouseButtonRight)
         {
             isInputBool = MouseBool(1);
         }
-        else if (_inputName == GameStatus.InputName.MouseButtonLeft)
+        else if (_inputName == GameStatus.InputNameType.MouseButtonLeft)
         {
             isInputBool = MouseBool(0);
         }
@@ -105,16 +105,16 @@ public class InputSystem : SystemBase, IOnPreUpdate
     }
 
     //引数のキー（マウスボタン）が押下されたかどうかを確認
-    private bool IsInput(GameStatus.InputName _inputName)
+    private bool IsInput(GameStatus.InputNameType _inputName)
     {
         //Debug.Log("JunIshikawa");
         bool isInputBool = false;
 
-        if (_inputName == GameStatus.InputName.MouseButtonRight)
+        if (_inputName == GameStatus.InputNameType.MouseButtonRight)
         {
             isInputBool = MouseBool(1);
         }
-        else if (_inputName == GameStatus.InputName.MouseButtonLeft)
+        else if (_inputName == GameStatus.InputNameType.MouseButtonLeft)
         {
             isInputBool = MouseBool(0);
         }
@@ -154,16 +154,16 @@ public class InputSystem : SystemBase, IOnPreUpdate
     }
 
     //引数のキー（マウスボタン）が離されたかどうかを確認
-    private bool IsInputUp(GameStatus.InputName _inputName)
+    private bool IsInputUp(GameStatus.InputNameType _inputName)
     {
         //Debug.Log("JunIshikawa");
         bool isInputBool = false;
 
-        if (_inputName == GameStatus.InputName.MouseButtonRight)
+        if (_inputName == GameStatus.InputNameType.MouseButtonRight)
         {
             isInputBool = MouseUpBool(1);
         }
-        else if (_inputName == GameStatus.InputName.MouseButtonLeft)
+        else if (_inputName == GameStatus.InputNameType.MouseButtonLeft)
         {
             isInputBool = MouseUpBool(0);
         }

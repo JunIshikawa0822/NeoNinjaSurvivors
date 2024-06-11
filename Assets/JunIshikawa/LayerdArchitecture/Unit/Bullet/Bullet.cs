@@ -79,6 +79,7 @@ public class Bullet : MonoBehaviour
     //弾丸の衝突
     private void OnCollisionEnter(Collision _collision)
     {
+        Debug.Log("衝突してはいるのよ");
         if (bulletCollideEvent == null) return;
         bulletCollideEvent?.Invoke(_collision , this);
     }

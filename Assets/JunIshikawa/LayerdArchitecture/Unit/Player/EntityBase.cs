@@ -11,8 +11,6 @@ public class EntityBase : MonoBehaviour
     protected Rigidbody entityRigidbody;
     protected Animator entityAnimator;
 
-    public event Action<EntityBase> onEntityDestroyEvent;
-
     public virtual void EntityHpSetUp(int _enemyMaxHp)
     {
         entityMaxHp = _enemyMaxHp;
@@ -26,16 +24,6 @@ public class EntityBase : MonoBehaviour
         entityAnimator = GetComponentInChildren<Animator>();
     }
 
-    //public virtual void EntityHeal(int _healPoint)
-    //{
-    //    entityCurrentHp += _healPoint;
-
-    //    if(entityCurrentHp > entityMaxHp)
-    //    {
-    //        entityCurrentHp = entityMaxHp;
-    //    }
-    //}
-
     public int GetEntityHp
     {
         get
@@ -47,10 +35,5 @@ public class EntityBase : MonoBehaviour
     public virtual void EntityGetDamage(int _damagePoint)
     {
         entityCurrentHp -= _damagePoint;
-    }
-
-    public virtual void EntityDestroy()
-    {
-        Destroy(this.gameObject);
     }
 }

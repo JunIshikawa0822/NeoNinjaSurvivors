@@ -11,7 +11,7 @@ public class Player : EntityBase
 
     public void OnUpdate()
     {
-
+        
     }
 
     //ワープ

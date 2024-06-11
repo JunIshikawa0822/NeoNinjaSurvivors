@@ -12,9 +12,7 @@ public class EnemySystem : SystemBase, IOnUpdate
             {
                 if (!gameStat.isLevelUp)
                 {
-                    //gameStat.enemyList[i].OnUpdate();
-
-                    //gameStat.enemyList[i].EnemyMove();
+                    gameStat.enemyList[i].OnUpdate();
 
                     //動かす
                     gameStat.enemyList[i].NavMeshAgentIsStopped(true);
@@ -36,9 +34,13 @@ public class EnemySystem : SystemBase, IOnUpdate
         enemy.EntityComponentSetUp();
         enemy.EntityHpSetUp(_data.enemyMaxHp);
 
-        enemy.EnemyInit(_data.enemyAttackPoint);
+        enemy.EnemyInit(_data.enemyAttackPoint, _data.enemyExp);
 
         enemy.onCollideEvent += EnemyCollide;
+
+        enemy.onDestroyEnemyEvent += GetEnemyExp;
+        enemy.onDestroyEnemyEvent += EnemyRemove;
+        enemy.onDestroyEnemyEvent += EnemyDestroy;
 
         _enemyList.Add(enemy);
     }
@@ -52,10 +54,14 @@ public class EnemySystem : SystemBase, IOnUpdate
         enemy.EntityComponentSetUp();
         enemy.EntityHpSetUp(_data.enemyMaxHp);
 
-        enemy.EnemyInit(_data.enemyAttackPoint);
+        enemy.EnemyInit(_data.enemyAttackPoint, _data.enemyExp);
 
         enemy.onCollideEvent += EnemyCollide;
-        
+
+        enemy.onDestroyEnemyEvent += GetEnemyExp;
+        enemy.onDestroyEnemyEvent += EnemyRemove;
+        enemy.onDestroyEnemyEvent += EnemyDestroy;
+
         _enemyList.Add(enemy);
     }
 
@@ -71,5 +77,21 @@ public class EnemySystem : SystemBase, IOnUpdate
         player.EntityGetDamage(_enemy.GetEnemyAttack);
 
         if (_enemy.GetEntityHp > 0) return;
+    }
+
+    private void EnemyRemove(EnemyBase _enemy)
+    {
+        //弾丸にアタッチされた自爆処理
+        gameStat.enemyList.Remove(_enemy);
+    }
+
+    private void GetEnemyExp(EnemyBase _enemy)
+    {
+        gameStat.playerTotalExp += _enemy.GetEnemyExp;
+    }
+
+    private void EnemyDestroy(EnemyBase _enemy)
+    {
+        _enemy.EnemyObjectDestroy();
     }
 }
