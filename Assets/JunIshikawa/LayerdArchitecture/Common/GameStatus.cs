@@ -56,7 +56,6 @@ public class GameStatus
     public float lineMaxDistance = 5f;
 
     [Header("Input")]
-
     [SerializeField]
     public bool isMoveInput = false;
 
@@ -124,11 +123,19 @@ public class GameStatus
     [System.NonSerialized]
     public bool isLevelUp = false;
 
+    [Header("UI")]
     [SerializeField]
     public TextMeshProUGUI playerLevelText;
 
     [SerializeField]
     public Slider playerExpSlider;
+
+    [SerializeField]
+    public Slider playerHpSlider;
+
+    [Header("Data")]
+    public List<EnemyData> enemyDataList;
+    public List<PlayerData> playerDataList;
 
     public enum InputName
     {

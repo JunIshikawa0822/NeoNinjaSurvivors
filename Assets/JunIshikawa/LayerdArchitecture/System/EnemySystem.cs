@@ -28,7 +28,7 @@ public class EnemySystem : SystemBase, IOnUpdate
         }
     }
 
-    private void EyeballEnemyInstantiate(EyeballEnemy _eyeballEnemy, EyeBallEnemyData _data, List<EnemyBase> _enemyList)
+    private void EyeballEnemyInstantiate(EyeballEnemy _eyeballEnemy, EnemyData _data, List<EnemyBase> _enemyList)
     {
         EnemyBase enemy = GameObject.Instantiate<EyeballEnemy>(_eyeballEnemy, _data.instantiatePos, Quaternion.identity);
         if (enemy == null) return;
@@ -43,7 +43,7 @@ public class EnemySystem : SystemBase, IOnUpdate
         _enemyList.Add(enemy);
     }
 
-    private void GreenEnemyInstantiate(GreenEnemy _greenEnemy, GreenEnemyData _data, List<EnemyBase> _enemyList)
+    private void GreenEnemyInstantiate(GreenEnemy _greenEnemy, EnemyData _data, List<EnemyBase> _enemyList)
     {
         EnemyBase enemy = GameObject.Instantiate<GreenEnemy>(_greenEnemy, _data.instantiatePos, Quaternion.identity);
 

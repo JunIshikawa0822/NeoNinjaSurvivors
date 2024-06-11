@@ -9,7 +9,7 @@ public class PlayerSystem : SystemBase, IOnUpdate
         base.SetUp();
 
         gameStat.player.EntityComponentSetUp();
-        //gameStat.player.EntityHpSetUp();
+        gameStat.player.EntityHpSetUp(gameStat.playerDataList[0].playerMaxHp);
         gameStat.player.Init(false);
     }
 
@@ -47,6 +47,6 @@ public class PlayerSystem : SystemBase, IOnUpdate
     private void PlayerAnimation(Player _player, bool _moveWaitAnimParam, bool _attackAnimParam)
     {
         Debug.Log("aaa");
-        _player.ParameterSet(_moveWaitAnimParam, _attackAnimParam);
+        _player.ParameterSet(_attackAnimParam);
     }
 }

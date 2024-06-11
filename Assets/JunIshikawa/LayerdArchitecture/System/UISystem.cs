@@ -9,13 +9,16 @@ public class UISystem : SystemBase, IOnLateUpdate
     public override void SetUp()
     {
         SliderMaxValueSet(gameStat.playerExpSlider, gameStat.playerPrimeDemandExp);
-        //Debug.Log("ha");
+        SliderMaxValueSet(gameStat.playerHpSlider, gameStat.playerDataList[0].playerMaxHp);
     }
 
     public void OnLateUpdate()
     {
         SliderMaxValueSet(gameStat.playerExpSlider, gameStat.playerExpSliderMaxValue);
         SliderValueSet(gameStat.playerExpSlider, gameStat.playerExpSliderProgressValue);
+
+        Debug.Log(gameStat.player.GetEntityHp);
+        SliderValueSet(gameStat.playerHpSlider, gameStat.player.GetEntityHp);
         TextSet(gameStat.playerLevelText, gameStat.playerLevel.ToString());
     }
 
@@ -28,10 +31,10 @@ public class UISystem : SystemBase, IOnLateUpdate
     {
         _slider.value = _value;
 
-        if(_slider.value >= _slider.maxValue)
-        {
-            _slider.value = 0;
-        }
+        //if(_slider.value >= _slider.maxValue)
+        //{
+        //    _slider.value = 0;
+        //}
     }
 
     private void TextSet(TextMeshProUGUI _TMPText, string _text)
