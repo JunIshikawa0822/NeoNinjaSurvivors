@@ -16,20 +16,24 @@ public class PlayerSystem : SystemBase, IOnUpdate
     {
         if (gameStat.isMoveInputUp)
         {
+            //ワープ
             PlayerMoveWait(gameStat.player, false);
             PlayerWarp(gameStat.player);
             PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
         }
         if (gameStat.isMoveInput)
         {
+            //ワープ待機
             PlayerMoveWait(gameStat.player, true);
         }
         if(gameStat.isAttackInput)
         {
+            //攻撃状態
             PlayerAttack(gameStat.player, true);
         }
         else
         {
+            //攻撃状態解除
             PlayerAttack(gameStat.player, false);
         }
 
