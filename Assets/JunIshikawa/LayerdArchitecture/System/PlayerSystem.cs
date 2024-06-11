@@ -19,7 +19,7 @@ public class PlayerSystem : SystemBase, IOnUpdate
             //ワープ
             PlayerMoveWait(gameStat.player, false);
             PlayerWarp(gameStat.player);
-            PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
+            //PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
         }
         if (gameStat.isMoveInput)
         {
@@ -40,7 +40,7 @@ public class PlayerSystem : SystemBase, IOnUpdate
         //PlayerAnimation(gameStat.player);
     }
 
-    private void PlayerMove(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
+    public void PlayerMove(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
     {
         //Debug.DrawRay(originPos, directionVec, Color.red, 3);
         if (!Physics.Raycast(_player.transform.position, _mouseVec, out RaycastHit _hitInfo, _maxRayDistance, _rayHitLayerMask))
