@@ -4,22 +4,9 @@ using UnityEngine;
 
 public class Player : EntityBase
 {
-    //animation用ステータス
-    //private bool normalWaitAnimParam;
-    //ワープ
-    private bool warpAnimParam;
-    //攻撃
-    private bool attackAnimParam;
-    //ワープ待機
-    private bool moveWaitAnimParam;
-    //攻撃時のダメージ
-    private bool damageAnimParam;
-    //ワープ待機中のダメージ
-    private bool warpDamageAnimParam;
-
-    public void Init(bool _attackAnimParam)
+    public void Init()
     {
-        ParameterSet(_attackAnimParam);
+
     }
 
     public void OnUpdate()
@@ -27,7 +14,6 @@ public class Player : EntityBase
 
     }
 
-    
     //ワープ
     public void warpSetTrigger()
     {
@@ -47,10 +33,5 @@ public class Player : EntityBase
     private void damageSetTrigger()
     {
         entityAnimator.SetTrigger("isDamage");
-    }
-
-    public void ParameterSet(bool _attackAnimParam)
-    {
-        attackAnimParam = _attackAnimParam;
     }
 }
