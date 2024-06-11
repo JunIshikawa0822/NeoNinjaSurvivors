@@ -9,15 +9,32 @@ public class PlayerSystem : SystemBase, IOnUpdate
         base.SetUp();
 
         gameStat.player.EntityComponentSetUp();
-        gameStat.player.EntityHpSetUp(gameStat.playerDataList[0].playerMaxHp);
         gameStat.player.Init(false);
     }
 
     public void OnUpdate()
     {
+        if (gameStat.isMoveInputUp)
+        {
+            //ワープ
+            PlayerMoveWait(gameStat.player, false);
+            PlayerWarp(gameStat.player);
+            PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
+        }
         if (gameStat.isMoveInput)
         {
-            PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
+            //ワープ待機
+            PlayerMoveWait(gameStat.player, true);
+        }
+        if(gameStat.isAttackInput)
+        {
+            //攻撃状態
+            PlayerAttack(gameStat.player, true);
+        }
+        else
+        {
+            //攻撃状態解除
+            PlayerAttack(gameStat.player, false);
         }
 
         //PlayerAnimation(gameStat.player);
@@ -44,9 +61,18 @@ public class PlayerSystem : SystemBase, IOnUpdate
         }
     }
 
-    private void PlayerAnimation(Player _player, bool _moveWaitAnimParam, bool _attackAnimParam)
+    private void PlayerAttack(Player _player, bool _attackBool)
     {
-        Debug.Log("aaa");
-        _player.ParameterSet(_attackAnimParam);
+        _player.attackSetBool(_attackBool);
+    }
+
+    private void PlayerMoveWait(Player _player, bool _moveWaitBool)
+    {
+        _player.moveWaitSetBool(_moveWaitBool);
+    }
+
+    private void PlayerWarp(Player _player)
+    {
+        _player.warpSetTrigger();
     }
 }
