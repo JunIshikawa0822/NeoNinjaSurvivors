@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_3_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6151805961244624285, guid: 23688382a3528bf40bedd4ef07075017, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7095188652075565084, guid: 23688382a3528bf40bedd4ef07075017, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.68
@@ -418,6 +422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_4_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6159530994233024136, guid: 2cc042b40d8a56f449b922bb1cdf8ddd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -643,33 +651,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3146147301268814920, guid: 64e474e3164921a4eb12071d3f0a74b3, type: 3}
   m_PrefabInstance: {fileID: 980024940}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &177209961
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177209956}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &177209962
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -693,6 +674,33 @@ CapsuleCollider:
   m_Height: 1.5568306
   m_Direction: 1
   m_Center: {x: -0.15258372, y: 0.023541536, z: -8.302479e-17}
+--- !u!54 &177209963
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177209956}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &330744020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -744,6 +752,10 @@ PrefabInstance:
     - target: {fileID: 5208714430040029472, guid: 88ed8c1893c3b334eb15f07efcf57195, type: 3}
       propertyPath: m_Name
       value: Enemy_5_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208714430040029472, guid: 88ed8c1893c3b334eb15f07efcf57195, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1110,7 +1122,7 @@ Transform:
   m_GameObject: {fileID: 407782084}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.1}
+  m_LocalPosition: {x: 4.23, y: 0, z: -5.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1388,6 +1400,10 @@ PrefabInstance:
     - target: {fileID: 273074592582262420, guid: 3bbfce247cdf6004cbbfb496294d690d, type: 3}
       propertyPath: m_Name
       value: Enemy_1_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 273074592582262420, guid: 3bbfce247cdf6004cbbfb496294d690d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 614582161798604661, guid: 3bbfce247cdf6004cbbfb496294d690d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1851,6 +1867,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_2_1
       objectReference: {fileID: 0}
+    - target: {fileID: 3146147301268814920, guid: 64e474e3164921a4eb12071d3f0a74b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146147301268814920, guid: 64e474e3164921a4eb12071d3f0a74b3, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6913636757056988877, guid: 64e474e3164921a4eb12071d3f0a74b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.32
@@ -1897,10 +1921,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3146147301268814920, guid: 64e474e3164921a4eb12071d3f0a74b3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 177209961}
+      addedObject: {fileID: 177209962}
     - targetCorrespondingSourceObject: {fileID: 3146147301268814920, guid: 64e474e3164921a4eb12071d3f0a74b3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 177209962}
+      addedObject: {fileID: 177209963}
   m_SourcePrefab: {fileID: 100100000, guid: 64e474e3164921a4eb12071d3f0a74b3, type: 3}
 --- !u!1 &1221776327
 GameObject:
@@ -3382,7 +3406,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

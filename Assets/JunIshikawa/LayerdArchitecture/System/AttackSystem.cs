@@ -89,6 +89,7 @@ public class AttackSystem : SystemBase, IOnUpdate
         }
         else if(_collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("敵だよ");
             EnemyBase enemy = _collision.gameObject.GetComponent<EnemyBase>();
             if(enemy == null) return;
 
