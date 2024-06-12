@@ -15,19 +15,22 @@ public class AttackSystem : SystemBase, IOnUpdate
             }
         }
 
-        if(gameStat.isAttackInput == true)
+        if(gameStat.isLevelUp == false)
         {
-            SimulBulletInstantiate(
-                gameStat.bullet,
-                gameStat.player.transform.position,
-                gameStat.playerMouseVector, 
-                gameStat.bulletSpeed, 
-                gameStat.maxDistance, 
-                gameStat.bulletDamage, 
-                gameStat.penetrateCount,
-                gameStat.bulletList,
-                gameStat.simulNumLevel,
-                gameStat.bulletAngleLevelArray[gameStat.angleLevel]);
+            if (gameStat.isAttackInput == true)
+            {
+                SimulBulletInstantiate(
+                    gameStat.bullet,
+                    gameStat.player.transform.position,
+                    gameStat.playerMouseVector,
+                    gameStat.bulletSpeed,
+                    gameStat.maxDistance,
+                    gameStat.bulletDamage,
+                    gameStat.penetrateCount,
+                    gameStat.bulletList,
+                    gameStat.simulNumLevel,
+                    gameStat.bulletAngleLevelArray[gameStat.angleLevel]);
+            }
         }
     }
 

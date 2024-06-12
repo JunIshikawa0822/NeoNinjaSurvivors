@@ -9,7 +9,7 @@ public class DrawSystem : SystemBase, IOnUpdate
         if(gameStat.isMoveInput)
         {
             LineDraw(
-                gameStat.player.transform.position,
+                gameStat.player.transform.position + gameStat.playerMouseVector * gameStat.lineStartDistance,
                 EndPos(
                     gameStat.player.transform.position,
                     gameStat.playerMouseVector,
@@ -22,7 +22,7 @@ public class DrawSystem : SystemBase, IOnUpdate
         else
         {
             LineDraw(
-                gameStat.player.transform.position,
+                gameStat.player.transform.position + gameStat.playerMouseVector * gameStat.lineStartDistance,
                 gameStat.player.transform.position + gameStat.playerMouseVector * gameStat.lineMaxDistance,
                 gameStat.playerLineRenderer
             );

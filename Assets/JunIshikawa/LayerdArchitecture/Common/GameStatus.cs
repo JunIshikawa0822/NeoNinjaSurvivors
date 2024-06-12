@@ -67,6 +67,9 @@ public class GameStatus
     [SerializeField]
     public LineRenderer playerLineRenderer;
 
+    [Range(1, 5)]
+    public float lineStartDistance = 1f;
+
     [Range(2, 15)]
     public float lineMaxDistance = 5f;
 
@@ -147,6 +150,13 @@ public class GameStatus
 
     [SerializeField]
     public Slider playerHpSlider;
+
+    [Header("LevelUpPanel")]
+    [SerializeField]
+    public GameObject levelUpEnterButton;
+
+    [SerializeField]
+    public List<GameObject> selectPanelsList;
 
     [Header("Data")]
     public List<EnemyData> enemyDataList;

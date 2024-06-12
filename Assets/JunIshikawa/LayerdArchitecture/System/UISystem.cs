@@ -10,6 +10,8 @@ public class UISystem : SystemBase, IOnLateUpdate
     {
         SliderMaxValueSet(gameStat.playerExpSlider, gameStat.playerPrimeDemandExp);
         SliderMaxValueSet(gameStat.playerHpSlider, gameStat.playerDataList[0].playerMaxHp);
+
+        ButtonInit(gameStat.levelUpEnterButton);
     }
 
     public void OnLateUpdate()
@@ -39,5 +41,17 @@ public class UISystem : SystemBase, IOnLateUpdate
     private void TextSet(TextMeshProUGUI _TMPText, string _text)
     {
         _TMPText.text = _text;
+    }
+
+    private void ButtonInit(GameObject _button)
+    {
+        ButtonBase button = _button.GetComponent<ButtonBase>();
+        if (button == null) return;
+
+        button.ButtonInit();
+
+        button.pointerDownEvent += () => gameStat.playerLevel ++;
+        button.pointerOverEvent += () => button.buttonImage.color = Color.red;
+        button.pointerExitEvent += () => button.buttonImage.color = Color.white;
     }
 }
