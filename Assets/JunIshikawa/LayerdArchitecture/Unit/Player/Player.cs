@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class Player : EntityBase
     private bool damageAnimParam;
     //ワープ待機中のダメージ
     private bool warpDamageAnimParam;
+
+    private bool isOnWarp = false;
 
     public void Init(bool _attackAnimParam)
     {
@@ -52,5 +55,48 @@ public class Player : EntityBase
     public void ParameterSet(bool _attackAnimParam)
     {
         attackAnimParam = _attackAnimParam;
+    }
+
+    public bool IsOnWarpEnable()
+    {
+        return isOnWarp;
+    }
+
+    public void IsOnWarpControl()
+    {
+        isOnWarp = !isOnWarp;
+    }
+
+    public void PlayerWarpRag(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
+    {
+        StartCoroutine(WarpCoroutine(_player, _mouseVec, _maxRayDistance,_rayHitLayerMask));
+        //Invoke(PlayerMove(_player, _mouseVec, _maxRayDistance, _rayHitLayerMask),0.4f);
+    }
+
+    IEnumerator WarpCoroutine(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
+    {
+        yield return new WaitForSeconds(0.4f);//ちゅ！！マジックナンバーでごめん♡
+        PlayerMove(_player, _mouseVec, _maxRayDistance,_rayHitLayerMask);
+    }
+
+    private void PlayerMove(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
+    {
+        //Debug.DrawRay(originPos, directionVec, Color.red, 3);
+        if (!Physics.Raycast(_player.transform.position, _mouseVec, out RaycastHit _hitInfo, _maxRayDistance, _rayHitLayerMask))
+        {
+            //できない
+            return;
+        }
+        else
+        {
+            //できる
+            MoveAndRot(_player, _hitInfo);
+        }
+
+        void MoveAndRot(Player _player, RaycastHit hitInfo)
+        {
+            _player.transform.position = hitInfo.point + hitInfo.normal;
+            _player.transform.rotation = Quaternion.LookRotation(-Vector3.up, hitInfo.normal);
+        }
     }
 }

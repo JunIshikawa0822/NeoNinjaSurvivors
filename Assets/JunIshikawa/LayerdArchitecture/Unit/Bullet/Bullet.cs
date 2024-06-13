@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet: MonoBehaviour
 {
     private Vector3 moveDir;
     private float moveDistance = 0;

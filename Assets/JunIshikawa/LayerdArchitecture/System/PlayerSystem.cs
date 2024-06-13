@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerSystem : SystemBase, IOnUpdate
@@ -14,11 +15,19 @@ public class PlayerSystem : SystemBase, IOnUpdate
 
     public void OnUpdate()
     {
+        // if(gameStat.player.IsOnWarpEnable())
+        // {
+        //     gameStat.player.PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
+        //     gameStat.player.IsOnWarpControl();
+        // }
         if (gameStat.isMoveInputUp)
         {
             //ワープ
-            PlayerMoveWait(gameStat.player, false);
+            
             PlayerWarp(gameStat.player);
+            gameStat.player.PlayerWarpRag(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
+            PlayerMoveWait(gameStat.player, false);
+            //gameStat.player.PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
             //PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
         }
         if (gameStat.isMoveInput)
@@ -40,26 +49,7 @@ public class PlayerSystem : SystemBase, IOnUpdate
         //PlayerAnimation(gameStat.player);
     }
 
-    public void PlayerMove(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
-    {
-        //Debug.DrawRay(originPos, directionVec, Color.red, 3);
-        if (!Physics.Raycast(_player.transform.position, _mouseVec, out RaycastHit _hitInfo, _maxRayDistance, _rayHitLayerMask))
-        {
-            //できない
-            return;
-        }
-        else
-        {
-            //できる
-            MoveAndRot(_player, _hitInfo);
-        }
-
-        void MoveAndRot(Player _player, RaycastHit hitInfo)
-        {
-            _player.transform.position = hitInfo.point + hitInfo.normal;
-            _player.transform.rotation = Quaternion.LookRotation(-Vector3.up, hitInfo.normal);
-        }
-    }
+    
 
     private void PlayerAttack(Player _player, bool _attackBool)
     {
