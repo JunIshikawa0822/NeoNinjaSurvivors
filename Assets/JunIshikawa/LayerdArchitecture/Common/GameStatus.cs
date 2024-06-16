@@ -138,7 +138,7 @@ public class GameStatus
     [System.NonSerialized]
     public int playerPreLevel = 0;
 
-    [System.NonSerialized]
+    [SerializeField]
     public bool isLevelUp = false;
 
     [Header("UI")]
@@ -157,6 +157,9 @@ public class GameStatus
 
     [SerializeField]
     public List<GameObject> selectPanelsList;
+
+    [System.NonSerialized]
+    public int selectedPanelNumber = 0;
 
     [Header("Data")]
     public List<EnemyData> enemyDataList;

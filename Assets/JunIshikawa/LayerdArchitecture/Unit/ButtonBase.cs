@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.EventSystems;
 
 public class ButtonBase : MonoBehaviour
 {
@@ -11,12 +13,22 @@ public class ButtonBase : MonoBehaviour
     public event Action pointerOverEvent;
     public event Action pointerExitEvent;
 
+    public event Action buttonSelectEvent;
+    public event Action buttonDeselectEvent;
+
     [System.NonSerialized]
     public Image buttonImage;
+
+    [System.NonSerialized]
+    public EventTrigger buttonEventTrigger;
+
+    [System.NonSerialized]
+    public Outline buttonOutline;
 
     public void ButtonInit()
     {
         buttonImage = GetComponent<Image>();
+        buttonEventTrigger = GetComponent<EventTrigger>();
     }
 
     public void PointerDownEvent()
@@ -41,5 +53,17 @@ public class ButtonBase : MonoBehaviour
     {
         if (pointerExitEvent == null) return;
         pointerExitEvent?.Invoke();
+    }
+
+    public void PanelSelectEvent()
+    {
+        if (buttonSelectEvent == null) return;
+        buttonSelectEvent?.Invoke();
+    }
+
+    public void PanelDeselectEvent()
+    {
+        if (buttonDeselectEvent == null) return;
+        buttonDeselectEvent?.Invoke();
     }
 }

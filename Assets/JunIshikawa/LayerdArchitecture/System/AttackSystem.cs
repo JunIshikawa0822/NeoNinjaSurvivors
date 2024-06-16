@@ -7,16 +7,15 @@ public class AttackSystem : SystemBase, IOnUpdate
     
     public void OnUpdate()
     {
-        if(gameStat.bulletList.Count > 0)
+        if (gameStat.isLevelUp == false)
         {
-            for(int i = gameStat.bulletList.Count - 1; i >= 0; i--)
+            if (gameStat.bulletList.Count > 0)
             {
-                gameStat.bulletList[i].OnUpdate();
+                for (int i = gameStat.bulletList.Count - 1; i >= 0; i--)
+                {
+                    gameStat.bulletList[i].OnUpdate();
+                }
             }
-        }
-
-        if(gameStat.isLevelUp == false)
-        {
             if (gameStat.isAttackInput == true)
             {
                 SimulBulletInstantiate(
