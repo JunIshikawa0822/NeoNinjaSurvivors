@@ -29,6 +29,7 @@ public class AttackSystem : SystemBase, IOnUpdate
 
     public void OnUpdate()
     {
+        if (gameStat.isLevelUp) return;
         foreach (IOnUpdate attackOption in allUpdateAttackOptionsList) attackOption.OnUpdate();
     }
 }

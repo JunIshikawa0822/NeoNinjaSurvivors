@@ -17,11 +17,11 @@ public class LevelSystem : SystemBase, IOnLateUpdate
         gameStat.playerExpSliderProgressValue = PlayerExpProgress(gameStat.playerTotalExp, gameStat.accumeExpUntilNowLevel);
 
         //レベルアップしているか確認
-        LevelUpCheck(gameStat.playerExpSliderProgressValue, gameStat.playerExpSliderMaxValue, gameStat.isLevelUp);
+        LevelUpCheck(gameStat.playerExpSliderProgressValue, gameStat.playerExpSliderMaxValue);
 
-        //レベルアップした時の処理
-        if (!gameStat.isLevelUp) return;
-        gameStat.playerLevel++;
+        ////レベルアップした時の処理
+        //if (!gameStat.isLevelUp) return;
+        //gameStat.playerLevel++;
     }
 
     //経験値からレベルを計算
@@ -66,11 +66,12 @@ public class LevelSystem : SystemBase, IOnLateUpdate
         return expToNextLevel;
     }
 
-    private void LevelUpCheck(int _sliderProgressValue, int _sliderMaxValue, bool _isLevelUp)
+    private void LevelUpCheck(int _sliderProgressValue, int _sliderMaxValue)
     {
         if(_sliderMaxValue <= _sliderProgressValue)
         {
-            _isLevelUp = true;
+            gameStat.playerLevel++;
+            gameStat.isLevelUp = true;
         }
     }
 }

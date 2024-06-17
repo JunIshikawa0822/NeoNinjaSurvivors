@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEditor.Experimental.GraphView;
 using static UnityEngine.EventSystems.EventTrigger;
+using static UnityEngine.Rendering.DebugUI;
 
 public class UISystem : SystemBase, IOnLateUpdate 
 {
@@ -15,6 +16,7 @@ public class UISystem : SystemBase, IOnLateUpdate
         SliderMaxValueSet(gameStat.playerHpSlider, gameStat.playerDataList[0].playerMaxHp);
 
         EnterButtonInit(gameStat.levelUpEnterButton);
+        DebugButtonInit(gameStat.DebugButton);
 
         for(int panelNum = 0; panelNum < gameStat.selectPanelsList.Count; panelNum++)
         {
@@ -30,14 +32,7 @@ public class UISystem : SystemBase, IOnLateUpdate
         SliderValueSet(gameStat.playerHpSlider, gameStat.player.GetEntityHp);
         TextSet(gameStat.playerLevelText, gameStat.playerLevel.ToString());
 
-        if (!gameStat.isLevelUp)
-        {
-             gameStat.levelUpPanel.SetActive(false);
-        }
-        else
-        {
-            gameStat.levelUpPanel.SetActive(true);
-        } 
+        UIDisplay(gameStat.levelUpPanel, gameStat.isLevelUp);
     }
 
     private void SliderMaxValueSet(Slider _slider, int _value)
@@ -48,11 +43,18 @@ public class UISystem : SystemBase, IOnLateUpdate
     private void SliderValueSet(Slider _slider, int _value)
     {
         _slider.value = _value;
+    }
 
-        //if(_slider.value >= _slider.maxValue)
-        //{
-        //    _slider.value = 0;
-        //}
+    private void UIDisplay(GameObject _UI, bool _UIDisplayTrigger)
+    {
+        if (_UIDisplayTrigger)
+        {
+            _UI.SetActive(true);
+        }
+        else
+        {
+            _UI.SetActive(false);
+        }
     }
 
     private void TextSet(TextMeshProUGUI _TMPText, string _text)
@@ -83,23 +85,34 @@ public class UISystem : SystemBase, IOnLateUpdate
         panel.ButtonInit();
         //panel.buttonOutline = _panel.GetComponent<Outline>();
 
-        TriggerInsert(EventTriggerType.PointerEnter).callback.AddListener((eventDate) => { panel.PointerOverEvent(); });
-        TriggerInsert(EventTriggerType.PointerExit).callback.AddListener((eventDate) => { panel.PointerExitEvent(); });
-        TriggerInsert(EventTriggerType.PointerDown).callback.AddListener((eventDate) => { panel.PointerDownEvent(); });
+        TriggerInsert(panel, EventTriggerType.PointerEnter).callback.AddListener((eventDate) => { panel.PointerOverEvent(); });
+        TriggerInsert(panel, EventTriggerType.PointerExit).callback.AddListener((eventDate) => { panel.PointerExitEvent(); });
+        TriggerInsert(panel, EventTriggerType.PointerDown).callback.AddListener((eventDate) => { panel.PointerDownEvent(); });
 
         panel.pointerOverEvent += () => panel.buttonImage.color = Color.black;
         panel.pointerExitEvent += () => panel.buttonImage.color = Color.white;
 
         panel.pointerDownEvent += () => gameStat.selectedPanelNumber = _panelNum;
+    }
 
-        Entry TriggerInsert(EventTriggerType _eventTriggerType)
-        {
-            Entry entryTrigger = new Entry();
-            entryTrigger.eventID = _eventTriggerType;
+    private void DebugButtonInit(GameObject _debugButton)
+    {
+        ButtonBase button = _debugButton.GetComponent<ButtonBase>();
+        if (button == null) return;
+        button.ButtonInit();
 
-            panel.buttonEventTrigger.triggers.Add(entryTrigger);
+        TriggerInsert(button, EventTriggerType.PointerDown).callback.AddListener((eventDate) => { button.PointerDownEvent(); });
 
-            return entryTrigger;
-        }
+        button.pointerDownEvent += () => gameStat.playerTotalExp++;
+    }
+
+    Entry TriggerInsert(ButtonBase button, EventTriggerType _eventTriggerType)
+    {
+        Entry entryTrigger = new Entry();
+        entryTrigger.eventID = _eventTriggerType;
+
+        button.buttonEventTrigger.triggers.Add(entryTrigger);
+
+        return entryTrigger;
     }
 }

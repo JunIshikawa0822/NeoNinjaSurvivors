@@ -150,6 +150,9 @@ public class GameStatus
     [SerializeField]
     public Slider playerHpSlider;
 
+    [SerializeField]
+    public GameObject DebugButton;
+
     [Header("LevelUpPanel")]
     [SerializeField]
     public GameObject levelUpPanel;

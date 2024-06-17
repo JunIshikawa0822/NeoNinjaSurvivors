@@ -6,30 +6,30 @@ public class BulletSystem : AttackSystemBase, IOnUpdate
 {
     public void OnUpdate()
     {
-        if (gameStat.isLevelUp == false)
+        
+        if (gameStat.bulletList.Count > 0)
         {
-            if (gameStat.bulletList.Count > 0)
+            for (int i = gameStat.bulletList.Count - 1; i >= 0; i--)
             {
-                for (int i = gameStat.bulletList.Count - 1; i >= 0; i--)
-                {
-                    gameStat.bulletList[i].OnUpdate();
-                }
-            }
-            if (gameStat.isAttackInput == true)
-            {
-                SimulBulletInstantiate(
-                    gameStat.bullet,
-                    gameStat.player.transform.position,
-                    gameStat.playerMouseVector,
-                    gameStat.bulletSpeed,
-                    gameStat.maxDistance,
-                    gameStat.bulletDamage,
-                    gameStat.penetrateCount,
-                    gameStat.bulletList,
-                    gameStat.simulNumLevel,
-                    gameStat.bulletAngleLevelArray[gameStat.angleLevel]);
+                gameStat.bulletList[i].OnUpdate();
             }
         }
+
+        if (gameStat.isAttackInput == true)
+        {
+            SimulBulletInstantiate(
+                gameStat.bullet,
+                gameStat.player.transform.position,
+                gameStat.playerMouseVector,
+                gameStat.bulletSpeed,
+                gameStat.maxDistance,
+                gameStat.bulletDamage,
+                gameStat.penetrateCount,
+                gameStat.bulletList,
+                gameStat.simulNumLevel,
+                gameStat.bulletAngleLevelArray[gameStat.angleLevel]);
+        }
+        
     }
 
     //弾丸同時生成
