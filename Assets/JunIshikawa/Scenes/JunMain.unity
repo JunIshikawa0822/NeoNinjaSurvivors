@@ -2801,7 +2801,7 @@ GameObject:
   - component: {fileID: 1564978474}
   - component: {fileID: 1564978473}
   m_Layer: 5
-  m_Name: LevelUppanel
+  m_Name: LevelUpPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
