@@ -172,6 +172,7 @@ public class GameStatus
     [Header("Data")]
     public List<EnemyData> enemyDataList;
     public List<PlayerData> playerDataList;
+    public List<AttackOptionLevelData> attackOptionLevelDataList;
 
     public enum InputNameType
     {

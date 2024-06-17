@@ -25,7 +25,7 @@ public class ButtonBase : MonoBehaviour
     [System.NonSerialized]
     public Outline buttonOutline;
 
-    public void ButtonInit(ButtonBase _buttonBase)
+    public void ButtonInit()
     {
         buttonImage = GetComponent<Image>();
         buttonEventTrigger = GetComponent<EventTrigger>();

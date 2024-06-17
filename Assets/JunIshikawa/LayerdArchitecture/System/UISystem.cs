@@ -9,7 +9,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.Rendering.DebugUI;
 using UnityEngine.UIElements;
 
-public class UISystem : SystemBase, IOnLateUpdate 
+public class UISystem : SystemBase, IOnLateUpdate
 {
     public override void SetUp()
     {
@@ -68,7 +68,7 @@ public class UISystem : SystemBase, IOnLateUpdate
     {
         ButtonBase button = _buttonUI.GetComponent<ButtonBase>();
         if (button == null) return;
-        button.ButtonInit(button);
+        button.ButtonInit();
 
         TriggerInsert(button, EventTriggerType.PointerEnter).callback.AddListener((eventDate) => { button.PointerOverEvent(); });
         TriggerInsert(button, EventTriggerType.PointerExit).callback.AddListener((eventDate) => { button.PointerExitEvent(); });
@@ -89,7 +89,7 @@ public class UISystem : SystemBase, IOnLateUpdate
     {
         ButtonBase button = _buttonUI.GetComponent<ButtonBase>();
         if (button == null) return;
-        button.ButtonInit(button);
+        button.ButtonInit();
 
         TriggerInsert(button, EventTriggerType.PointerEnter).callback.AddListener((eventDate) => { button.PointerOverEvent(); });
         TriggerInsert(button, EventTriggerType.PointerExit).callback.AddListener((eventDate) => { button.PointerExitEvent(); });
@@ -105,7 +105,7 @@ public class UISystem : SystemBase, IOnLateUpdate
     {
         ButtonBase button = _buttonUI.GetComponent<ButtonBase>();
         if (button == null) return;
-        button.ButtonInit(button);
+        button.ButtonInit();
 
         TriggerInsert(button, EventTriggerType.PointerDown).callback.AddListener((eventDate) => { button.PointerDownEvent(); });
 

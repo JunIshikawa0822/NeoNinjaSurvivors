@@ -730,7 +730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c848be40fcde746f1bc8cffd09fbe889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonBase: {fileID: 0}
 --- !u!1 &344063120
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c848be40fcde746f1bc8cffd09fbe889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonBase: {fileID: 0}
 --- !u!114 &344063125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1609,6 +1607,7 @@ MonoBehaviour:
       instantiatePos: {x: 0, y: 0, z: 0}
     playerDataList:
     - playerMaxHp: 10
+    attackOptionLevelDataList: []
 --- !u!4 &610661458
 Transform:
   m_ObjectHideFlags: 0
@@ -1992,7 +1991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c848be40fcde746f1bc8cffd09fbe889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonBase: {fileID: 0}
 --- !u!114 &1026680630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2111,7 +2109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c848be40fcde746f1bc8cffd09fbe889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonBase: {fileID: 0}
 --- !u!114 &1043694550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2383,7 +2380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c848be40fcde746f1bc8cffd09fbe889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonBase: {fileID: 0}
 --- !u!114 &1302339608
 MonoBehaviour:
   m_ObjectHideFlags: 0
