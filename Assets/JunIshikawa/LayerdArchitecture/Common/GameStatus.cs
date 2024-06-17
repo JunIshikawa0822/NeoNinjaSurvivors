@@ -9,7 +9,6 @@ using Cinemachine;
 [System.Serializable]
 public class GameStatus
 {
-
     [Header("player")]
     [SerializeField] public Player player;
 
@@ -138,7 +137,7 @@ public class GameStatus
     [System.NonSerialized]
     public int playerPreLevel = 0;
 
-    [System.NonSerialized]
+    [SerializeField]
     public bool isLevelUp = false;
 
     [Header("UI")]
@@ -151,16 +150,29 @@ public class GameStatus
     [SerializeField]
     public Slider playerHpSlider;
 
+    [SerializeField]
+    public GameObject DebugButton;
+
     [Header("LevelUpPanel")]
+    [SerializeField]
+    public GameObject levelUpPanel;
+
     [SerializeField]
     public GameObject levelUpEnterButton;
 
     [SerializeField]
     public List<GameObject> selectPanelsList;
 
+    [System.NonSerialized]
+    public int selectedPanelNumber = 0;
+
+    [System.NonSerialized]
+    public bool isPanelSelected = false;
+
     [Header("Data")]
     public List<EnemyData> enemyDataList;
     public List<PlayerData> playerDataList;
+    public List<AttackOptionLevelData> attackOptionLevelDataList;
 
     public enum InputNameType
     {
