@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class EntityBase : MonoBehaviour
 {
+    protected void EntityInit()
+    {
+        Debug.Log("Hello World");
+    }
+
     protected int entityCurrentHp;
     protected int entityMaxHp;
 

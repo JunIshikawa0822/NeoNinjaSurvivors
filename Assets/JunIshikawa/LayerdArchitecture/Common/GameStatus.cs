@@ -9,7 +9,6 @@ using Cinemachine;
 [System.Serializable]
 public class GameStatus
 {
-
     [Header("player")]
     [SerializeField] public Player player;
 
@@ -152,6 +151,9 @@ public class GameStatus
     public Slider playerHpSlider;
 
     [Header("LevelUpPanel")]
+    [SerializeField]
+    public GameObject levelUpPanel;
+
     [SerializeField]
     public GameObject levelUpEnterButton;
 

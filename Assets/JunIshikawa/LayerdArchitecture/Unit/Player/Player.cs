@@ -25,11 +25,12 @@ public class Player : EntityBase
         ParameterSet(_attackAnimParam);
     }
 
+    
+
     public void OnUpdate()
     {
-
+        
     }
-
     
     //ワープ
     public void warpSetTrigger()

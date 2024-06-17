@@ -1537,6 +1537,7 @@ MonoBehaviour:
     playerLevelText: {fileID: 176640150}
     playerExpSlider: {fileID: 69447518}
     playerHpSlider: {fileID: 2064097302}
+    levelUpPanel: {fileID: 1564978471}
     levelUpEnterButton: {fileID: 344063120}
     selectPanelsList:
     - {fileID: 1026680624}
@@ -2748,7 +2749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1564978472
 RectTransform:
   m_ObjectHideFlags: 0

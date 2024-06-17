@@ -29,6 +29,15 @@ public class UISystem : SystemBase, IOnLateUpdate
 
         SliderValueSet(gameStat.playerHpSlider, gameStat.player.GetEntityHp);
         TextSet(gameStat.playerLevelText, gameStat.playerLevel.ToString());
+
+        if (!gameStat.isLevelUp)
+        {
+             gameStat.levelUpPanel.SetActive(false);
+        }
+        else
+        {
+            gameStat.levelUpPanel.SetActive(true);
+        } 
     }
 
     private void SliderMaxValueSet(Slider _slider, int _value)
@@ -51,33 +60,37 @@ public class UISystem : SystemBase, IOnLateUpdate
         _TMPText.text = _text;
     }
 
+    //levelUpPanelのEnterButton初期化
     private void EnterButtonInit(GameObject _button)
     {
         ButtonBase button = _button.GetComponent<ButtonBase>();
         if (button == null) return;
-
-        button.buttonOutline = _button.GetComponent<Outline>();
-
         button.ButtonInit();
+        //button.buttonOutline = _button.GetComponent<Outline>();
 
-        button.pointerDownEvent += () => Debug.Log(gameStat.selectedPanelNumber);
+        
         button.pointerOverEvent += () => button.buttonImage.color = Color.red;
         button.pointerExitEvent += () => button.buttonImage.color = Color.white;
+
+        button.pointerDownEvent += () => gameStat.isLevelUp = false;
     }
 
+    //levelUpPanelのPanels初期化
     private void RewardSelectPanelInit(GameObject _panel, int _panelNum)
     {
         ButtonBase panel = _panel.GetComponent<ButtonBase>();
         if (panel == null) return;
         panel.ButtonInit();
-
-        panel.buttonOutline = _panel.GetComponent<Outline>();
+        //panel.buttonOutline = _panel.GetComponent<Outline>();
 
         TriggerInsert(EventTriggerType.PointerEnter).callback.AddListener((eventDate) => { panel.PointerOverEvent(); });
         TriggerInsert(EventTriggerType.PointerExit).callback.AddListener((eventDate) => { panel.PointerExitEvent(); });
+        TriggerInsert(EventTriggerType.PointerDown).callback.AddListener((eventDate) => { panel.PointerDownEvent(); });
 
         panel.pointerOverEvent += () => panel.buttonImage.color = Color.black;
         panel.pointerExitEvent += () => panel.buttonImage.color = Color.white;
+
+        panel.pointerDownEvent += () => gameStat.selectedPanelNumber = _panelNum;
 
         Entry TriggerInsert(EventTriggerType _eventTriggerType)
         {

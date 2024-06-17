@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackSystem : SystemBase, IOnUpdate
+public class BulletSystem : AttackSystemBase, IOnUpdate
 {
-    
     public void OnUpdate()
     {
         if (gameStat.isLevelUp == false)
@@ -34,7 +33,7 @@ public class AttackSystem : SystemBase, IOnUpdate
     }
 
     //弾丸同時生成
-    private void SimulBulletInstantiate(Bullet _bullet , Vector3 _playerPos , Vector3 _attackVector , float _bulletSpeed , float _maxDistance , int _bulletDamage , int _penetrateCount , List<Bullet> _bulletList , int _simulNum , int _angleLevel)
+    private void SimulBulletInstantiate(Bullet _bullet, Vector3 _playerPos, Vector3 _attackVector, float _bulletSpeed, float _maxDistance, int _bulletDamage, int _penetrateCount, List<Bullet> _bulletList, int _simulNum, int _angleLevel)
     {
         //角度計算
         float theta;
@@ -52,18 +51,18 @@ public class AttackSystem : SystemBase, IOnUpdate
                 theta = Mathf.Pow(-1, i) * ((i + 1) / 2) * _angleLevel + _angleLevel / 2;
             }
             Vector3 vec = Quaternion.Euler(0, theta, 0) * _attackVector;
-            BulletInstantiate(_bullet , _playerPos , vec , _bulletSpeed , _maxDistance ,_bulletDamage , _penetrateCount , _bulletList);
+            BulletInstantiate(_bullet, _playerPos, vec, _bulletSpeed, _maxDistance, _bulletDamage, _penetrateCount, _bulletList);
         }
 
     }
 
     //弾丸単体生成
-    private void BulletInstantiate(Bullet _bullet , Vector3 _playerPos , Vector3 _attackVector , float _bulletSpeed , float _maxDistance , int _bulletDamage , int _penetrateCount , List<Bullet> _bulletList)
+    private void BulletInstantiate(Bullet _bullet, Vector3 _playerPos, Vector3 _attackVector, float _bulletSpeed, float _maxDistance, int _bulletDamage, int _penetrateCount, List<Bullet> _bulletList)
     {
         Debug.Log("発射！！！");
         //弾丸を生成
-        Bullet bulletInstance = GameObject.Instantiate(_bullet,_playerPos,Quaternion.identity);
-        bulletInstance.Init(_attackVector, _bulletSpeed, _maxDistance, _bulletDamage , _penetrateCount);
+        Bullet bulletInstance = GameObject.Instantiate(_bullet, _playerPos, Quaternion.identity);
+        bulletInstance.Init(_attackVector, _bulletSpeed, _maxDistance, _bulletDamage, _penetrateCount);
         //Actionに弾丸をListから削除する関数を登録
         bulletInstance.bulletRemoveEvent += BulletRemove;
         //Actionに被弾時に実行する処理を登録
@@ -80,20 +79,20 @@ public class AttackSystem : SystemBase, IOnUpdate
     }
 
     //弾丸が敵に当たった時に実行（エフェクトetc...）
-    private void BulletCollide(Collision _collision , Bullet _bullet)
+    private void BulletCollide(Collision _collision, Bullet _bullet)
     {
-        if(_collision.gameObject.CompareTag("Wall"))
+        if (_collision.gameObject.CompareTag("Wall"))
         {
             //壁にぶつかったときの破壊
 
             _bullet.OnTriggerNextAction();//リストから削除
             _bullet.BulletDestroy();//オブジェクトを破壊
         }
-        else if(_collision.gameObject.CompareTag("Enemy"))
+        else if (_collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("敵だよ");
             EnemyBase enemy = _collision.gameObject.GetComponent<EnemyBase>();
-            if(enemy == null) return;
+            if (enemy == null) return;
 
             Debug.Log("当たった");
             //敵のダメージ関数を起動
@@ -102,10 +101,10 @@ public class AttackSystem : SystemBase, IOnUpdate
             int p = _bullet.PenetrateCount - 1;
             _bullet.PenetrateCount = p;
             //これ以上貫通できる場合ここでreturn
-            if(_bullet.PenetrateCount >= 1) return;
+            if (_bullet.PenetrateCount >= 1) return;
             _bullet.OnTriggerNextAction();//リストから削除
             _bullet.BulletDestroy();//オブジェクトを破壊
         }
-        
+
     }
 }
