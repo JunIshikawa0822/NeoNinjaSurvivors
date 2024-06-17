@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEditor.Experimental.GraphView;
 using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.UIElements;
 
 public class UISystem : SystemBase, IOnLateUpdate 
 {
@@ -35,12 +36,12 @@ public class UISystem : SystemBase, IOnLateUpdate
         UIDisplay(gameStat.levelUpPanel, gameStat.isLevelUp);
     }
 
-    private void SliderMaxValueSet(Slider _slider, int _value)
+    private void SliderMaxValueSet(UnityEngine.UI.Slider _slider, int _value)
     {
         _slider.maxValue = _value;
     }
 
-    private void SliderValueSet(Slider _slider, int _value)
+    private void SliderValueSet(UnityEngine.UI.Slider _slider, int _value)
     {
         _slider.value = _value;
     }
@@ -63,50 +64,55 @@ public class UISystem : SystemBase, IOnLateUpdate
     }
 
     //levelUpPanelのEnterButton初期化
-    private void EnterButtonInit(GameObject _button)
+    private void EnterButtonInit(GameObject _buttonUI)
     {
-        ButtonBase button = _button.GetComponent<ButtonBase>();
+        ButtonBase button = _buttonUI.GetComponent<ButtonBase>();
         if (button == null) return;
-        button.ButtonInit();
-        //button.buttonOutline = _button.GetComponent<Outline>();
+        button.ButtonInit(button);
 
-        
+        TriggerInsert(button, EventTriggerType.PointerEnter).callback.AddListener((eventDate) => { button.PointerOverEvent(); });
+        TriggerInsert(button, EventTriggerType.PointerExit).callback.AddListener((eventDate) => { button.PointerExitEvent(); });
+        TriggerInsert(button, EventTriggerType.PointerDown).callback.AddListener((eventDate) => { button.PointerDownEvent(); });
+
         button.pointerOverEvent += () => button.buttonImage.color = Color.red;
         button.pointerExitEvent += () => button.buttonImage.color = Color.white;
 
-        button.pointerDownEvent += () => gameStat.isLevelUp = false;
+        button.pointerDownEvent += () => {
+            if (gameStat.isPanelSelected == true)
+                gameStat.isLevelUp = false;
+                gameStat.isPanelSelected = false;
+        };
     }
 
     //levelUpPanelのPanels初期化
-    private void RewardSelectPanelInit(GameObject _panel, int _panelNum)
+    private void RewardSelectPanelInit(GameObject _buttonUI, int _panelNum)
     {
-        ButtonBase panel = _panel.GetComponent<ButtonBase>();
-        if (panel == null) return;
-        panel.ButtonInit();
-        //panel.buttonOutline = _panel.GetComponent<Outline>();
+        ButtonBase button = _buttonUI.GetComponent<ButtonBase>();
+        if (button == null) return;
+        button.ButtonInit(button);
 
-        TriggerInsert(panel, EventTriggerType.PointerEnter).callback.AddListener((eventDate) => { panel.PointerOverEvent(); });
-        TriggerInsert(panel, EventTriggerType.PointerExit).callback.AddListener((eventDate) => { panel.PointerExitEvent(); });
-        TriggerInsert(panel, EventTriggerType.PointerDown).callback.AddListener((eventDate) => { panel.PointerDownEvent(); });
+        TriggerInsert(button, EventTriggerType.PointerEnter).callback.AddListener((eventDate) => { button.PointerOverEvent(); });
+        TriggerInsert(button, EventTriggerType.PointerExit).callback.AddListener((eventDate) => { button.PointerExitEvent(); });
+        TriggerInsert(button, EventTriggerType.PointerDown).callback.AddListener((eventDate) => { button.PointerDownEvent(); });
 
-        panel.pointerOverEvent += () => panel.buttonImage.color = Color.black;
-        panel.pointerExitEvent += () => panel.buttonImage.color = Color.white;
-
-        panel.pointerDownEvent += () => gameStat.selectedPanelNumber = _panelNum;
+        button.pointerOverEvent += () => button.buttonImage.color = Color.black;
+        button.pointerExitEvent += () => button.buttonImage.color = Color.white;
+        button.pointerDownEvent += () => gameStat.isPanelSelected = true;
+        button.pointerDownEvent += () => gameStat.selectedPanelNumber = _panelNum;
     }
 
-    private void DebugButtonInit(GameObject _debugButton)
+    private void DebugButtonInit(GameObject _buttonUI)
     {
-        ButtonBase button = _debugButton.GetComponent<ButtonBase>();
+        ButtonBase button = _buttonUI.GetComponent<ButtonBase>();
         if (button == null) return;
-        button.ButtonInit();
+        button.ButtonInit(button);
 
         TriggerInsert(button, EventTriggerType.PointerDown).callback.AddListener((eventDate) => { button.PointerDownEvent(); });
 
         button.pointerDownEvent += () => gameStat.playerTotalExp++;
     }
 
-    Entry TriggerInsert(ButtonBase button, EventTriggerType _eventTriggerType)
+    private Entry TriggerInsert(ButtonBase button, EventTriggerType _eventTriggerType)
     {
         Entry entryTrigger = new Entry();
         entryTrigger.eventID = _eventTriggerType;

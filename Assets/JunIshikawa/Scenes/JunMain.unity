@@ -662,10 +662,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 500988987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 333, y: -158}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0.9250001, y: 0.031113591}
+  m_AnchorMax: {x: 0.9775001, y: 0.12}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &328366233
 MonoBehaviour:
@@ -730,6 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c848be40fcde746f1bc8cffd09fbe889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonBase: {fileID: 0}
 --- !u!1 &344063120
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,6 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c848be40fcde746f1bc8cffd09fbe889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonBase: {fileID: 0}
 --- !u!114 &344063125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,55 +833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 344063124}
-          m_TargetAssemblyTypeName: ButtonBase, Assembly-CSharp
-          m_MethodName: PointerOverEvent
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 344063124}
-          m_TargetAssemblyTypeName: ButtonBase, Assembly-CSharp
-          m_MethodName: PointerExitEvent
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 344063124}
-          m_TargetAssemblyTypeName: ButtonBase, Assembly-CSharp
-          m_MethodName: PointerDownEvent
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  m_Delegates: []
 --- !u!1 &372808355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,6 +1992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c848be40fcde746f1bc8cffd09fbe889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonBase: {fileID: 0}
 --- !u!114 &1026680630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2156,6 +2111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c848be40fcde746f1bc8cffd09fbe889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonBase: {fileID: 0}
 --- !u!114 &1043694550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,6 +2383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c848be40fcde746f1bc8cffd09fbe889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonBase: {fileID: 0}
 --- !u!114 &1302339608
 MonoBehaviour:
   m_ObjectHideFlags: 0

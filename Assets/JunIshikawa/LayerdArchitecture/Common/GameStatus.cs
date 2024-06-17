@@ -166,6 +166,9 @@ public class GameStatus
     [System.NonSerialized]
     public int selectedPanelNumber = 0;
 
+    [System.NonSerialized]
+    public bool isPanelSelected = false;
+
     [Header("Data")]
     public List<EnemyData> enemyDataList;
     public List<PlayerData> playerDataList;
