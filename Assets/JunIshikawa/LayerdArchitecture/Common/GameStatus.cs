@@ -110,6 +110,10 @@ public class GameStatus
     [System.NonSerialized]
     public float playerMoveMaxDistance = 20;
 
+    [SerializeField]
+
+    public float playerMoveCorrection = 1.6f;//プレイヤー位置の補正値
+
     [Header("Level")]
     [Range(3, 10), SerializeField]
     //レベル1から2に必要な経験値（初項）
