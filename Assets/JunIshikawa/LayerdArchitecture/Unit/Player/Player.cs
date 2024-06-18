@@ -77,7 +77,7 @@ public class Player : EntityBase
     IEnumerator WarpCoroutine(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
     {
         yield return new WaitForSeconds(0.4f);//ちゅ！！マジックナンバーでごめん♡
-        PlayerMove(_player, _mouseVec, _maxRayDistance,_rayHitLayerMask);
+        PlayerMove(_player, _mouseVec, _maxRayDistance,_rayHitLayerMask); 
     }
 
     private void PlayerMove(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)

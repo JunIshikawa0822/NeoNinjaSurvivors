@@ -12,6 +12,9 @@ public class GameStatus
     [Header("player")]
     [SerializeField] public Player player;
 
+    [SerializeField]
+    public LayerMask playerLayer;
+
     [Header("Enemy")]
     [SerializeField] public EyeballEnemy eyeballEnemy;
     [SerializeField] public GreenEnemy greenEnemy;
@@ -73,16 +76,20 @@ public class GameStatus
     public float lineMaxDistance = 5f;
 
     [Header("Input")]
-    [SerializeField]
+    [System.NonSerialized]
     public bool isMoveInput = false;
 
-    //[System.NonSerialized]
-    [SerializeField]
+    [System.NonSerialized]
     public bool isAttackInput = false;
 
-    //[System.NonSerialized]
-    [SerializeField]
+    [System.NonSerialized]
     public bool isFootHoldInput = false;
+
+    [System.NonSerialized]
+    public bool isMoveInputUp = false;
+
+    [System.NonSerialized]
+    public bool isFootHoldInputUp = false;
 
     [SerializeField]
     public InputNameType moveInputName;
@@ -99,16 +106,19 @@ public class GameStatus
     [System.NonSerialized]
     public Vector3 playerMouseVector;
 
-    [Header("Animation")]
-    [SerializeField]
-    public bool isMoveInputUp = false;
-
     [Header("PlayerMove")]
     [SerializeField]
     public LayerMask playerMoveRayHitLayer;
 
     [System.NonSerialized]
     public float playerMoveMaxDistance = 20;
+
+    [Header("Foothold")]
+    [SerializeField]
+    public GameObject footholdObject;
+
+    [Range(3, 10), SerializeField]
+    public float footholdSetDistance;
 
     [Header("Level")]
     [Range(3, 10), SerializeField]
