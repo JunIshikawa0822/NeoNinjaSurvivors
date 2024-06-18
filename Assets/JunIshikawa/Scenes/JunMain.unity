@@ -1572,7 +1572,7 @@ MonoBehaviour:
     goldEnemy: {fileID: 0}
     bullet: {fileID: 6146447326056385268, guid: 6d56eee9cf5e69442b22527be001498b, type: 3}
     bulletList: []
-    bulletSpeed: 0.2
+    bulletSpeed: 0.01
     penetrateCount: 1
     simulNumLevel: 1
     angleLevel: 6

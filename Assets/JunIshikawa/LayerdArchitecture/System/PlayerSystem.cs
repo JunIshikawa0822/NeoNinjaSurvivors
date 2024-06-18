@@ -43,8 +43,6 @@ public class PlayerSystem : SystemBase, IOnUpdate
         //PlayerAnimation(gameStat.player);
     }
 
-    
-
     private void PlayerAttack(Player _player, bool _attackBool)
     {
         _player.attackSetBool(_attackBool);

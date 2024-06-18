@@ -17,7 +17,7 @@ public class Bullet: MonoBehaviour
     //
     public event Action<Collision , Bullet> bulletCollideEvent;
 
-    public void Init(Vector3 _moveDir , float _bulletSpeed , float _maxDistance , int _bulletDamage , int _penetrateCount)
+    public void Init(Vector3 _moveDir , float _bulletSpeed , float _maxDistance , int _bulletDamage , int _penetrateCount, float _angle)
     {
         //attackVectorが代入される
         this.moveDir = _moveDir;
@@ -25,6 +25,10 @@ public class Bullet: MonoBehaviour
         this.maxDistance = _maxDistance;
         this.bulletDamage = _bulletDamage;
         this.penetrateCount = _penetrateCount;
+
+        Vector3 angles = transform.localEulerAngles;
+        angles.y = -_angle - 180;
+        transform.localEulerAngles = angles;
     }
 
     public void OnUpdate()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class BulletSystem : AttackSystemBase, IOnUpdate
 {
@@ -62,7 +63,7 @@ public class BulletSystem : AttackSystemBase, IOnUpdate
         Debug.Log("発射！！！");
         //弾丸を生成
         Bullet bulletInstance = GameObject.Instantiate(_bullet, _playerPos, Quaternion.identity);
-        bulletInstance.Init(_attackVector, _bulletSpeed, _maxDistance, _bulletDamage, _penetrateCount);
+        bulletInstance.Init(_attackVector, _bulletSpeed, _maxDistance, _bulletDamage, _penetrateCount, VecToAngle(_attackVector));
         //Actionに弾丸をListから削除する関数を登録
         bulletInstance.bulletRemoveEvent += BulletRemove;
         //Actionに被弾時に実行する処理を登録
@@ -106,5 +107,12 @@ public class BulletSystem : AttackSystemBase, IOnUpdate
             _bullet.BulletDestroy();//オブジェクトを破壊
         }
 
+    }
+
+    private float VecToAngle(Vector3 _directionVec)
+    {
+        float i = Mathf.Atan2(_directionVec.z, _directionVec.x) * Mathf.Rad2Deg;
+        Debug.Log(i);
+        return i;
     }
 }
