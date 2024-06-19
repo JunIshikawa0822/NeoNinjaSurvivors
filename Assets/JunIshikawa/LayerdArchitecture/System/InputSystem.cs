@@ -18,7 +18,7 @@ public class InputSystem : SystemBase, IOnPreUpdate
         //moveボタンが離されたか
         gameStat.isMoveInputUp = InputUp(gameStat.moveInputName);
         gameStat.isFootHoldInputUp = InputUp(gameStat.footHoldInputName);
-        Debug.Log(gameStat.isFootHoldInputUp);
+        //Debug.Log(gameStat.isFootHoldInputUp);
     }
 
     //押下されたらオンにする
