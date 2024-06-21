@@ -26,7 +26,6 @@ public class PlayerSystem : SystemBase, IOnUpdate
             PlayerMoveWait(gameStat.player, false);
             PlayerWarp(gameStat.player);
             //gameStat.player.PlayerWarpRag(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
-            
         }
         if (gameStat.isMoveInput)
         {

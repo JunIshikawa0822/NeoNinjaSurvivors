@@ -33,6 +33,11 @@ public class GameStatus
     [System.NonSerialized]
     public List<EnemyBase> enemyList = new List<EnemyBase>();
 
+    [Header("Enemy生成（難易度調整）")]
+    [SerializeField] public float spawnInterval;
+
+    [SerializeField] public float spawnRadius;
+
     [Header("Bullet")]
     [SerializeField] public Bullet bullet;
     public List<Bullet> bulletList = new List<Bullet>();
@@ -156,6 +161,19 @@ public class GameStatus
 
     [SerializeField]
     public GameObject DebugButton;
+
+    [SerializeField]
+    public TextMeshProUGUI timerText;
+
+    [Header("Timer")]
+    [System.NonSerialized]
+    public float seconds;
+
+    [System.NonSerialized]
+    public float oldSeconds;
+
+    [System.NonSerialized]
+    public int minutes;
 
     [Header("LevelUpPanel")]
     [SerializeField]

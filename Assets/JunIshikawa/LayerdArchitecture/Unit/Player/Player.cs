@@ -96,6 +96,7 @@ public class Player : EntityBase
 
         void MoveAndRot(Player _player, RaycastHit hitInfo)
         {
+
             _player.transform.position = hitInfo.point + hitInfo.normal * _playerMoveCorrection;
             _player.transform.rotation = Quaternion.LookRotation(-Vector3.up, hitInfo.normal);
         }
