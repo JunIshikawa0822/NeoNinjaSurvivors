@@ -15,6 +15,9 @@ public class GameStatus
     [SerializeField]
     public LayerMask playerLayer;
 
+    [System.NonSerialized]
+    public bool isPlayerDamage = false;
+
     [Header("Enemy")]
     [SerializeField] public EyeballEnemy eyeballEnemy;
     [SerializeField] public GreenEnemy greenEnemy;
@@ -38,32 +41,11 @@ public class GameStatus
 
     [Header("Bullet")]
     [SerializeField] public Bullet bullet;
-    public List<Bullet> bulletList = new List<Bullet>();
+    [System.NonSerialized] public List<Bullet> bulletList = new List<Bullet>();
 
-    [SerializeField] 
-    public float bulletSpeed = 0.2f;
-
-    [System.NonSerialized] 
-    public float maxDistance = 100f;
-
-    [System.NonSerialized] 
-    public int bulletDamage = 1;
-
-    [Range(1, 7)] 
-    //貫通力レベル
-    public int penetrateCount = 1;
-
-    [Range(1, 7)]
-    //同時発射数レベル
-    public int simulNumLevel = 1;
-
-    [Range(1, 7)]
-    //同時発射角度レベル
-    public int angleLevel = 1;
-
-    [System.NonSerialized]
-    //レベルに応じた角度の設定
-    public int[] bulletAngleLevelArray = new int[] { 0 , 5, 7, 10, 12, 15, 17, 20 };
+    [Header("ReflectBullet")]
+    [SerializeField] public ReflectBullet reflectBullet;
+    [System.NonSerialized] public List<ReflectBullet> reflectBulletList = new List<ReflectBullet>();
 
     [Header("LineRenderer")]
     [SerializeField]
@@ -180,9 +162,14 @@ public class GameStatus
     public bool isPanelSelected = false;
 
     [Header("Data")]
+    public PlayerObjectData playerObjectData;
+    public BulletObjectData bulletObjectData;
+    public ReflectBulletObjectData reflectBulletObjectData;
+
     public List<EnemyData> enemyDataList;
-    public List<PlayerData> playerDataList;
-    public List<AttackOptionLevelData> attackOptionLevelDataList;
+
+    [Header("Debug")]
+    public List<GameObject> checkObjectList = new List<GameObject>();
 
     public enum InputNameType
     {

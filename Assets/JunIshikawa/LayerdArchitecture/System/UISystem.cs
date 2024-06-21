@@ -14,7 +14,7 @@ public class UISystem : SystemBase, IOnLateUpdate
     public override void SetUp()
     {
         SliderMaxValueSet(gameStat.playerExpSlider, gameStat.playerPrimeDemandExp);
-        SliderMaxValueSet(gameStat.playerHpSlider, gameStat.playerDataList[0].playerMaxHp);
+        SliderMaxValueSet(gameStat.playerHpSlider, gameStat.playerObjectData.playerMaxHp);
 
         EnterButtonInit(gameStat.levelUpEnterButton);
         DebugButtonInit(gameStat.DebugButton);

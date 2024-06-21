@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
-public class BulletSystem : AttackSystemBase, IOnUpdate
+public class BulletSystem : AttackOptionBase, IOnUpdate
 {
     public void OnUpdate()
     {
@@ -22,13 +22,13 @@ public class BulletSystem : AttackSystemBase, IOnUpdate
                 gameStat.bullet,
                 gameStat.player.transform.position,
                 gameStat.playerMouseVector,
-                gameStat.bulletSpeed,
-                gameStat.maxDistance,
-                gameStat.bulletDamage,
-                gameStat.penetrateCount,
+                gameStat.bulletObjectData.bulletSpeed,
+                gameStat.bulletObjectData.maxDistance,
+                gameStat.bulletObjectData.bulletDamage,
+                gameStat.bulletObjectData.penetrateCount,
                 gameStat.bulletList,
-                gameStat.simulNumLevel,
-                gameStat.bulletAngleLevelArray[gameStat.angleLevel]);
+                gameStat.bulletObjectData.simulNumLevel,
+                gameStat.bulletObjectData.bulletAngleLevelArray[gameStat.bulletObjectData.angleLevel]);
         }
         
     }
@@ -63,7 +63,7 @@ public class BulletSystem : AttackSystemBase, IOnUpdate
         Debug.Log("発射！！！");
         //弾丸を生成
         Bullet bulletInstance = GameObject.Instantiate(_bullet, _playerPos, Quaternion.identity);
-        bulletInstance.Init(_attackVector, _bulletSpeed, _maxDistance, _bulletDamage, _penetrateCount, VecToAngle(_attackVector));
+        bulletInstance.Init(_attackVector, _bulletSpeed, _maxDistance, _bulletDamage, _penetrateCount);
         //Actionに弾丸をListから削除する関数を登録
         bulletInstance.bulletRemoveEvent += BulletRemove;
         //Actionに被弾時に実行する処理を登録
@@ -107,12 +107,5 @@ public class BulletSystem : AttackSystemBase, IOnUpdate
             _bullet.BulletDestroy();//オブジェクトを破壊
         }
 
-    }
-
-    private float VecToAngle(Vector3 _directionVec)
-    {
-        float i = Mathf.Atan2(_directionVec.z, _directionVec.x) * Mathf.Rad2Deg;
-        Debug.Log(i);
-        return i;
     }
 }

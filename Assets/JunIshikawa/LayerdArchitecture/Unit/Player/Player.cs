@@ -25,8 +25,6 @@ public class Player : EntityBase
         ParameterSet(_attackAnimParam);
     }
 
-    
-
     public void OnUpdate()
     {
         
