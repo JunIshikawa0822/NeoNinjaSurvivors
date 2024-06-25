@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1728,7 +1728,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 610661458}
-  - component: {fileID: 610661457}
+  - component: {fileID: 610661459}
   m_Layer: 0
   m_Name: GameMain
   m_TagString: Untagged
@@ -1736,106 +1736,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &610661457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610661456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f79c0b6c71d964eb195d35f11c71b557, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameStat:
-    player: {fileID: 490424603}
-    eyeballEnemy: {fileID: 8394284521350750346, guid: 572c50394f6fb294097e6bbd1d90bf63, type: 3}
-    greenEnemy: {fileID: 3945694537937581167, guid: 3bbfce247cdf6004cbbfb496294d690d, type: 3}
-    armEnemy: {fileID: 8123539248858670786, guid: d8af1f34ce472834ca98dbd00ecdc6ab, type: 3}
-    blackEnemy: {fileID: 3228984785412626401, guid: 0bf3978dfd49624468c1e9802bbb4faf, type: 3}
-    flyingEnemy: {fileID: 863309357857387668, guid: c94f069fee076e34d9e6f90d12a5094e, type: 3}
-    goldEnemy: {fileID: 7206015723882462766, guid: f14381d10356c7a498ca7284580c1bc4, type: 3}
-    spawnInterval: 1
-    spawnRadius: 20
-    phaseBorders: 0a000000140000001e00000028000000
-    spawnProbabilities:
-    - 100
-    - 50
-    - 0
-    - 0
-    - 0
-    - 0
-    elapsedTime: 0
-    spawnLimitNum: 50
-    bullet: {fileID: 6146447326056385268, guid: 6d56eee9cf5e69442b22527be001498b, type: 3}
-    bulletList: []
-    bulletSpeed: 0.2
-    penetrateCount: 1
-    simulNumLevel: 1
-    angleLevel: 6
-    playerLineRenderer: {fileID: 1514023290}
-    lineStartDistance: 1
-    lineMaxDistance: 2.49
-    isMoveInput: 0
-    isAttackInput: 0
-    isFootHoldInput: 0
-    moveInputName: 2
-    attackInputName: 1
-    footHoldInputName: 4
-    isMoveInputUp: 0
-    playerMoveRayHitLayer:
-      serializedVersion: 2
-      m_Bits: 64
-    playerMoveCorrection: 1.6
-    playerPrimeDemandExp: 3
-    playerTotalExp: 0
-    isLevelUp: 0
-    playerLevelText: {fileID: 176640150}
-    playerExpSlider: {fileID: 69447518}
-    playerHpSlider: {fileID: 2064097302}
-    DebugButton: {fileID: 328366231}
-    timerText: {fileID: 851533300}
-    levelUpPanel: {fileID: 1564978471}
-    levelUpEnterButton: {fileID: 344063120}
-    selectPanelsList:
-    - {fileID: 1026680624}
-    - {fileID: 1302339602}
-    - {fileID: 1043694544}
-    enemyDataList:
-    - enemyName: EyeBallEnemy
-      enemyMaxHp: 3
-      enemyAttackPoint: 1
-      enemyExp: 0
-      instantiatePos: {x: 0, y: 0, z: 0}
-    - enemyName: GreenEnemy
-      enemyMaxHp: 3
-      enemyAttackPoint: 1
-      enemyExp: 0
-      instantiatePos: {x: 0, y: 0, z: 0}
-    - enemyName: ArmEnemy
-      enemyMaxHp: 3
-      enemyAttackPoint: 1
-      enemyExp: 0
-      instantiatePos: {x: 0, y: 0, z: 0}
-    - enemyName: BlackEnemy
-      enemyMaxHp: 3
-      enemyAttackPoint: 1
-      enemyExp: 0
-      instantiatePos: {x: 0, y: 0, z: 0}
-    - enemyName: FlyingEnemy
-      enemyMaxHp: 3
-      enemyAttackPoint: 1
-      enemyExp: 0
-      instantiatePos: {x: 0, y: 0, z: 0}
-    - enemyName: GoldEnemy
-      enemyMaxHp: 3
-      enemyAttackPoint: 1
-      enemyExp: 0
-      instantiatePos: {x: 0, y: 0, z: 0}
-    playerDataList:
-    - playerMaxHp: 10
-    attackOptionLevelDataList: []
 --- !u!4 &610661458
 Transform:
   m_ObjectHideFlags: 0
@@ -1851,6 +1751,106 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &610661459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610661456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f79c0b6c71d964eb195d35f11c71b557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStat:
+    player: {fileID: 490424603}
+    playerLayer:
+      serializedVersion: 2
+      m_Bits: 128
+    eyeballEnemy: {fileID: 8394284521350750346, guid: 572c50394f6fb294097e6bbd1d90bf63, type: 3}
+    greenEnemy: {fileID: 3945694537937581167, guid: 3bbfce247cdf6004cbbfb496294d690d, type: 3}
+    armEnemy: {fileID: 8123539248858670786, guid: d8af1f34ce472834ca98dbd00ecdc6ab, type: 3}
+    blackEnemy: {fileID: 3228984785412626401, guid: 0bf3978dfd49624468c1e9802bbb4faf, type: 3}
+    flyingEnemy: {fileID: 863309357857387668, guid: c94f069fee076e34d9e6f90d12a5094e, type: 3}
+    goldEnemy: {fileID: 7206015723882462766, guid: f14381d10356c7a498ca7284580c1bc4, type: 3}
+    spawnInterval: 0
+    spawnRadius: 20
+    spawnProbabilities:
+    - 100
+    - 50
+    - 0
+    - 0
+    - 0
+    - 0
+    elapsedTime: 0
+    spawnLimitNum: 50
+    bullet: {fileID: 3671571798621069525, guid: f45ddcd7a30044ec5a15259f7523e58b, type: 3}
+    bulletList: []
+    reflectBullet: {fileID: 6055203319012902949, guid: e71e9727882cc7b41ba82001ff1a4b2b, type: 3}
+    reflectBulletList: []
+    playerLineRenderer: {fileID: 1514023290}
+    lineStartDistance: 1
+    lineMaxDistance: 5
+    isMoveInput: 0
+    isAttackInput: 0
+    isFootHoldInput: 0
+    isFootHoldInputUp: 0
+    moveInputName: 2
+    attackInputName: 1
+    footHoldInputName: 4
+    isMoveInputUp: 0
+    playerMoveRayHitLayer:
+      serializedVersion: 2
+      m_Bits: 64
+    playerMoveCorrection: 1.6
+    footholdObject: {fileID: 1221776327}
+    footholdSetDistance: 1
+    playerPrimeDemandExp: 3
+    playerTotalExp: 0
+    isLevelUp: 0
+    playerLevelText: {fileID: 176640150}
+    playerExpSlider: {fileID: 69447518}
+    playerHpSlider: {fileID: 2064097302}
+    DebugButton: {fileID: 328366231}
+    timerText: {fileID: 851533300}
+    levelUpPanel: {fileID: 1564978471}
+    levelUpEnterButton: {fileID: 344063120}
+    selectPanelsList: []
+    enemyDataList:
+    - enemyName: 
+      enemyMaxHp: 1
+      enemyAttackPoint: 0
+      enemyExp: 0
+      instantiatePos: {x: 0, y: 0, z: 0}
+    - enemyName: 
+      enemyMaxHp: 1
+      enemyAttackPoint: 0
+      enemyExp: 0
+      instantiatePos: {x: 0, y: 0, z: 0}
+    - enemyName: 
+      enemyMaxHp: 1
+      enemyAttackPoint: 0
+      enemyExp: 0
+      instantiatePos: {x: 0, y: 0, z: 0}
+    - enemyName: 
+      enemyMaxHp: 1
+      enemyAttackPoint: 0
+      enemyExp: 0
+      instantiatePos: {x: 0, y: 0, z: 0}
+    - enemyName: 
+      enemyMaxHp: 1
+      enemyAttackPoint: 0
+      enemyExp: 0
+      instantiatePos: {x: 0, y: 0, z: 0}
+    - enemyName: 
+      enemyMaxHp: 1
+      enemyAttackPoint: 0
+      enemyExp: 0
+      instantiatePos: {x: 0, y: 0, z: 0}
+    playerObjectData: {fileID: 11400000, guid: 560b3c866d98e4a219a969b06a62bc9f, type: 2}
+    bulletObjectData: {fileID: 11400000, guid: f6ed9e96e0dfe41d99b9ecf6758ff420, type: 2}
+    reflectBulletObjectData: {fileID: 11400000, guid: 5c30ff15a724049a7a7cd98830b0a157, type: 2}
 --- !u!1 &738006856
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,7 +3420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1564978472
 RectTransform:
   m_ObjectHideFlags: 0

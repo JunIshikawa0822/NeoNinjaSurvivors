@@ -11,6 +11,7 @@ public class GameStatus
 {
     [Header("player")]
     [SerializeField] public Player player;
+    [SerializeField] public LayerMask playerLayer;
 
     [Header("Enemy")]
     [SerializeField] public EyeballEnemy eyeballEnemy;
@@ -33,7 +34,7 @@ public class GameStatus
     [System.NonSerialized]
     public List<EnemyBase> enemyList = new List<EnemyBase>();
 
-    [Header("Enemy生成（難易度調整）")]
+    [Header("EnemyGenerate(Change Difficulty)")]
     [SerializeField] public float spawnInterval;
 
     [SerializeField] public float spawnRadius;
@@ -49,30 +50,9 @@ public class GameStatus
     [SerializeField] public Bullet bullet;
     public List<Bullet> bulletList = new List<Bullet>();
 
-    [SerializeField] 
-    public float bulletSpeed = 0.2f;
-
-    [System.NonSerialized] 
-    public float maxDistance = 100f;
-
-    [System.NonSerialized] 
-    public int bulletDamage = 1;
-
-    [Range(1, 7)] 
-    //貫通力レベル
-    public int penetrateCount = 1;
-
-    [Range(1, 7)]
-    //同時発射数レベル
-    public int simulNumLevel = 1;
-
-    [Range(1, 7)]
-    //同時発射角度レベル
-    public int angleLevel = 1;
-
-    [System.NonSerialized]
-    //レベルに応じた角度の設定
-    public int[] bulletAngleLevelArray = new int[] { 0 , 5, 7, 10, 12, 15, 17, 20 };
+    [Header("ReflectBullet")]
+    [SerializeField] public ReflectBullet reflectBullet;
+    public List<ReflectBullet> reflectBulletList = new List<ReflectBullet>();
 
     [Header("LineRenderer")]
     [SerializeField]
@@ -95,6 +75,9 @@ public class GameStatus
     //[System.NonSerialized]
     [SerializeField]
     public bool isFootHoldInput = false;
+
+    [SerializeField]
+    public bool isFootHoldInputUp = false;
 
     [SerializeField]
     public InputNameType moveInputName;
@@ -123,8 +106,14 @@ public class GameStatus
     public float playerMoveMaxDistance = 20;
 
     [SerializeField]
-
     public float playerMoveCorrection = 1.6f;//プレイヤー位置の補正値
+
+    [Header("FootHold")]
+    [SerializeField]
+    public GameObject footholdObject;
+
+    [Range(1,5),SerializeField]
+    public float footholdSetDistance;
 
     [Header("Level")]
     [Range(3, 10), SerializeField]
@@ -200,8 +189,9 @@ public class GameStatus
 
     [Header("Data")]
     public List<EnemyData> enemyDataList;
-    public List<PlayerData> playerDataList;
-    public List<AttackOptionLevelData> attackOptionLevelDataList;
+    public PlayerObjectData playerObjectData;
+    public BulletObjectData bulletObjectData;
+    public ReflectBulletObjectData reflectBulletObjectData;
 
     public enum InputNameType
     {

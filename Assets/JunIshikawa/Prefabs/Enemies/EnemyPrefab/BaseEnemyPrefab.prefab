@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 8538607428008619478}
   - component: {fileID: 4262180222500024208}
   m_Layer: 0
-  m_Name: EyeEnemy
+  m_Name: BaseEnemyPrefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
