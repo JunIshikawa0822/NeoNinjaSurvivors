@@ -25,6 +25,8 @@ public class Player : EntityBase
         ParameterSet(_attackAnimParam);
     }
 
+    
+
     public void OnUpdate()
     {
         
@@ -66,19 +68,19 @@ public class Player : EntityBase
         isOnWarp = !isOnWarp;
     }
 
-    public void PlayerWarpRag(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
-    {
-        StartCoroutine(WarpCoroutine(_player, _mouseVec, _maxRayDistance,_rayHitLayerMask));
-        //Invoke(PlayerMove(_player, _mouseVec, _maxRayDistance, _rayHitLayerMask),0.4f);
-    }
+    // public void PlayerWarpRag(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
+    // {
+    //     StartCoroutine(WarpCoroutine(_player, _mouseVec, _maxRayDistance,_rayHitLayerMask));
+    //     //Invoke(PlayerMove(_player, _mouseVec, _maxRayDistance, _rayHitLayerMask),0.4f);
+    // }
 
-    IEnumerator WarpCoroutine(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
-    {
-        yield return new WaitForSeconds(0.4f);//ちゅ！！マジックナンバーでごめん♡
-        PlayerMove(_player, _mouseVec, _maxRayDistance,_rayHitLayerMask); 
-    }
+    // IEnumerator WarpCoroutine(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
+    // {
+    //     yield return new WaitForSeconds(0.4f);//ちゅ！！マジックナンバーでごめん♡
+    //     PlayerMove(_player, _mouseVec, _maxRayDistance,_rayHitLayerMask);
+    // }
 
-    private void PlayerMove(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
+    public void PlayerMove(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask, float _playerMoveCorrection)
     {
         //Debug.DrawRay(originPos, directionVec, Color.red, 3);
         if (!Physics.Raycast(_player.transform.position, _mouseVec, out RaycastHit _hitInfo, _maxRayDistance, _rayHitLayerMask))
@@ -94,7 +96,8 @@ public class Player : EntityBase
 
         void MoveAndRot(Player _player, RaycastHit hitInfo)
         {
-            _player.transform.position = hitInfo.point + hitInfo.normal;
+
+            _player.transform.position = hitInfo.point + hitInfo.normal * _playerMoveCorrection;
             _player.transform.rotation = Quaternion.LookRotation(-Vector3.up, hitInfo.normal);
         }
     }

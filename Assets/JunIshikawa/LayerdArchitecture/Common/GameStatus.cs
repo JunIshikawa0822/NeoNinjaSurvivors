@@ -12,12 +12,6 @@ public class GameStatus
     [Header("player")]
     [SerializeField] public Player player;
 
-    [SerializeField]
-    public LayerMask playerLayer;
-
-    [System.NonSerialized]
-    public bool isPlayerDamage = false;
-
     [Header("Enemy")]
     [SerializeField] public EyeballEnemy eyeballEnemy;
     [SerializeField] public GreenEnemy greenEnemy;
@@ -39,13 +33,46 @@ public class GameStatus
     [System.NonSerialized]
     public List<EnemyBase> enemyList = new List<EnemyBase>();
 
+    [Header("Enemy生成（難易度調整）")]
+    [SerializeField] public float spawnInterval;
+
+    [SerializeField] public float spawnRadius;
+
+    //左からEye,Green,Arm,Black,Flying,Goldの各生成確率（毎秒ごとに更新する）
+    [SerializeField] public float[] spawnProbabilities = new float[] {100,50,0,0,0,0};
+
+    public float elapsedTime = 0f;
+
+    [SerializeField] public int spawnLimitNum  = 50;
+
     [Header("Bullet")]
     [SerializeField] public Bullet bullet;
-    [System.NonSerialized] public List<Bullet> bulletList = new List<Bullet>();
+    public List<Bullet> bulletList = new List<Bullet>();
 
-    [Header("ReflectBullet")]
-    [SerializeField] public ReflectBullet reflectBullet;
-    [System.NonSerialized] public List<ReflectBullet> reflectBulletList = new List<ReflectBullet>();
+    [SerializeField] 
+    public float bulletSpeed = 0.2f;
+
+    [System.NonSerialized] 
+    public float maxDistance = 100f;
+
+    [System.NonSerialized] 
+    public int bulletDamage = 1;
+
+    [Range(1, 7)] 
+    //貫通力レベル
+    public int penetrateCount = 1;
+
+    [Range(1, 7)]
+    //同時発射数レベル
+    public int simulNumLevel = 1;
+
+    [Range(1, 7)]
+    //同時発射角度レベル
+    public int angleLevel = 1;
+
+    [System.NonSerialized]
+    //レベルに応じた角度の設定
+    public int[] bulletAngleLevelArray = new int[] { 0 , 5, 7, 10, 12, 15, 17, 20 };
 
     [Header("LineRenderer")]
     [SerializeField]
@@ -58,20 +85,16 @@ public class GameStatus
     public float lineMaxDistance = 5f;
 
     [Header("Input")]
-    [System.NonSerialized]
+    [SerializeField]
     public bool isMoveInput = false;
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
+    [SerializeField]
     public bool isAttackInput = false;
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
+    [SerializeField]
     public bool isFootHoldInput = false;
-
-    [System.NonSerialized]
-    public bool isMoveInputUp = false;
-
-    [System.NonSerialized]
-    public bool isFootHoldInputUp = false;
 
     [SerializeField]
     public InputNameType moveInputName;
@@ -88,6 +111,10 @@ public class GameStatus
     [System.NonSerialized]
     public Vector3 playerMouseVector;
 
+    [Header("Animation")]
+    [SerializeField]
+    public bool isMoveInputUp = false;
+
     [Header("PlayerMove")]
     [SerializeField]
     public LayerMask playerMoveRayHitLayer;
@@ -95,12 +122,9 @@ public class GameStatus
     [System.NonSerialized]
     public float playerMoveMaxDistance = 20;
 
-    [Header("Foothold")]
     [SerializeField]
-    public GameObject footholdObject;
 
-    [Range(3, 10), SerializeField]
-    public float footholdSetDistance;
+    public float playerMoveCorrection = 1.6f;//プレイヤー位置の補正値
 
     [Header("Level")]
     [Range(3, 10), SerializeField]
@@ -145,6 +169,19 @@ public class GameStatus
     [SerializeField]
     public GameObject DebugButton;
 
+    [SerializeField]
+    public TextMeshProUGUI timerText;
+
+    [Header("Timer")]
+    [System.NonSerialized]
+    public float seconds;
+
+    [System.NonSerialized]
+    public float oldSeconds;
+
+    [System.NonSerialized]
+    public int minutes;
+
     [Header("LevelUpPanel")]
     [SerializeField]
     public GameObject levelUpPanel;
@@ -162,14 +199,9 @@ public class GameStatus
     public bool isPanelSelected = false;
 
     [Header("Data")]
-    public PlayerObjectData playerObjectData;
-    public BulletObjectData bulletObjectData;
-    public ReflectBulletObjectData reflectBulletObjectData;
-
     public List<EnemyData> enemyDataList;
-
-    [Header("Debug")]
-    public List<GameObject> checkObjectList = new List<GameObject>();
+    public List<PlayerData> playerDataList;
+    public List<AttackOptionLevelData> attackOptionLevelDataList;
 
     public enum InputNameType
     {

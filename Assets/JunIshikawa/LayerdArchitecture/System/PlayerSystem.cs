@@ -9,30 +9,31 @@ public class PlayerSystem : SystemBase, IOnUpdate
     {
         base.SetUp();
 
-        gameStat.player.EntityHpSetUp(gameStat.playerObjectData.playerMaxHp);
-
-        //Debug.Log(gameStat.player.GetEntityHp);
         gameStat.player.EntityComponentSetUp();
         gameStat.player.Init(false);
     }
 
     public void OnUpdate()
     {
+        if(gameStat.player.IsOnWarpEnable())
+        {
+            gameStat.player.PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer, gameStat.playerMoveCorrection);
+            gameStat.player.IsOnWarpControl();
+        }
         if (gameStat.isMoveInputUp)
         {
             //ワープ
-            PlayerWarp(gameStat.player);
-            gameStat.player.PlayerWarpRag(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
             PlayerMoveWait(gameStat.player, false);
+            PlayerWarp(gameStat.player);
+            //gameStat.player.PlayerWarpRag(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
         }
-
         if (gameStat.isMoveInput)
         {
             //ワープ待機
             PlayerMoveWait(gameStat.player, true);
         }
 
-        if (gameStat.isAttackInput)
+        if(gameStat.isAttackInput)
         {
             //攻撃状態
             PlayerAttack(gameStat.player, true);
@@ -45,6 +46,8 @@ public class PlayerSystem : SystemBase, IOnUpdate
 
         //PlayerAnimation(gameStat.player);
     }
+
+    
 
     private void PlayerAttack(Player _player, bool _attackBool)
     {
