@@ -38,6 +38,10 @@ public class GameStatus
 
     [SerializeField] public float spawnRadius;
 
+    [SerializeField] public int[] phaseBorders = new int[] {10,20,30,40}; 
+
+    public bool isCoolTime = false;
+
     [Header("Bullet")]
     [SerializeField] public Bullet bullet;
     public List<Bullet> bulletList = new List<Bullet>();

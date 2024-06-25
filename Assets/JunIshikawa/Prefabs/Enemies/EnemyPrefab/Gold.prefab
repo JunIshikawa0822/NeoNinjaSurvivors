@@ -115,10 +115,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9163055820072319225}
-  - component: {fileID: 859657320473469752}
   - component: {fileID: 994255493515461866}
   - component: {fileID: 8719937923393414700}
   - component: {fileID: 4359852511484347052}
+  - component: {fileID: 7206015723882462766}
   m_Layer: 0
   m_Name: Gold
   m_TagString: Enemy
@@ -142,18 +142,6 @@ Transform:
   - {fileID: 7536520072434871631}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &859657320473469752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2636995762562547477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3639b80907ee741ab8af9400f3ab47ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &994255493515461866
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -226,3 +214,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &7206015723882462766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636995762562547477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b0f2ab6ffb7140858037be99c0a2c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

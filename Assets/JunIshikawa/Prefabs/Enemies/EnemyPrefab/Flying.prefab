@@ -115,10 +115,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6350587548339199813}
-  - component: {fileID: 4331555649207357145}
   - component: {fileID: 409257023823295007}
   - component: {fileID: 2027639779506236281}
   - component: {fileID: 2298218880837972684}
+  - component: {fileID: 863309357857387668}
   m_Layer: 0
   m_Name: Flying
   m_TagString: Enemy
@@ -142,18 +142,6 @@ Transform:
   - {fileID: 6351349611453507592}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &4331555649207357145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8194023063755189016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3639b80907ee741ab8af9400f3ab47ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &409257023823295007
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -226,3 +214,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &863309357857387668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8194023063755189016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9943d0e166bc7480abee932c52a435c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
