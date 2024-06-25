@@ -38,9 +38,12 @@ public class GameStatus
 
     [SerializeField] public float spawnRadius;
 
-    [SerializeField] public int[] phaseBorders = new int[] {10,20,30,40}; 
+    //左からEye,Green,Arm,Black,Flying,Goldの各生成確率（毎秒ごとに更新する）
+    [SerializeField] public float[] spawnProbabilities = new float[] {100,50,0,0,0,0};
 
-    public bool isCoolTime = false;
+    public float elapsedTime = 0f;
+
+    [SerializeField] public int spawnLimitNum  = 50;
 
     [Header("Bullet")]
     [SerializeField] public Bullet bullet;
