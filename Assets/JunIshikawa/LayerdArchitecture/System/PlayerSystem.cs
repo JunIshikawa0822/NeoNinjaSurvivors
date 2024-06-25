@@ -15,26 +15,24 @@ public class PlayerSystem : SystemBase, IOnUpdate
 
     public void OnUpdate()
     {
-        // if(gameStat.player.IsOnWarpEnable())
-        // {
-        //     gameStat.player.PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
-        //     gameStat.player.IsOnWarpControl();
-        // }
+        if(gameStat.player.IsOnWarpEnable())
+        {
+            gameStat.player.PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer, gameStat.playerMoveCorrection);
+            gameStat.player.IsOnWarpControl();
+        }
         if (gameStat.isMoveInputUp)
         {
             //ワープ
-            
-            PlayerWarp(gameStat.player);
-            gameStat.player.PlayerWarpRag(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
             PlayerMoveWait(gameStat.player, false);
-            //gameStat.player.PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
-            //PlayerMove(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
+            PlayerWarp(gameStat.player);
+            //gameStat.player.PlayerWarpRag(gameStat.player, gameStat.playerMouseVector, gameStat.playerMoveMaxDistance, gameStat.playerMoveRayHitLayer);
         }
         if (gameStat.isMoveInput)
         {
             //ワープ待機
             PlayerMoveWait(gameStat.player, true);
         }
+
         if(gameStat.isAttackInput)
         {
             //攻撃状態

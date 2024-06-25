@@ -13,11 +13,26 @@ public class DrawSystem : SystemBase, IOnUpdate
                 EndPos(
                     gameStat.player.transform.position,
                     gameStat.playerMouseVector,
+                    gameStat.lineStartDistance,
                     gameStat.playerMoveMaxDistance,
                     gameStat.playerMoveRayHitLayer
                     ),
                 gameStat.playerLineRenderer
             );
+        }
+        else if (gameStat.isFootHoldInput)
+        {
+            LineDraw(
+                gameStat.player.transform.position + gameStat.playerMouseVector * gameStat.lineStartDistance,
+                EndPos(
+                    gameStat.player.transform.position,
+                    gameStat.playerMouseVector,
+                    gameStat.footholdSetDistance,
+                    gameStat.footholdSetDistance,
+                    gameStat.playerMoveRayHitLayer
+                    ),
+                gameStat.playerLineRenderer
+                );
         }
         else
         {
@@ -30,9 +45,9 @@ public class DrawSystem : SystemBase, IOnUpdate
     }
 
     //Lineの終点
-    private Vector3 EndPos(Vector3 _originPos, Vector3 _directionVec, float _maxDistance, int _layerMask)
+    private Vector3 EndPos(Vector3 _originPos, Vector3 _directionVec, float _baseDistance, float _maxDistance, int _layerMask)
     {
-        Vector3 localVec = _originPos;
+        Vector3 localVec = _originPos + _directionVec * _baseDistance;
 
         if(Physics.Raycast(_originPos , _directionVec , out RaycastHit _hitInfo , _maxDistance , _layerMask)) 
         {

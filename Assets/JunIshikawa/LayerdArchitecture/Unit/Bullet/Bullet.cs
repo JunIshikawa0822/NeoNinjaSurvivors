@@ -25,26 +25,28 @@ public class Bullet: MonoBehaviour
         this.maxDistance = _maxDistance;
         this.bulletDamage = _bulletDamage;
         this.penetrateCount = _penetrateCount;
+
+        RotateSet(moveDir);
     }
 
     public void OnUpdate()
     {
-        Move();
-    }
-
-    private void Move()
-    {
-        if(moveDistance > maxDistance)
+        if (moveDistance > maxDistance)
         {
             OnTriggerNextAction();//リストから削除
             BulletDestroy();//オブジェクトを破壊
         }
         else
         {
-            Vector3 moveValue = moveDir * bulletSpeed;
-            transform.position += moveValue;
-            moveDistance += moveValue.magnitude;
-        }    
+            Move();
+        }
+    }
+
+    private void Move()
+    {
+        Vector3 moveValue = moveDir * bulletSpeed;
+        transform.position += moveValue;
+        moveDistance += moveValue.magnitude;
     }
 
     //弾丸のダメージを返す
@@ -55,12 +57,8 @@ public class Bullet: MonoBehaviour
     //弾丸の貫通可能回数を返す
     public int PenetrateCount
     {
-        get{
-            return penetrateCount;
-        }
-        set{
-            if(value >= 0) penetrateCount = value;
-        }
+        get{ return penetrateCount; }
+        set{ if(value >= 0) penetrateCount = value; }
     }
 
     //弾丸が消えるときに起きるイベント
@@ -79,8 +77,22 @@ public class Bullet: MonoBehaviour
     //弾丸の衝突
     private void OnCollisionEnter(Collision _collision)
     {
-        Debug.Log("衝突してはいるのよ");
         if (bulletCollideEvent == null) return;
         bulletCollideEvent?.Invoke(_collision , this);
     }
+
+    private void RotateSet(Vector3 _directionVec)
+    {
+        Vector3 angles = transform.localEulerAngles;
+        float angle = Mathf.Atan2(_directionVec.z, _directionVec.x) * Mathf.Rad2Deg;
+        angles.y = -angle - 180;
+        transform.localEulerAngles = angles;
+    }
+
+    //private float VecToAngle(Vector3 _directionVec)
+    //{
+    //    float angle = Mathf.Atan2(_directionVec.z, _directionVec.x) * Mathf.Rad2Deg;
+    //    Debug.Log(angle);
+    //    return angle;
+    //}
 }

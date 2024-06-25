@@ -23,7 +23,8 @@ public class GameMain : MonoBehaviour
             new AttackSystem(),
             new DrawSystem(),
             new LevelSystem(),
-            new UISystem()
+            new UISystem(),
+            new TimeSystem()
         };
 
         allUpdateSystems = new List<IOnUpdate>();

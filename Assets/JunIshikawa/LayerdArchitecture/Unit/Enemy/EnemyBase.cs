@@ -7,9 +7,6 @@ using UnityEngine.AI;
 
 public class EnemyBase : EntityBase
 {
-    //protected int enemyCurrentHp;
-    //protected int enemyMaxHp;
-
     protected int enemyExp;
     protected int enemyAttackPoint;
     protected int enemyMoveSpeed;

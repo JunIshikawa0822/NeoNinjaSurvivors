@@ -5,5 +5,5 @@ using UnityEngine;
 [System.Serializable]
 public class AttackOptionLevelData
 {
-    
+    public int[] bullet;
 }

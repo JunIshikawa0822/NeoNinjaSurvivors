@@ -13,30 +13,13 @@ public class InputSystem : SystemBase, IOnPreUpdate
         //各種ボタンが押されたか
         gameStat.isMoveInput = InputHold(gameStat.moveInputName);//ここ書き換えた
         gameStat.isAttackInput = InputDown(gameStat.attackInputName);
-        gameStat.isFootHoldInput = InputDown(gameStat.footHoldInputName);
+        gameStat.isFootHoldInput = InputHold(gameStat.footHoldInputName);
 
         //moveボタンが離されたか
         gameStat.isMoveInputUp = InputUp(gameStat.moveInputName);
-        //Debug.Log(gameStat.isMoveInputUp);
+        gameStat.isFootHoldInputUp = InputUp(gameStat.footHoldInputName);
+        //Debug.Log(gameStat.isFootHoldInputUp);
     }
-
-    ////押されたキーがMoveのキーならMoveをオンにする
-    //private void GetMoveInput(GameStatus.InputName _isMoveInput)
-    //{
-    //    gameStat.isMoveInput = IsInputDown(_isMoveInput);
-    //}
-
-    ////押されたキーがAttackのキーならAttackをオンにする
-    //private void GetAttackInput(GameStatus.InputName _isAttackInput)
-    //{
-    //    gameStat.isAttackInput = IsInputDown(_isAttackInput);
-    //}
-
-    ////押されたキーがFootHoldのキーならFootHoldをオンにする
-    //private void GetFootHoldInput(GameStatus.InputName _isFootHoldInput)
-    //{
-    //    gameStat.isFootHoldInput = IsInputDown(_isFootHoldInput);
-    //}
 
     //押下されたらオンにする
     private bool InputDown(GameStatus.InputNameType _isInput)

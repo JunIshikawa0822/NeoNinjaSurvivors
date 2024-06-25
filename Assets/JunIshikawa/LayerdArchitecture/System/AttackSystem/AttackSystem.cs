@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class AttackSystem : SystemBase, IOnUpdate
 {
-    List<AttackSystemBase> allAttackOptionsList;
+    List<AttackOptionBase> allAttackOptionsList;
     List<IOnUpdate> allUpdateAttackOptionsList;
 
     public override void SetUp()
     {
-        allAttackOptionsList = new List<AttackSystemBase>()
+        allAttackOptionsList = new List<AttackOptionBase>()
         {
-            new BulletSystem()
+            new BulletSystem(),
+            new ReflectBulletSystem()
         };
 
         allUpdateAttackOptionsList = new List<IOnUpdate>();
 
-        foreach (AttackSystemBase attackOption in allAttackOptionsList)
+        foreach (AttackOptionBase attackOption in allAttackOptionsList)
         {
             //GameStatの値をSystemたちに全て読み込ませる　これによりSystemたちはGameStatusの値全てを自由に使うことができる
             attackOption.GameStatusInit(gameStat);
@@ -24,7 +25,7 @@ public class AttackSystem : SystemBase, IOnUpdate
             if (attackOption is IOnUpdate) allUpdateAttackOptionsList.Add(attackOption as IOnUpdate);
         }
 
-        foreach (AttackSystemBase attackOption in allAttackOptionsList) attackOption.AttackOptionSetUp();
+        foreach (AttackOptionBase attackOption in allAttackOptionsList) attackOption.AttackOptionSetUp();
     }
 
     public void OnUpdate()
