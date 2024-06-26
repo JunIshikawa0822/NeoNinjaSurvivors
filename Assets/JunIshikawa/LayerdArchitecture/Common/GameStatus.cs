@@ -54,11 +54,17 @@ public class GameStatus
     [SerializeField] public ReflectBullet reflectBullet;
     public List<ReflectBullet> reflectBulletList = new List<ReflectBullet>();
 
+    [Header("AutoBullet")]
+    [SerializeField] public AutoBullet autoBullet;
+    public List<AutoBullet> autoBulletList = new List<AutoBullet>();
+
+    [SerializeField] public float autoBulletRange = 10f;
+
     [Header("LineRenderer")]
     [SerializeField]
     public LineRenderer playerLineRenderer;
 
-    [Range(1, 5)]
+    [Range(-1, 5)]
     public float lineStartDistance = 1f;
 
     [Range(2, 15)]
@@ -192,6 +198,7 @@ public class GameStatus
     public PlayerObjectData playerObjectData;
     public BulletObjectData bulletObjectData;
     public ReflectBulletObjectData reflectBulletObjectData;
+    public AutoBulletObjectData autoBulletObjectData;
 
     public enum InputNameType
     {
