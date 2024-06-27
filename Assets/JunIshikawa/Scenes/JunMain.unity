@@ -1791,7 +1791,7 @@ MonoBehaviour:
     reflectBulletList: []
     autoBullet: {fileID: 73790368213882420, guid: a1fd56a6d7ed55e4aa9dff4d87ddb0bb, type: 3}
     autoBulletList: []
-    autoBulletRange: 10
+    autoBulletRange: 7
     playerLineRenderer: {fileID: 1514023290}
     lineStartDistance: 1
     lineMaxDistance: 5

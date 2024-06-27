@@ -5,38 +5,50 @@ using UnityEngine;
 public class AutoBulletSystem : AttackOptionBase, IOnUpdate
 {
     public void OnUpdate(){
-        if (gameStat.autoBulletList.Count > 0)
-        {
-            for (int i = gameStat.autoBulletList.Count - 1; i >= 0; i--)
+        if(gameStat.isAutoBullet) {
+            if (gameStat.autoBulletList.Count > 0)
             {
-                gameStat.autoBulletList[i].OnUpdate();
+                for (int i = gameStat.autoBulletList.Count - 1; i >= 0; i--)
+                {
+                    gameStat.autoBulletList[i].OnUpdate();
+                }
+            }
+
+            if (gameStat.currentTargetEnemies.Count == 0 || gameStat.currentEnemyIndex >= gameStat.currentTargetEnemies.Count) {
+                if (Time.time > gameStat.nextFireTime) {
+                    gameStat.currentTargetEnemies = GetEnemiesWithinRange(gameStat.player.transform.position, gameStat.enemyList, gameStat.autoBulletRange);
+                    gameStat.currentEnemyIndex = 0;
+                    gameStat.nextFireTime = Time.time + gameStat.fireRate; // 次の発射サイクルを設定
+                }
+            }
+
+            if (gameStat.currentTargetEnemies.Count > 0 && Time.time > gameStat.nextFireTime - gameStat.fireRate) {
+                if (gameStat.currentEnemyIndex < gameStat.currentTargetEnemies.Count) {
+                    EnemyBase targetEnemy = gameStat.currentTargetEnemies[gameStat.currentEnemyIndex];
+                    Vector3 targetPos = targetEnemy.transform.position;
+
+                    float dis = Vector3.Distance(targetPos, gameStat.player.transform.position);
+                    if (dis < gameStat.autoBulletRange) {
+                        SimulAutoBulletInstantiate(
+                            gameStat.autoBullet,
+                            gameStat.player.transform.position,
+                            targetPos,
+                            gameStat.autoBulletObjectData.bulletSpeed,
+                            gameStat.autoBulletObjectData.maxDistance,
+                            gameStat.autoBulletObjectData.bulletDamage,
+                            gameStat.autoBulletObjectData.penetrateCount,
+                            gameStat.autoBulletList,
+                            gameStat.autoBulletObjectData.simulNumLevel,
+                            gameStat.autoBulletObjectData.bulletAngleLevelArray[gameStat.autoBulletObjectData.angleLevel]
+                        );
+
+                        gameStat.currentEnemyIndex++;
+                        gameStat.nextFireTime = Time.time + gameStat.fireRate; // 次の弾を発射する時間を設定
+                    }
+                }
             }
         }
-
-        
-            Vector3? autoLaunchPos = LaunchDetection(gameStat.player.transform.position, gameStat.enemyList, gameStat.autoBulletRange);
-            if(autoLaunchPos == null) return;
-
-            // autoLaunchPos は null ではないことが保証されているため、null 許容型から値を取得
-            Vector3 targetPos = autoLaunchPos.Value;
-
-            float dis = Vector3.Distance(targetPos, gameStat.player.transform.position);
-            if(dis < gameStat.autoBulletRange) {
-                // Debug.Log(targetPos);
-                SimulAutoBulletInstantiate(
-                    gameStat.autoBullet,
-                    gameStat.player.transform.position,
-                    targetPos,
-                    gameStat.autoBulletObjectData.bulletSpeed,
-                    gameStat.autoBulletObjectData.maxDistance,
-                    gameStat.autoBulletObjectData.bulletDamage,
-                    gameStat.autoBulletObjectData.penetrateCount,
-                    gameStat.autoBulletList,
-                    gameStat.autoBulletObjectData.simulNumLevel,
-                    gameStat.autoBulletObjectData.bulletAngleLevelArray[gameStat.autoBulletObjectData.angleLevel]
-                );
-            }
-
+            
     }
 
     private void SimulAutoBulletInstantiate(AutoBullet _bullet, Vector3 _playerPos, Vector3 _enemyPos, float _bulletSpeed, float _maxDistance, int _bulletDamage, int _penetrateCount, List<AutoBullet> _autoBulletList, int _simulNum, int _angleLevel) {
@@ -103,7 +115,24 @@ public class AutoBulletSystem : AttackOptionBase, IOnUpdate
     return launchDestinationPos;
 }
 
+    private List<EnemyBase> GetEnemiesWithinRange(Vector3 _playerPos, List<EnemyBase> _enemyList, float _maxDistance) {
+        List<EnemyBase> enemiesWithinRange = new List<EnemyBase>();
 
+        foreach(var enemy in _enemyList) {
+            float dis = Vector3.Distance(enemy.transform.position, _playerPos);
+            if(dis <= _maxDistance) {
+                if(Physics.Raycast(_playerPos, (enemy.transform.position - _playerPos).normalized, out RaycastHit hitInfo, dis)) {
+                    if(hitInfo.collider.gameObject == enemy.gameObject) {
+                        enemiesWithinRange.Add(enemy);
+                    }
+                }
+            }
+        }
+
+        // 距離でソート
+        enemiesWithinRange.Sort((a, b) => Vector3.Distance(a.transform.position, _playerPos).CompareTo(Vector3.Distance(b.transform.position, _playerPos)));
+        return enemiesWithinRange.GetRange(0, Mathf.Min(3, enemiesWithinRange.Count));
+    }
 
 
     //弾丸をリストから削除

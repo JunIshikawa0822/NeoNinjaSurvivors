@@ -58,7 +58,17 @@ public class GameStatus
     [SerializeField] public AutoBullet autoBullet;
     public List<AutoBullet> autoBulletList = new List<AutoBullet>();
 
+    [SerializeField] public bool isAutoBullet = false;
+
     [SerializeField] public float autoBulletRange = 10f;
+
+    [SerializeField] public float nextFireTime;
+
+    [SerializeField] public float fireRate = 2f;
+
+    [System.NonSerialized] public int currentEnemyIndex = 0; // 現在の発射対象のインデックス
+
+    [SerializeField] public List<EnemyBase> currentTargetEnemies = new List<EnemyBase>();
 
     [Header("LineRenderer")]
     [SerializeField]
