@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 837df6a34cc4384498172d70f373cc81, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b0f79178870dc240a525c6ad7190e4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8294205543145757144}
   - component: {fileID: 6146447326056385268}
   m_Layer: 0
-  m_Name: Kunai
+  m_Name: kunai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

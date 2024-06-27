@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec9c4beae0d5994492069bded6279e2, type: 3}
   m_Name: AutoBulletData
   m_EditorClassIdentifier: 
-  bulletSpeed: 0.2
+  bulletSpeed: 0.5
   maxDistance: 100
   bulletDamage: 1
   penetrateCount: 1
