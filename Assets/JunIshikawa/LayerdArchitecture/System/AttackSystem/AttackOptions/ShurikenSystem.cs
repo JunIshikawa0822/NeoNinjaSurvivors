@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ShurikenSystem : AttackOptionBase, IOnUpdate
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public void OnUpdate() {
+        if (gameStat.shurikenList.Count > 0)
+        {
+            for (int i = gameStat.shurikenList.Count - 1; i >= 0; i--)
+            {
+                gameStat.shurikenList[i].OnUpdate();
+            }
+        }
+
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
