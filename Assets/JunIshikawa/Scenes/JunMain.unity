@@ -1789,6 +1789,8 @@ MonoBehaviour:
     bulletList: []
     reflectBullet: {fileID: 6055203319012902949, guid: e71e9727882cc7b41ba82001ff1a4b2b, type: 3}
     reflectBulletList: []
+    shuriken: {fileID: 0}
+    shurikenList: []
     autoBullet: {fileID: 73790368213882420, guid: a1fd56a6d7ed55e4aa9dff4d87ddb0bb, type: 3}
     autoBulletList: []
     isAutoBullet: 0
@@ -1796,6 +1798,9 @@ MonoBehaviour:
     nextFireTime: 0
     fireRate: 2
     currentTargetEnemies: []
+    aura: {fileID: 2676453712126636844, guid: 357a938bf87f4de40bc8800c0e01b1b0, type: 3}
+    isAuraUsing: 0
+    auraRadius: 5
     playerLineRenderer: {fileID: 1514023290}
     lineStartDistance: 1
     lineMaxDistance: 5

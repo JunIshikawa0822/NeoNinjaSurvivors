@@ -76,8 +76,12 @@ public class GameStatus
 
     [Header("Aura")]
     [SerializeField] public Aura aura;
-    [SerializeField] public Aura activeAuraInstance = null;
+    [System.NonSerialized] public Aura activeAuraInstance = null;
     [SerializeField] public bool isAuraUsing = false;
+    [SerializeField] public float auraRadius = 5f;
+    [System.NonSerialized] public float elapsedAuraTime = 0f;
+    [SerializeField] public float auraNockBackInterval = 3f;
+    [SerializeField] public float auraNockBackStrength = 5f;
 
     [Header("LineRenderer")]
     [SerializeField]

@@ -76,4 +76,22 @@ public class EnemyBase : EntityBase
         if (onCollideEvent == null) return;
         onCollideEvent?.Invoke(_collision, this);
     }
+
+    //_playerPosと_enemyPosの位置関係からプレイヤーに近づいた敵を遠ざけるノックバックを実装
+    public void EnemyNockBack(Vector3 _auraCenterPos,Vector3 _enemyPos,float _knockBackStrength){
+        // プレイヤーから敵への方向ベクトルを計算
+        Vector3 knockbackDirection = (_enemyPos - _auraCenterPos).normalized;
+
+        // 敵にノックバック力を加える（Rigidbodyを使用している場合）
+        Rigidbody enemyRigidbody = GetComponent<Rigidbody>();
+        if (enemyRigidbody != null)
+        {
+            enemyRigidbody.AddForce(knockbackDirection * _knockBackStrength, ForceMode.Impulse);
+        }
+        else
+        {
+            // Rigidbodyがない場合は、位置を直接操作
+            transform.position += knockbackDirection * _knockBackStrength * Time.deltaTime;
+        }
+    }
 }
