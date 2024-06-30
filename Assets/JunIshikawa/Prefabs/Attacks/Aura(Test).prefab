@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2978503896362313759}
   - component: {fileID: 4549019701652922165}
   - component: {fileID: 2676453712126636844}
+  - component: {fileID: 2328346965239999897}
   m_Layer: 0
   m_Name: Aura(Test)
   m_TagString: Untagged
@@ -96,3 +97,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861b05b1c023a3b4cbbff0dc6738c9ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &2328346965239999897
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074235999349968504}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

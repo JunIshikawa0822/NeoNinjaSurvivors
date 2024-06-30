@@ -5,7 +5,7 @@ using UnityEngine;
 public class AutoBulletSystem : AttackOptionBase, IOnUpdate
 {
     public void OnUpdate(){
-        if(gameStat.isAutoBullet) {
+        if(gameStat.autoBulletObjectData.isAutoBullet) {
             if (gameStat.autoBulletList.Count > 0)
             {
                 for (int i = gameStat.autoBulletList.Count - 1; i >= 0; i--)
@@ -16,19 +16,19 @@ public class AutoBulletSystem : AttackOptionBase, IOnUpdate
 
             if (gameStat.currentTargetEnemies.Count == 0 || gameStat.currentEnemyIndex >= gameStat.currentTargetEnemies.Count) {
                 if (Time.time > gameStat.nextFireTime) {
-                    gameStat.currentTargetEnemies = GetEnemiesWithinRange(gameStat.player.transform.position, gameStat.enemyList, gameStat.autoBulletRange);
+                    gameStat.currentTargetEnemies = GetEnemiesWithinRange(gameStat.player.transform.position, gameStat.enemyList, gameStat.autoBulletObjectData.autoBulletRange);
                     gameStat.currentEnemyIndex = 0;
-                    gameStat.nextFireTime = Time.time + gameStat.fireRate; // 次の発射サイクルを設定
+                    gameStat.nextFireTime = Time.time + gameStat.autoBulletObjectData.fireRate; // 次の発射サイクルを設定
                 }
             }
 
-            if (gameStat.currentTargetEnemies.Count > 0 && Time.time > gameStat.nextFireTime - gameStat.fireRate) {
+            if (gameStat.currentTargetEnemies.Count > 0 && Time.time > gameStat.nextFireTime - gameStat.autoBulletObjectData.fireRate) {
                 if (gameStat.currentEnemyIndex < gameStat.currentTargetEnemies.Count) {
                     EnemyBase targetEnemy = gameStat.currentTargetEnemies[gameStat.currentEnemyIndex];
                     Vector3 targetPos = targetEnemy.transform.position;
 
                     float dis = Vector3.Distance(targetPos, gameStat.player.transform.position);
-                    if (dis < gameStat.autoBulletRange) {
+                    if (dis < gameStat.autoBulletObjectData.autoBulletRange) {
                         SimulAutoBulletInstantiate(
                             gameStat.autoBullet,
                             gameStat.player.transform.position,
@@ -43,7 +43,7 @@ public class AutoBulletSystem : AttackOptionBase, IOnUpdate
                         );
 
                         gameStat.currentEnemyIndex++;
-                        gameStat.nextFireTime = Time.time + gameStat.fireRate; // 次の弾を発射する時間を設定
+                        gameStat.nextFireTime = Time.time + gameStat.autoBulletObjectData.fireRate; // 次の弾を発射する時間を設定
                     }
                 }
             }

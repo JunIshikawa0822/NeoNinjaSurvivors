@@ -1793,14 +1793,8 @@ MonoBehaviour:
     shurikenList: []
     autoBullet: {fileID: 73790368213882420, guid: a1fd56a6d7ed55e4aa9dff4d87ddb0bb, type: 3}
     autoBulletList: []
-    isAutoBullet: 0
-    autoBulletRange: 7
-    nextFireTime: 0
-    fireRate: 2
     currentTargetEnemies: []
     aura: {fileID: 2676453712126636844, guid: 357a938bf87f4de40bc8800c0e01b1b0, type: 3}
-    isAuraUsing: 0
-    auraRadius: 5
     playerLineRenderer: {fileID: 1514023290}
     lineStartDistance: 1
     lineMaxDistance: 5
@@ -1831,17 +1825,17 @@ MonoBehaviour:
     selectPanelsList: []
     enemyDataList:
     - enemyName: 
-      enemyMaxHp: 1
+      enemyMaxHp: 2
       enemyAttackPoint: 0
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
     - enemyName: 
-      enemyMaxHp: 1
+      enemyMaxHp: 2
       enemyAttackPoint: 0
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
     - enemyName: 
-      enemyMaxHp: 1
+      enemyMaxHp: 2
       enemyAttackPoint: 0
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
@@ -1864,6 +1858,7 @@ MonoBehaviour:
     bulletObjectData: {fileID: 11400000, guid: f6ed9e96e0dfe41d99b9ecf6758ff420, type: 2}
     reflectBulletObjectData: {fileID: 11400000, guid: 5c30ff15a724049a7a7cd98830b0a157, type: 2}
     autoBulletObjectData: {fileID: 11400000, guid: 3d69bb866f725004998381642e12bc6a, type: 2}
+    auraObjectData: {fileID: 11400000, guid: 66706a0c6e367664bab944d31dd4fd55, type: 2}
 --- !u!1 &738006856
 GameObject:
   m_ObjectHideFlags: 0

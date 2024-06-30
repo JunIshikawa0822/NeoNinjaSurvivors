@@ -5,18 +5,19 @@ using UnityEngine;
 public class AuraSystem : AttackOptionBase, IOnUpdate
 {
     public void OnUpdate(){
-        if (gameStat.isAuraUsing && gameStat.activeAuraInstance == null) {
+        if (gameStat.auraObjectData.isAuraUsing && gameStat.activeAuraInstance == null) {
             AuraActivation(gameStat.aura,ref gameStat.activeAuraInstance, gameStat.player.transform.position);
-        } else if (!gameStat.isAuraUsing && gameStat.activeAuraInstance != null) {
+        } else if (!gameStat.auraObjectData.isAuraUsing && gameStat.activeAuraInstance != null) {
             AuraDeActivation(ref gameStat.activeAuraInstance);
-        } else if(gameStat.isAuraUsing && gameStat.activeAuraInstance != null) {
-            AuraScale(ref gameStat.activeAuraInstance,gameStat.auraRadius, gameStat.player.transform.position);
-            gameStat.elapsedAuraTime += Time.deltaTime;
-            if(gameStat.elapsedAuraTime >= gameStat.auraNockBackInterval) {
-                //ここで全ての射程圏内の敵にノックバックを与える
-                AuraProcess(gameStat.activeAuraInstance, gameStat.auraRadius, gameStat.auraNockBackStrength);
-                gameStat.elapsedAuraTime = 0f;
-            }
+        } else if(gameStat.auraObjectData.isAuraUsing && gameStat.activeAuraInstance != null) {
+            AuraScale(ref gameStat.activeAuraInstance,gameStat.auraObjectData.auraRadius, gameStat.player.transform.position);
+            AuraProcess(gameStat.activeAuraInstance, gameStat.auraObjectData.auraRadius, gameStat.auraObjectData.auraNockBackStrength, gameStat.auraObjectData.auraNockBackInterval, gameStat.auraObjectData.auraDamage, gameStat.enemyTimers);
+            // gameStat.elapsedAuraTime += Time.deltaTime;
+            // if(gameStat.elapsedAuraTime >= gameStat.auraNockBackInterval) {
+            //     //ここで全ての射程圏内の敵にノックバックを与える
+            //     AuraProcess(gameStat.activeAuraInstance, gameStat.auraRadius, gameStat.auraNockBackStrength, gameStat.auraDamage);
+            //     gameStat.elapsedAuraTime = 0f;
+            // }
         }
 
         
@@ -27,19 +28,48 @@ public class AuraSystem : AttackOptionBase, IOnUpdate
         _activeAuraInstance.transform.position = _playerPos;
     }
 
-    private void AuraProcess(Aura _activeAuraInstance, float _auraRadius, float _auraStrength){
+    private void AuraProcess(Aura _activeAuraInstance, float _auraRadius, float _auraNBStrength, float _auraNBInterval, int _auraDamage, Dictionary<EnemyBase,float> _enemyTimers){
         // 指定された半径内のコライダーを検出
         Collider[] hitColliders = Physics.OverlapSphere(_activeAuraInstance.transform.position, _auraRadius/2);
         
         // 検出したコライダーに対して処理を行う
         foreach (var hitCollider in hitColliders)
         {
-            // 例として、検出したオブジェクトにダメージを与える処理
+            if(!hitCollider.gameObject.CompareTag("Enemy")) continue;
+            
             EnemyBase enemy = hitCollider.GetComponent<EnemyBase>();
             if (enemy != null)
             {
-                enemy.EnemyNockBack(_activeAuraInstance.transform.position,enemy.transform.position,_auraStrength);
+                if (!_enemyTimers.ContainsKey(enemy))
+                {
+                    _enemyTimers[enemy] = Time.time + _auraNBInterval;
+                }
+
+                if (Time.time >= _enemyTimers[enemy])
+                {
+                    Debug.Log("ノックバック" + enemy);
+                    enemy.EnemyGetDamage(_auraDamage,_activeAuraInstance.transform.position, enemy.transform.position, _auraNBStrength);
+                    _enemyTimers[enemy] = Time.time + _auraNBInterval;
+                }
             }
+        }
+        CleanUpEnemies(_enemyTimers);
+    }
+
+    private void CleanUpEnemies(Dictionary<EnemyBase,float> _enemyTimers)
+    {
+        List<EnemyBase> enemiesToRemove = new List<EnemyBase>();
+        foreach (var entry in _enemyTimers)
+        {
+            if (entry.Key == null)
+            {
+                enemiesToRemove.Add(entry.Key);
+            }
+        }
+
+        foreach (var enemy in enemiesToRemove)
+        {
+            _enemyTimers.Remove(enemy);
         }
     }
 

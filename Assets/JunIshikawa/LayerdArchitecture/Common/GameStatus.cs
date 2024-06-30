@@ -61,27 +61,14 @@ public class GameStatus
     [Header("AutoBullet")]
     [SerializeField] public AutoBullet autoBullet;
     public List<AutoBullet> autoBulletList = new List<AutoBullet>();
-
-    [SerializeField] public bool isAutoBullet = false;
-
-    [SerializeField] public float autoBulletRange = 10f;
-
-    [SerializeField] public float nextFireTime;
-
-    [SerializeField] public float fireRate = 2f;
-
+    [System.NonSerialized] public float nextFireTime;
     [System.NonSerialized] public int currentEnemyIndex = 0; // 現在の発射対象のインデックス
-
     [SerializeField] public List<EnemyBase> currentTargetEnemies = new List<EnemyBase>();
 
     [Header("Aura")]
     [SerializeField] public Aura aura;
     [System.NonSerialized] public Aura activeAuraInstance = null;
-    [SerializeField] public bool isAuraUsing = false;
-    [SerializeField] public float auraRadius = 5f;
-    [System.NonSerialized] public float elapsedAuraTime = 0f;
-    [SerializeField] public float auraNockBackInterval = 3f;
-    [SerializeField] public float auraNockBackStrength = 5f;
+    [System.NonSerialized] public Dictionary<EnemyBase, float> enemyTimers = new Dictionary<EnemyBase, float>();
 
     [Header("LineRenderer")]
     [SerializeField]
@@ -222,6 +209,8 @@ public class GameStatus
     public BulletObjectData bulletObjectData;
     public ReflectBulletObjectData reflectBulletObjectData;
     public AutoBulletObjectData autoBulletObjectData;
+
+    public AuraObjectData auraObjectData;
 
     public enum InputNameType
     {

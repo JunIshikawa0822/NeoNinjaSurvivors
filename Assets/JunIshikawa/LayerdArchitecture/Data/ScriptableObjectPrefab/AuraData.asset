@@ -9,15 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cec9c4beae0d5994492069bded6279e2, type: 3}
-  m_Name: AutoBulletData
+  m_Script: {fileID: 11500000, guid: fe1914dbdddb96d46852284dadf08509, type: 3}
+  m_Name: AuraData
   m_EditorClassIdentifier: 
-  isAutoBullet: 0
-  bulletSpeed: 0.5
-  maxDistance: 100
-  bulletDamage: 1
-  penetrateCount: 1
-  simulNumLevel: 1
-  angleLevel: 1
-  autoBulletRange: 10
-  fireRate: 2
+  isAuraUsing: 1
+  auraRadius: 5
+  auraNockBackInterval: 1.5
+  auraNockBackStrength: 50
+  auraDamage: 1
