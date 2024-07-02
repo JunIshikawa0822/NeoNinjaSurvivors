@@ -112,12 +112,12 @@ public class UISystem : SystemBase, IOnLateUpdate
         button.pointerDownEvent += () => gameStat.playerTotalExp++;
     }
 
-    private Entry TriggerInsert(ButtonBase button, EventTriggerType _eventTriggerType)
+    private Entry TriggerInsert(ButtonBase _button, EventTriggerType _eventTriggerType)
     {
         Entry entryTrigger = new Entry();
         entryTrigger.eventID = _eventTriggerType;
 
-        button.buttonEventTrigger.triggers.Add(entryTrigger);
+        _button.buttonEventTrigger.triggers.Add(entryTrigger);
 
         return entryTrigger;
     }
