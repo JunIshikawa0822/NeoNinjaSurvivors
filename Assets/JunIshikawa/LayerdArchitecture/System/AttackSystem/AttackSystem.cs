@@ -12,7 +12,9 @@ public class AttackSystem : SystemBase, IOnUpdate
         allAttackOptionsList = new List<AttackOptionBase>()
         {
             new BulletSystem(),
-            new ReflectBulletSystem()
+            new ReflectBulletSystem(),
+            new AutoBulletSystem(),
+            new AuraSystem()
         };
 
         allUpdateAttackOptionsList = new List<IOnUpdate>();

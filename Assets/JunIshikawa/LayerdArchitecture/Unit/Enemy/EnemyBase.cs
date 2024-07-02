@@ -16,6 +16,8 @@ public class EnemyBase : EntityBase
     //public event Action<EnemyBase> onDestroyEvent;
     public event Action<Collision, EnemyBase> onCollideEvent;
 
+    public event Action<Collision, EnemyBase> onCollideStayEvent;
+
     protected UnityEngine.AI.NavMeshAgent navMeshAgent;
 
     public virtual void EnemyInit(int _enemyAttackPoint, int _enemyExp)
@@ -75,5 +77,35 @@ public class EnemyBase : EntityBase
     {
         if (onCollideEvent == null) return;
         onCollideEvent?.Invoke(_collision, this);
+    }
+
+    private void OnCollisionStay(Collision _collision)
+    {
+        if (onCollideStayEvent == null) return;
+        onCollideStayEvent?.Invoke(_collision, this);
+    }
+
+    public void EnemyGetDamage(int _damagePoint,Vector3 _playerPos,Vector3 _enemyPos,float _knockBackStrength)
+    {
+        base.EntityGetDamage(_damagePoint);
+        EnemyNockBack(_playerPos, _enemyPos, _knockBackStrength);
+    }
+
+    //_playerPosと_enemyPosの位置関係からプレイヤーに近づいた敵を遠ざけるノックバックを実装
+    private void EnemyNockBack(Vector3 _playerPos,Vector3 _enemyPos,float _knockBackStrength){
+        // プレイヤーから敵への方向ベクトルを計算
+        Vector3 knockbackDirection = (_enemyPos - _playerPos).normalized;
+
+        // 敵にノックバック力を加える（Rigidbodyを使用している場合）
+        Rigidbody enemyRigidbody = GetComponent<Rigidbody>();
+        if (enemyRigidbody != null)
+        {
+            enemyRigidbody.AddForce(knockbackDirection * _knockBackStrength, ForceMode.Impulse);
+        }
+        else
+        {
+            // Rigidbodyがない場合は、位置を直接操作
+            transform.position += knockbackDirection * _knockBackStrength;
+        }
     }
 }

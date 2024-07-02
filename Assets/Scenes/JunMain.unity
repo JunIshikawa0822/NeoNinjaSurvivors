@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1774,7 +1774,7 @@ MonoBehaviour:
     blackEnemy: {fileID: 3228984785412626401, guid: 0bf3978dfd49624468c1e9802bbb4faf, type: 3}
     flyingEnemy: {fileID: 863309357857387668, guid: c94f069fee076e34d9e6f90d12a5094e, type: 3}
     goldEnemy: {fileID: 7206015723882462766, guid: f14381d10356c7a498ca7284580c1bc4, type: 3}
-    spawnInterval: 0
+    spawnInterval: 1
     spawnRadius: 20
     spawnProbabilities:
     - 100
@@ -1785,10 +1785,16 @@ MonoBehaviour:
     - 0
     elapsedTime: 0
     spawnLimitNum: 50
-    bullet: {fileID: 3671571798621069525, guid: f45ddcd7a30044ec5a15259f7523e58b, type: 3}
+    bullet: {fileID: 6146447326056385268, guid: 6d56eee9cf5e69442b22527be001498b, type: 3}
     bulletList: []
     reflectBullet: {fileID: 6055203319012902949, guid: e71e9727882cc7b41ba82001ff1a4b2b, type: 3}
     reflectBulletList: []
+    shuriken: {fileID: 0}
+    shurikenList: []
+    autoBullet: {fileID: 73790368213882420, guid: a1fd56a6d7ed55e4aa9dff4d87ddb0bb, type: 3}
+    autoBulletList: []
+    currentTargetEnemies: []
+    aura: {fileID: 2676453712126636844, guid: 357a938bf87f4de40bc8800c0e01b1b0, type: 3}
     playerLineRenderer: {fileID: 1514023290}
     lineStartDistance: 1
     lineMaxDistance: 5
@@ -1819,17 +1825,17 @@ MonoBehaviour:
     selectPanelsList: []
     enemyDataList:
     - enemyName: 
-      enemyMaxHp: 1
+      enemyMaxHp: 2
       enemyAttackPoint: 0
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
     - enemyName: 
-      enemyMaxHp: 1
+      enemyMaxHp: 2
       enemyAttackPoint: 0
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
     - enemyName: 
-      enemyMaxHp: 1
+      enemyMaxHp: 2
       enemyAttackPoint: 0
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
@@ -1851,6 +1857,8 @@ MonoBehaviour:
     playerObjectData: {fileID: 11400000, guid: 560b3c866d98e4a219a969b06a62bc9f, type: 2}
     bulletObjectData: {fileID: 11400000, guid: f6ed9e96e0dfe41d99b9ecf6758ff420, type: 2}
     reflectBulletObjectData: {fileID: 11400000, guid: 5c30ff15a724049a7a7cd98830b0a157, type: 2}
+    autoBulletObjectData: {fileID: 11400000, guid: 3d69bb866f725004998381642e12bc6a, type: 2}
+    auraObjectData: {fileID: 11400000, guid: 66706a0c6e367664bab944d31dd4fd55, type: 2}
 --- !u!1 &738006856
 GameObject:
   m_ObjectHideFlags: 0

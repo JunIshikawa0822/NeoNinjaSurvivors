@@ -54,11 +54,27 @@ public class GameStatus
     [SerializeField] public ReflectBullet reflectBullet;
     public List<ReflectBullet> reflectBulletList = new List<ReflectBullet>();
 
+    [Header("Shuriken")]
+    [SerializeField] public Shuriken shuriken;
+    public List<Shuriken> shurikenList = new List<Shuriken>();
+
+    [Header("AutoBullet")]
+    [SerializeField] public AutoBullet autoBullet;
+    public List<AutoBullet> autoBulletList = new List<AutoBullet>();
+    [System.NonSerialized] public float nextFireTime;
+    [System.NonSerialized] public int currentEnemyIndex = 0; // 現在の発射対象のインデックス
+    [SerializeField] public List<EnemyBase> currentTargetEnemies = new List<EnemyBase>();
+
+    [Header("Aura")]
+    [SerializeField] public Aura aura;
+    [System.NonSerialized] public Aura activeAuraInstance = null;
+    [System.NonSerialized] public Dictionary<EnemyBase, float> enemyTimers = new Dictionary<EnemyBase, float>();
+
     [Header("LineRenderer")]
     [SerializeField]
     public LineRenderer playerLineRenderer;
 
-    [Range(1, 5)]
+    [Range(-1, 5)]
     public float lineStartDistance = 1f;
 
     [Range(2, 15)]
@@ -192,6 +208,9 @@ public class GameStatus
     public PlayerObjectData playerObjectData;
     public BulletObjectData bulletObjectData;
     public ReflectBulletObjectData reflectBulletObjectData;
+    public AutoBulletObjectData autoBulletObjectData;
+
+    public AuraObjectData auraObjectData;
 
     public enum InputNameType
     {
