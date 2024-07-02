@@ -1778,7 +1778,7 @@ MonoBehaviour:
     spawnRadius: 20
     spawnProbabilities:
     - 100
-    - 50
+    - 0
     - 0
     - 0
     - 0
@@ -1850,7 +1850,7 @@ MonoBehaviour:
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
     - enemyName: 
-      enemyMaxHp: 1
+      enemyMaxHp: 5
       enemyAttackPoint: 0
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
