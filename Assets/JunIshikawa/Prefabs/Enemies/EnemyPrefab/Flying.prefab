@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6351349611453507592}
   - component: {fileID: 3083067804961080348}
   - component: {fileID: 704829269864380261}
+  - component: {fileID: 6880915255019574293}
   m_Layer: 0
   m_Name: FlyingSource
   m_TagString: Untagged
@@ -53,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 3152c87a1a4aa486db454954ecaf4094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +107,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6880915255019574293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5201423302236037360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90716d0d9782f49eaa1025b84c864337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 0}
 --- !u!1 &8194023063755189016
 GameObject:
   m_ObjectHideFlags: 0

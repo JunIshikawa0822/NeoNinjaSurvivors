@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 7825189052064825989}
   - component: {fileID: 6097630661761898830}
   - component: {fileID: 1501904783385228228}
+  - component: {fileID: 6789444999631090036}
   m_Layer: 0
   m_Name: GreenSource
   m_TagString: Untagged
@@ -173,7 +174,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 3152c87a1a4aa486db454954ecaf4094, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -226,3 +227,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6789444999631090036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224233181484400260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90716d0d9782f49eaa1025b84c864337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 0}
