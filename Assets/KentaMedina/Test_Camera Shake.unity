@@ -1789,6 +1789,12 @@ MonoBehaviour:
     bulletList: []
     reflectBullet: {fileID: 6055203319012902949, guid: e71e9727882cc7b41ba82001ff1a4b2b, type: 3}
     reflectBulletList: []
+    shuriken: {fileID: 0}
+    shurikenList: []
+    autoBullet: {fileID: 0}
+    autoBulletList: []
+    currentTargetEnemies: []
+    aura: {fileID: 0}
     playerLineRenderer: {fileID: 1514023290}
     lineStartDistance: 1
     lineMaxDistance: 5
@@ -1851,6 +1857,8 @@ MonoBehaviour:
     playerObjectData: {fileID: 11400000, guid: 560b3c866d98e4a219a969b06a62bc9f, type: 2}
     bulletObjectData: {fileID: 11400000, guid: f6ed9e96e0dfe41d99b9ecf6758ff420, type: 2}
     reflectBulletObjectData: {fileID: 11400000, guid: 5c30ff15a724049a7a7cd98830b0a157, type: 2}
+    autoBulletObjectData: {fileID: 0}
+    auraObjectData: {fileID: 0}
 --- !u!1 &738006856
 GameObject:
   m_ObjectHideFlags: 0
@@ -3749,7 +3757,7 @@ GameObject:
   - component: {fileID: 1764589330}
   - component: {fileID: 1764589329}
   m_Layer: 0
-  m_Name: README
+  m_Name: (Notes) README
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
