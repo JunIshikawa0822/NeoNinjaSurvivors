@@ -7,12 +7,13 @@ public class Enemy_DamageFXUpdater : MonoBehaviour
     public SpriteRenderer mySpriteRenderer;
     private float alpha = 0f;
     private float increment = 0.05f;
-    // This code is not optimal! We should re-implement it after the other parts are finalized.
-    // Possible approach: render a white overlay of variable alpha using a spritemask on main object whose shape is updated on each increment to match animation
-    // Better approach: use custom white-overlay shader controlled by script.
+    private MaterialPropertyBlock materialPropertyBlock;
+    private static readonly int OverlayAlphaID = Shader.PropertyToID("_OverlayAlpha");
     void Start()
     {
-        
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
+        materialPropertyBlock = new MaterialPropertyBlock();
+        setOverlayAlpha(0f);
     }
 
     // Update is called once per frame
@@ -21,20 +22,27 @@ public class Enemy_DamageFXUpdater : MonoBehaviour
         
     }
 
+    private void setOverlayAlpha(float nalpha)
+    {
+        mySpriteRenderer.GetPropertyBlock(materialPropertyBlock);
+        materialPropertyBlock.SetFloat(OverlayAlphaID, nalpha);
+        mySpriteRenderer.SetPropertyBlock(materialPropertyBlock);
+    }
+
     private IEnumerator SingleFlashRoutine()
     {
-        Color updColor = Color.white;
+        print("ienum singleflashroutine has been initialized");
         while(alpha>=0f)
         {
-            alpha -= increment;
-            updColor.a = increment;
-            mySpriteRenderer.color = updColor;
+            alpha -= increment*2f;
+            setOverlayAlpha(alpha);
             yield return new WaitForSeconds(increment);
         }
     }
 
     public void InitializeFlash()
     {
+        print("initializeflash has been called");
         alpha = 1f;
         StartCoroutine(SingleFlashRoutine());
     }
