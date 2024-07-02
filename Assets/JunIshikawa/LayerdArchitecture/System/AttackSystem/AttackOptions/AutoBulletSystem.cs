@@ -157,6 +157,5 @@ public class AutoBulletSystem : AttackOptionBase, IOnUpdate
             //敵のダメージ関数を起動
             enemy.EntityGetDamage(_reflectBullet.BulletDamage());
         }
-
     }
 }

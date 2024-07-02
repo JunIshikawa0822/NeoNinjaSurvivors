@@ -31,7 +31,6 @@ public class Enemy_DamageFXUpdater : MonoBehaviour
 
     private IEnumerator SingleFlashRoutine()
     {
-        print("ienum singleflashroutine has been initialized");
         while(alpha>=0f)
         {
             alpha -= increment*2f;
@@ -42,7 +41,6 @@ public class Enemy_DamageFXUpdater : MonoBehaviour
 
     public void InitializeFlash()
     {
-        print("initializeflash has been called");
         alpha = 1f;
         StartCoroutine(SingleFlashRoutine());
     }
