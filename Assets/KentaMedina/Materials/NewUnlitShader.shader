@@ -6,6 +6,7 @@ Shader "Unlit/NewUnlitShader"
     {
         _MainTex ("Texture", 2D) = "white" {}
         _OverlayAlpha ("Overlay Alpha", Range(0,1)) = 0
+        _Color ("Color", Color) = (1, 1, 1, 1)
     }
 
     // The SubShader block containing the Shader code.
@@ -37,6 +38,7 @@ Shader "Unlit/NewUnlitShader"
 
             sampler2D _MainTex;
             float _OverlayAlpha;
+            fixed4 _Color;
 
             v2f vert (appdata_t v)
             {
@@ -49,7 +51,8 @@ Shader "Unlit/NewUnlitShader"
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 texColor = tex2D(_MainTex, i.uv);
-                fixed4 overlayColor = fixed4(1.0, 1.0, 1.0, _OverlayAlpha);
+                fixed4 overlayColor = _Color;
+                overlayColor.a = _OverlayAlpha;
                 fixed4 finalColor = texColor;
                 finalColor.rgb = lerp(texColor.rgb, overlayColor.rgb, _OverlayAlpha) * texColor.a;
                 return finalColor;

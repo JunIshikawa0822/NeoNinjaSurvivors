@@ -240,3 +240,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySpriteRenderer: {fileID: 0}
+  tint: {r: 0, g: 1, b: 0.13646793, a: 1}

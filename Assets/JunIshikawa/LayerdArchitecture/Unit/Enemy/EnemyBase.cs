@@ -19,7 +19,7 @@ public class EnemyBase : EntityBase
     public event Action<Collision, EnemyBase> onCollideStayEvent;
 
     protected UnityEngine.AI.NavMeshAgent navMeshAgent;
-    private Enemy_DamageFXUpdater enemy_DamageFXUpdater;
+    private DamageFXUpdater enemy_DamageFXUpdater;
 
     public virtual void EnemyInit(int _enemyAttackPoint, int _enemyExp)
     {
@@ -27,7 +27,7 @@ public class EnemyBase : EntityBase
         enemyExp = _enemyExp;
 
         navMeshAgent = GetComponent<NavMeshAgent>();
-        enemy_DamageFXUpdater = GetComponentInChildren<Enemy_DamageFXUpdater>();
+        enemy_DamageFXUpdater = GetComponentInChildren<DamageFXUpdater>();
     }
 
     public void OnUpdate()

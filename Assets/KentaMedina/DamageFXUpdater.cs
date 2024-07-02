@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_DamageFXUpdater : MonoBehaviour
+public class DamageFXUpdater : MonoBehaviour
 {
     public SpriteRenderer mySpriteRenderer;
+    [Tooltip("敵がダメージを受け取ると、この色になります。")]
+    public Color tint = Color.white;
     private float alpha = 0f;
     private float increment = 0.05f;
     private MaterialPropertyBlock materialPropertyBlock;
     private static readonly int OverlayAlphaID = Shader.PropertyToID("_OverlayAlpha");
+    private static readonly int ColorID = Shader.PropertyToID("_Color");
     void Start()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
@@ -26,6 +29,7 @@ public class Enemy_DamageFXUpdater : MonoBehaviour
     {
         mySpriteRenderer.GetPropertyBlock(materialPropertyBlock);
         materialPropertyBlock.SetFloat(OverlayAlphaID, nalpha);
+        materialPropertyBlock.SetColor(ColorID, tint);
         mySpriteRenderer.SetPropertyBlock(materialPropertyBlock);
     }
 
