@@ -14,11 +14,21 @@ Shader "Unlit/NewUnlitShader"
     {
         // SubShader Tags define when and under which conditions a SubShader block or
         // a pass is executed.
-        Tags { "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" }
+        Tags 
+        {
+            "Queue" = "Transparent"
+            "RenderType" = "Transparent"
+            "IgnoreProjector" = "True"
+            "RenderPipeline" = "UniversalPipeline"
+        }
 
         Pass
         {
             Blend SrcAlpha OneMinusSrcAlpha
+            Cull Off
+            Lighting Off
+            ZWrite Off
+            
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -60,5 +70,5 @@ Shader "Unlit/NewUnlitShader"
             ENDCG
         }
     }
-    FallBack "Diffuse"
+    FallBack "Sprites/Default"
 }

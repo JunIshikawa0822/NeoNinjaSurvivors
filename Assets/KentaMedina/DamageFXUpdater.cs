@@ -6,6 +6,7 @@ public class DamageFXUpdater : MonoBehaviour
 {
     public SpriteRenderer mySpriteRenderer;
     [Tooltip("敵がダメージを受け取ると、この色になります。")]
+    public SpriteRenderer secondaryRenderer;
     public Color tint = Color.white;
     private float alpha = 0f;
     private float increment = 0.05f;
@@ -16,7 +17,6 @@ public class DamageFXUpdater : MonoBehaviour
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         materialPropertyBlock = new MaterialPropertyBlock();
-        setOverlayAlpha(0f);
     }
 
     // Update is called once per frame
