@@ -19,7 +19,6 @@ public class EnemyBase : EntityBase
     public event Action<Collision, EnemyBase> onCollideStayEvent;
 
     protected UnityEngine.AI.NavMeshAgent navMeshAgent;
-    private DamageFXUpdater enemy_DamageFXUpdater;
 
     public virtual void EnemyInit(int _enemyAttackPoint, int _enemyExp)
     {
@@ -27,7 +26,6 @@ public class EnemyBase : EntityBase
         enemyExp = _enemyExp;
 
         navMeshAgent = GetComponent<NavMeshAgent>();
-        enemy_DamageFXUpdater = GetComponentInChildren<DamageFXUpdater>();
     }
 
     public void OnUpdate()
@@ -91,10 +89,6 @@ public class EnemyBase : EntityBase
     {
         base.EntityGetDamage(_damagePoint);
         EnemyNockBack(_playerPos, _enemyPos, _knockBackStrength);
-        if(enemy_DamageFXUpdater)
-        {
-            enemy_DamageFXUpdater.InitializeFlash();
-        }
     }
 
     //_playerPosと_enemyPosの位置関係からプレイヤーに近づいた敵を遠ざけるノックバックを実装

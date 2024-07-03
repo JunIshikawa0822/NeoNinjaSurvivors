@@ -10,6 +10,14 @@ public class EntityBase : MonoBehaviour
 
     protected Rigidbody entityRigidbody;
     protected Animator entityAnimator;
+    [SerializeField] private DamageFXUpdater enemy_DamageFXUpdater;
+    void Start()
+    {
+        if(!enemy_DamageFXUpdater)
+        {
+            enemy_DamageFXUpdater = GetComponentInChildren<DamageFXUpdater>();
+        }
+    }
 
     public virtual void EntityHpSetUp(int _enemyMaxHp)
     {
@@ -34,6 +42,10 @@ public class EntityBase : MonoBehaviour
 
     public virtual void EntityGetDamage(int _damagePoint)
     {
+        if(enemy_DamageFXUpdater)
+        {
+            enemy_DamageFXUpdater.InitializeFlash();
+        }
         entityCurrentHp -= _damagePoint;
     }
 }

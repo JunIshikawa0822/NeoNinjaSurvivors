@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &50952887
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -955,6 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &372808358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1185,6 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &407782087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1284,6 +1287,7 @@ GameObject:
   - component: {fileID: 490424603}
   - component: {fileID: 490424608}
   - component: {fileID: 490424609}
+  - component: {fileID: 490424610}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1303,6 +1307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a824cb865917149989c0d643cf6e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 490424610}
 --- !u!136 &490424604
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1415,6 +1420,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &490424610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490424602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90716d0d9782f49eaa1025b84c864337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 0}
+  tint: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &497309789
 GameObject:
   m_ObjectHideFlags: 3
@@ -3276,6 +3295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &1499071585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3732,6 +3752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &1784923309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3937,6 +3958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!54 &1834497170
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4197,6 +4219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &1856737712
 BoxCollider:
   m_ObjectHideFlags: 0
