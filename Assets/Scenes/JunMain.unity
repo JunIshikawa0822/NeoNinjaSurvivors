@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &50952887
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -955,6 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &372808358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1185,6 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &407782087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1303,6 +1306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a824cb865917149989c0d643cf6e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!136 &490424604
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1778,7 +1782,7 @@ MonoBehaviour:
     spawnRadius: 20
     spawnProbabilities:
     - 100
-    - 0
+    - 60
     - 0
     - 0
     - 0
@@ -1825,22 +1829,22 @@ MonoBehaviour:
     selectPanelsList: []
     enemyDataList:
     - enemyName: 
-      enemyMaxHp: 2
+      enemyMaxHp: 4
       enemyAttackPoint: 0
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
     - enemyName: 
-      enemyMaxHp: 2
+      enemyMaxHp: 4
       enemyAttackPoint: 0
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
     - enemyName: 
-      enemyMaxHp: 2
+      enemyMaxHp: 4
       enemyAttackPoint: 0
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
     - enemyName: 
-      enemyMaxHp: 1
+      enemyMaxHp: 4
       enemyAttackPoint: 0
       enemyExp: 0
       instantiatePos: {x: 0, y: 0, z: 0}
@@ -3187,6 +3191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &1499071585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3594,6 +3599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &1784923309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3799,6 +3805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!54 &1834497170
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4059,6 +4066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598dfa3b03dba4716b452fdb8df88bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_DamageFXUpdater: {fileID: 0}
 --- !u!65 &1856737712
 BoxCollider:
   m_ObjectHideFlags: 0

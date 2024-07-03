@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AutoBulletData
   m_EditorClassIdentifier: 
   isAutoBullet: 0
-  bulletSpeed: 0.5
+  bulletSpeed: 0.1
   maxDistance: 100
   bulletDamage: 1
   penetrateCount: 1

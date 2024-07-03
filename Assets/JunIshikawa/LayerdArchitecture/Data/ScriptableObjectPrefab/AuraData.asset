@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1914dbdddb96d46852284dadf08509, type: 3}
   m_Name: AuraData
   m_EditorClassIdentifier: 
-  isAuraUsing: 0
+  isAuraUsing: 1
   auraRadius: 5
   auraNockBackInterval: 1.5
   auraNockBackStrength: 50

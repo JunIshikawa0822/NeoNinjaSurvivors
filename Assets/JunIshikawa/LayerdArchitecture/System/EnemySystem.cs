@@ -16,21 +16,20 @@ public class EnemySystem : SystemBase, IOnUpdate
             {
                 if (!gameStat.isLevelUp)
                 {
-                    //プレイヤーを向く
-                    if (gameStat.enemyList[i].transform.position.x < gameStat.player.transform.position.x)
-                    {
-                        gameStat.enemyList[i].transform.GetComponentInChildren<SpriteRenderer>().flipX = true;
-                    }
-                    else
-                    {
-                        gameStat.enemyList[i].transform.GetComponentInChildren<SpriteRenderer>().flipX = false;
-                    }
-
+                    
                     gameStat.enemyList[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
                     gameStat.enemyList[i].OnUpdate();
                     //動かす
                     gameStat.enemyList[i].NavMeshAgentIsStopped(false);
                     gameStat.enemyList[i].NavMeshDestinationSet(gameStat.player.transform.position);
+
+                    //プレイヤーを向く
+                    if (gameStat.enemyList[i].transform.position.x < gameStat.player.transform.position.x)
+                    {
+                        gameStat.enemyList[i].transform.GetComponentInChildren<SpriteRenderer>().flipX = true;
+                    }else{
+                        gameStat.enemyList[i].transform.GetComponentInChildren<SpriteRenderer>().flipX = false;
+                    }
                 }
                 else
                 {
