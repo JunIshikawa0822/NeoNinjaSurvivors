@@ -32,6 +32,14 @@ public class Player_DamagedFXManager : MonoBehaviour
         }
     }
 
+    public void SetDeath()
+    {
+        StopAllCoroutines();
+        Color nColor = Color.red;
+        nColor.a = 0.5f;
+        mySpriteRenderer.color = nColor;
+    }
+
     public void CallFlash()
     {
         StartCoroutine(SingleFlashRoutine());
