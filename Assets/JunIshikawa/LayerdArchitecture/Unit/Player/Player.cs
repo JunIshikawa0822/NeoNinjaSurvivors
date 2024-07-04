@@ -92,5 +92,6 @@ public class Player : EntityBase
     public void PlayerGetDamage(int _damagePoint){
         base.EntityGetDamage(_damagePoint);
         //Player_Damage_Effect
+        //Debug.Log("DamagePoint : " + _damagePoint);
     }
 }
