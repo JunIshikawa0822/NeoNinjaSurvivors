@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySpriteRenderer: {fileID: 0}
+  secondaryRenderer: {fileID: 0}
   tint: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8725042482751476981
 GameObject:

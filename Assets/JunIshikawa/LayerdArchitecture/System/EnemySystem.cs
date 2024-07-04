@@ -269,7 +269,7 @@ public class EnemySystem : SystemBase, IOnUpdate
         if (player == null) return;
 
         //プレイヤーのダメージ関数を起動
-        player.EntityGetDamage(_enemy.GetEnemyAttack);
+        player.PlayerGetDamage(_enemy.GetEnemyAttack);
 
         if (_enemy.GetEntityHp > 0) return;
     }
