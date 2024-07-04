@@ -13,7 +13,7 @@ public class Player_DamagedFXUpdater : DamageFXUpdater
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         materialPropertyBlock = new MaterialPropertyBlock();
-        nColor.a = alpha;
+        nColor.a = additionalAlpha;
         damagedOverlay.color = nColor;
     }
     public override void InitializeFlash()

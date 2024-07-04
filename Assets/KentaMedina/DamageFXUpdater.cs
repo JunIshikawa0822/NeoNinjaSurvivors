@@ -7,11 +7,11 @@ public class DamageFXUpdater : MonoBehaviour
     public SpriteRenderer mySpriteRenderer;
     [Tooltip("敵がダメージを受け取ると、この色になります。")]
     public Color tint = Color.white;
-    protected float alpha = 0f;
     protected float increment = 0.05f;
     protected MaterialPropertyBlock materialPropertyBlock;
     private  static readonly int OverlayAlphaID = Shader.PropertyToID("_OverlayAlpha");
     private static readonly int ColorID = Shader.PropertyToID("_Color");
+    private bool singleFlashDisabled = false;
     protected virtual void Start()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,17 +34,40 @@ public class DamageFXUpdater : MonoBehaviour
 
     private IEnumerator SingleFlashRoutine()
     {
-        while(alpha>=0f)
+        float alpha = 1f;
+        if(!singleFlashDisabled)
         {
-            alpha -= increment*2f;
-            setOverlayAlpha(alpha);
+            while(alpha>=0f)
+            {
+                alpha -= increment*2f;
+                setOverlayAlpha(alpha);
+                yield return new WaitForSeconds(increment);
+            }
+        }
+    }
+
+    private IEnumerator DeathFlashRoutine()
+    {
+        float deathTimer = 0f;
+        while(deathTimer<=1f)
+        {
+            deathTimer += increment*4f;
+            setOverlayAlpha(deathTimer);
             yield return new WaitForSeconds(increment);
         }
     }
 
     virtual public void InitializeFlash()
     {
-        alpha = 1f;
         StartCoroutine(SingleFlashRoutine());
+    }
+
+    public void DeathAnimation()
+    {
+        singleFlashDisabled = true;
+        transform.parent = null;
+        StopAllCoroutines();
+        // create particle effect
+        Destroy(gameObject,1f);
     }
 }

@@ -10,7 +10,7 @@ public class EntityBase : MonoBehaviour
 
     protected Rigidbody entityRigidbody;
     protected Animator entityAnimator;
-    [SerializeField] private DamageFXUpdater enemy_DamageFXUpdater;
+    [SerializeField] protected DamageFXUpdater enemy_DamageFXUpdater;
     void Start()
     {
         if(!enemy_DamageFXUpdater)

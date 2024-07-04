@@ -39,6 +39,12 @@ public class EnemyBase : EntityBase
     private void OnDestroyThisEnemy()
     {
         if (onDestroyEnemyEvent == null) return;
+        Animator anim = GetComponentInChildren<Animator>();
+        if(anim)
+        {
+            anim.speed = 0f;
+        }
+        enemy_DamageFXUpdater.DeathAnimation();
         onDestroyEnemyEvent?.Invoke(this);
     }
 
