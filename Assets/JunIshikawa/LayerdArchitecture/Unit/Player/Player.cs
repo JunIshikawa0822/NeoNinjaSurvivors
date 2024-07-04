@@ -67,19 +67,6 @@ public class Player : EntityBase
     {
         isOnWarp = !isOnWarp;
     }
-
-    // public void PlayerWarpRag(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
-    // {
-    //     StartCoroutine(WarpCoroutine(_player, _mouseVec, _maxRayDistance,_rayHitLayerMask));
-    //     //Invoke(PlayerMove(_player, _mouseVec, _maxRayDistance, _rayHitLayerMask),0.4f);
-    // }
-
-    // IEnumerator WarpCoroutine(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask)
-    // {
-    //     yield return new WaitForSeconds(0.4f);//ちゅ！！マジックナンバーでごめん♡
-    //     PlayerMove(_player, _mouseVec, _maxRayDistance,_rayHitLayerMask);
-    // }
-
     public void PlayerMove(Player _player, Vector3 _mouseVec, float _maxRayDistance, int _rayHitLayerMask, float _playerMoveCorrection)
     {
         //Debug.DrawRay(originPos, directionVec, Color.red, 3);
@@ -100,5 +87,10 @@ public class Player : EntityBase
             _player.transform.position = hitInfo.point + hitInfo.normal * _playerMoveCorrection;
             _player.transform.rotation = Quaternion.LookRotation(-Vector3.up, hitInfo.normal);
         }
+    }
+
+    public void PlayerGetDamage(int _damagePoint){
+        base.EntityGetDamage(_damagePoint);
+        //Player_Damage_Effect
     }
 }
