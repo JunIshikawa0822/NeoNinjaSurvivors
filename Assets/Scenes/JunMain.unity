@@ -1799,6 +1799,7 @@ MonoBehaviour:
     autoBulletList: []
     currentTargetEnemies: []
     aura: {fileID: 2676453712126636844, guid: 357a938bf87f4de40bc8800c0e01b1b0, type: 3}
+    thunder: {fileID: 3158698895123103707, guid: 614a991db14a3dc488a3a805e1bed00f, type: 3}
     playerLineRenderer: {fileID: 1514023290}
     lineStartDistance: 1
     lineMaxDistance: 5
@@ -1862,6 +1863,7 @@ MonoBehaviour:
     bulletObjectData: {fileID: 11400000, guid: f6ed9e96e0dfe41d99b9ecf6758ff420, type: 2}
     reflectBulletObjectData: {fileID: 11400000, guid: 5c30ff15a724049a7a7cd98830b0a157, type: 2}
     autoBulletObjectData: {fileID: 11400000, guid: 3d69bb866f725004998381642e12bc6a, type: 2}
+    thunderObjectData: {fileID: 11400000, guid: 378f17ae740df684a96cb76177f617b5, type: 2}
     auraObjectData: {fileID: 11400000, guid: 66706a0c6e367664bab944d31dd4fd55, type: 2}
 --- !u!1 &738006856
 GameObject:

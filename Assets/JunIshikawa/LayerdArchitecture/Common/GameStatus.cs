@@ -70,6 +70,9 @@ public class GameStatus
     [System.NonSerialized] public Aura activeAuraInstance = null;
     [System.NonSerialized] public Dictionary<EnemyBase, float> enemyTimers = new Dictionary<EnemyBase, float>();
 
+    [Header("Thunder")]
+    [SerializeField] public Thunder thunder;
+
     [Header("LineRenderer")]
     [SerializeField]
     public LineRenderer playerLineRenderer;
@@ -209,7 +212,7 @@ public class GameStatus
     public BulletObjectData bulletObjectData;
     public ReflectBulletObjectData reflectBulletObjectData;
     public AutoBulletObjectData autoBulletObjectData;
-
+    public ThunderObjectData thunderObjectData;
     public AuraObjectData auraObjectData;
 
     public enum InputNameType
