@@ -58,6 +58,9 @@ public class GameStatus
     [SerializeField] public Shuriken shuriken;
     public List<Shuriken> shurikenList = new List<Shuriken>();
 
+    [Header("BigShuriken")]
+    [SerializeField] public BigShuriken bigShuriken;
+
     [Header("AutoBullet")]
     [SerializeField] public AutoBullet autoBullet;
     public List<AutoBullet> autoBulletList = new List<AutoBullet>();

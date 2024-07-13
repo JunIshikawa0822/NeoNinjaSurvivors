@@ -1795,6 +1795,7 @@ MonoBehaviour:
     reflectBulletList: []
     shuriken: {fileID: 0}
     shurikenList: []
+    bigShuriken: {fileID: 6788341518372946539, guid: f4e05c1a808517146a9bdadada020202, type: 3}
     autoBullet: {fileID: 73790368213882420, guid: a1fd56a6d7ed55e4aa9dff4d87ddb0bb, type: 3}
     autoBulletList: []
     currentTargetEnemies: []
