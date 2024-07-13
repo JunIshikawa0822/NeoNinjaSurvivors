@@ -2,12 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
 
 public class ReflectBulletSystem : AttackOptionBase, IOnUpdate
 {
+    public override void AttackOptionSetUp()
+    {
+        
+    }
+
     public void OnUpdate()
     {
-        if (gameStat.bulletList.Count > 0)
+        //反射を取得している
+        if (gameStat.optionReflectBullet == false) return;
+
+        Debug.Log("よばれてる");
+        if (gameStat.reflectBulletList.Count > 0)
         {
             for (int i = gameStat.bulletList.Count - 1; i >= 0; i--)
             {
@@ -15,12 +25,16 @@ public class ReflectBulletSystem : AttackOptionBase, IOnUpdate
             }
         }
 
+        if (AutoAttackTimer(gameStat.reflectBulletObjectData.coolTime) == false) return;
+
         if (gameStat.isAttackInput == true)
         {
+            Debug.Log("Reflect");
+            autoAttackVector = AutoAttackVector(gameStat.player.transform, gameStat.enemyList, 10f);
             SimulReflectBulletInstantiate(
                 gameStat.reflectBullet,
                 gameStat.player.transform.position,
-                gameStat.playerMouseVector,
+                autoAttackVector,
                 gameStat.reflectBulletObjectData.bulletSpeed,
                 gameStat.reflectBulletObjectData.maxDistance,
                 gameStat.reflectBulletObjectData.bulletDamage,
@@ -50,9 +64,8 @@ public class ReflectBulletSystem : AttackOptionBase, IOnUpdate
                 theta = Mathf.Pow(-1, i) * ((i + 1) / 2) * _angleLevel + _angleLevel / 2;
             }
             Vector3 vec = Quaternion.Euler(0, theta, 0) * _attackVector;
-            //ReflectBulletInstantiate(_bullet, _playerPos, vec, _bulletSpeed, _maxDistance, _bulletDamage, _penetrateCount, _bulletList);
+            ReflectBulletInstantiate(_bullet, _playerPos, vec, _bulletSpeed, _maxDistance, _bulletDamage, _bulletList);
         }
-
     }
 
     //弾丸単体生成
@@ -65,7 +78,7 @@ public class ReflectBulletSystem : AttackOptionBase, IOnUpdate
         //Actionに弾丸をListから削除する関数を登録
         bulletInstance.reflectBulletRemoveEvent += BulletRemove;
         //反射の処理
-        bulletInstance.reflectEvent += ReflectFunction;
+        bulletInstance.reflectEvent += ReflectFunctionWithCameraEdge;
         //Actionに被弾時に実行する処理を登録
         bulletInstance.reflectBulletCollideEvent += BulletCollide;
         //弾丸のリストに追加
@@ -80,11 +93,11 @@ public class ReflectBulletSystem : AttackOptionBase, IOnUpdate
     }
 
     //弾丸が敵に当たった時に実行（エフェクトetc...）
-    private void BulletCollide(Collision _collision, ReflectBullet _reflectBullet)
+    private void BulletCollide(ReflectBullet _reflectBullet, Collision _collision)
     {
         if (_collision.gameObject.CompareTag("Wall"))
         {
-            //_reflectBullet.Reflect();
+            ReflectFunctionWithWall(_reflectBullet, _collision);
         }
         else if (_collision.gameObject.CompareTag("Enemy"))
         {
@@ -94,39 +107,43 @@ public class ReflectBulletSystem : AttackOptionBase, IOnUpdate
             //敵のダメージ関数を起動
             enemy.EntityGetDamage(_reflectBullet.BulletDamage());
         }
+    }
 
+    private void ReflectFunctionWithWall(ReflectBullet _reflectBullet, Collision _collision)
+    {
+        if (_collision == null) return;
+
+        if(Physics.Raycast(_reflectBullet.transform.position, _reflectBullet.transform.forward, out RaycastHit _hitInfo, _reflectBullet.transform.lossyScale.z))
+        {
+            _reflectBullet.GetSetVector = Vector3.Reflect(_reflectBullet.GetSetVector, _hitInfo.normal);
+        }
     }
 
     //反射を行わせる
-    private void ReflectFunction(ReflectBullet _reflectBullet, Collision _collision)
+    private void ReflectFunctionWithCameraEdge(ReflectBullet _reflectBullet, Collision _collision)
     {
+        if (_collision != null) return;
+
         Vector3 leftBottom = Camera.main.ViewportToWorldPoint(Vector2.zero);
         Vector3 rightTop = Camera.main.ViewportToWorldPoint(Vector2.one);
 
         Vector3 reflectedVector = _reflectBullet.GetSetVector;
 
-        if (_collision == null)
+        if (_reflectBullet.transform.position.x < leftBottom.x)
         {
-            if (_reflectBullet.transform.position.x < leftBottom.x)
-            {
-                reflectedVector = Vector3.Reflect(_reflectBullet.GetSetVector, Vector3.right);
-            }
-            else if (_reflectBullet.transform.position.x >= rightTop.x)
-            {
-                reflectedVector = Vector3.Reflect(_reflectBullet.GetSetVector, -Vector3.right);
-            }
-            else if (_reflectBullet.transform.position.y < leftBottom.y)
-            {
-                reflectedVector = Vector3.Reflect(_reflectBullet.GetSetVector, Vector3.forward);
-            }
-            else if (_reflectBullet.transform.position.y >= rightTop.y)
-            {
-                reflectedVector = Vector3.Reflect(_reflectBullet.GetSetVector, -Vector3.forward);
-            }
+            reflectedVector = Vector3.Reflect(_reflectBullet.GetSetVector, Vector3.right);
         }
-        else
+        else if (_reflectBullet.transform.position.x >= rightTop.x)
         {
-            //reflectedVector = Vector3.Reflect(_reflectBullet.GetSetVector, _collision.gameObject.);
+            reflectedVector = Vector3.Reflect(_reflectBullet.GetSetVector, -Vector3.right);
+        }
+        else if (_reflectBullet.transform.position.y < leftBottom.y)
+        {
+            reflectedVector = Vector3.Reflect(_reflectBullet.GetSetVector, Vector3.forward);
+        }
+        else if (_reflectBullet.transform.position.y >= rightTop.y)
+        {
+            reflectedVector = Vector3.Reflect(_reflectBullet.GetSetVector, -Vector3.forward);
         }
 
         _reflectBullet.GetSetVector = reflectedVector;

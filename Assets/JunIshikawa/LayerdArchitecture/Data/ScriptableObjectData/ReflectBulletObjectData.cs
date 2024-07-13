@@ -29,4 +29,7 @@ public class ReflectBulletObjectData : ScriptableObject
     [System.NonSerialized]
     //レベルに応じた角度の設定
     public int[] bulletAngleLevelArray = new int[] { 0, 5, 7, 10, 12, 15, 17, 20 };
+
+    [System.NonSerialized]
+    public float coolTime = 1;
 }

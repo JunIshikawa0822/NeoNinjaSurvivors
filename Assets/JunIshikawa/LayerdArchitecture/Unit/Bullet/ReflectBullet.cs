@@ -14,7 +14,7 @@ public class ReflectBullet : MonoBehaviour
     //弾丸がListから削除されるAction
     public event Action<ReflectBullet> reflectBulletRemoveEvent;
     //ぶつかった時
-    public event Action<Collision, ReflectBullet> reflectBulletCollideEvent;
+    public event Action<ReflectBullet, Collision> reflectBulletCollideEvent;
     //反射
     public event Action<ReflectBullet, Collision> reflectEvent;
 
@@ -31,6 +31,7 @@ public class ReflectBullet : MonoBehaviour
 
     public void OnUpdate()
     {
+        //Debug.Log("OnUpdate");
         if (moveDistance > maxDistance)
         {
             OnTriggerNextAction();//リストから削除
@@ -39,6 +40,7 @@ public class ReflectBullet : MonoBehaviour
         else
         {
             Move();
+            Reflect(null);
         }
     }
 
@@ -47,8 +49,6 @@ public class ReflectBullet : MonoBehaviour
         Vector3 moveValue = moveDir * bulletSpeed;
         transform.position += moveValue;
         moveDistance += moveValue.magnitude;
-
-        Reflect(null);
     }
 
     public Vector3 GetSetVector
@@ -64,7 +64,7 @@ public class ReflectBullet : MonoBehaviour
     }
 
     //弾丸が消えるときに起きるイベント
-    public void OnTriggerNextAction()
+    private void OnTriggerNextAction()
     {
         if (reflectBulletRemoveEvent == null) return;
         reflectBulletRemoveEvent?.Invoke(this);
@@ -80,7 +80,7 @@ public class ReflectBullet : MonoBehaviour
     private void OnCollisionEnter(Collision _collision)
     {
         if (reflectBulletCollideEvent == null) return;
-        reflectBulletCollideEvent?.Invoke(_collision, this);
+        reflectBulletCollideEvent?.Invoke(this, _collision);
     }
 
     private void RotateSet(Vector3 _directionVec)
@@ -91,9 +91,11 @@ public class ReflectBullet : MonoBehaviour
         transform.localEulerAngles = angles;
     }
 
-    public void Reflect(Collision _collision)
+    private void Reflect(Collision _collision)
     {
         if (reflectEvent == null) return;
         reflectEvent?.Invoke(this, _collision);
+
+        RotateSet(moveDir);
     }
 }

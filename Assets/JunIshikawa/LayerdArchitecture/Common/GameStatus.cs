@@ -80,6 +80,8 @@ public class GameStatus
     [Range(2, 15)]
     public float lineMaxDistance = 5f;
 
+    #region Input
+
     [Header("Input")]
     [SerializeField]
     public bool isMoveInput = false;
@@ -109,6 +111,8 @@ public class GameStatus
 
     [System.NonSerialized]
     public Vector3 playerMouseVector;
+
+    #endregion
 
     [Header("Animation")]
     [SerializeField]
@@ -161,6 +165,7 @@ public class GameStatus
     [SerializeField]
     public bool isLevelUp = false;
 
+    #region UI(UserInterfaces)
     [Header("UI")]
     [SerializeField]
     public TextMeshProUGUI playerLevelText;
@@ -176,16 +181,6 @@ public class GameStatus
 
     [SerializeField]
     public TextMeshProUGUI timerText;
-
-    [Header("Timer")]
-    [System.NonSerialized]
-    public float seconds;
-
-    [System.NonSerialized]
-    public float oldSeconds;
-
-    [System.NonSerialized]
-    public int minutes;
 
     [Header("LevelUpPanel")]
     [SerializeField]
@@ -203,6 +198,18 @@ public class GameStatus
     [System.NonSerialized]
     public bool isPanelSelected = false;
 
+    [Header("Timer")]
+    [System.NonSerialized]
+    public float seconds;
+
+    [System.NonSerialized]
+    public float oldSeconds;
+
+    [System.NonSerialized]
+    public int minutes;
+    #endregion
+
+    #region Data(ScriptableObjects)
     [Header("Data")]
     public List<EnemyData> enemyDataList;
     public PlayerObjectData playerObjectData;
@@ -212,6 +219,8 @@ public class GameStatus
 
     public AuraObjectData auraObjectData;
 
+    #endregion
+
     public enum InputNameType
     {
         MouseButtonRight,
@@ -220,4 +229,11 @@ public class GameStatus
         right_shift,
         left_shift
     }
+
+    public bool optionBullet = false;
+    public bool optionReflectBullet = true;
+    public bool optionAura = false;
+
+    [System.NonSerialized]
+    public Vector3 autoAttackVector;
 }

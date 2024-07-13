@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AutoBulletSystem : AttackOptionBase, IOnUpdate
 {
-    public void OnUpdate(){
-        if(gameStat.autoBulletObjectData.isAutoBullet) {
+    public void OnUpdate()
+    {
+        if(gameStat.autoBulletObjectData.isAutoBullet)
+        {
             if (gameStat.autoBulletList.Count > 0)
             {
                 for (int i = gameStat.autoBulletList.Count - 1; i >= 0; i--)
@@ -14,21 +16,27 @@ public class AutoBulletSystem : AttackOptionBase, IOnUpdate
                 }
             }
 
-            if (gameStat.currentTargetEnemies.Count == 0 || gameStat.currentEnemyIndex >= gameStat.currentTargetEnemies.Count) {
-                if (Time.time > gameStat.nextFireTime) {
-                    gameStat.currentTargetEnemies = GetEnemiesWithinRange(gameStat.player.transform.position, gameStat.enemyList, gameStat.autoBulletObjectData.autoBulletRange);
+            if (gameStat.currentTargetEnemies.Count == 0 || gameStat.currentEnemyIndex >= gameStat.currentTargetEnemies.Count)
+            {
+                if (Time.time > gameStat.nextFireTime)
+                {
+                    gameStat.currentTargetEnemies = GetEnemiesWithInRange(gameStat.player.transform.position, gameStat.enemyList, gameStat.autoBulletObjectData.autoBulletRange);
                     gameStat.currentEnemyIndex = 0;
                     gameStat.nextFireTime = Time.time + gameStat.autoBulletObjectData.fireRate; // 次の発射サイクルを設定
                 }
             }
 
-            if (gameStat.currentTargetEnemies.Count > 0 && Time.time > gameStat.nextFireTime - gameStat.autoBulletObjectData.fireRate) {
-                if (gameStat.currentEnemyIndex < gameStat.currentTargetEnemies.Count) {
+            if (gameStat.currentTargetEnemies.Count > 0 && Time.time > gameStat.nextFireTime - gameStat.autoBulletObjectData.fireRate)
+            {
+                if (gameStat.currentEnemyIndex < gameStat.currentTargetEnemies.Count)
+                {
                     EnemyBase targetEnemy = gameStat.currentTargetEnemies[gameStat.currentEnemyIndex];
                     Vector3 targetPos = targetEnemy.transform.position;
 
                     float dis = Vector3.Distance(targetPos, gameStat.player.transform.position);
-                    if (dis < gameStat.autoBulletObjectData.autoBulletRange) {
+
+                    if (dis < gameStat.autoBulletObjectData.autoBulletRange)
+                    {
                         SimulAutoBulletInstantiate(
                             gameStat.autoBullet,
                             gameStat.player.transform.position,
@@ -47,11 +55,11 @@ public class AutoBulletSystem : AttackOptionBase, IOnUpdate
                     }
                 }
             }
-        }
-            
+        }       
     }
 
-    private void SimulAutoBulletInstantiate(AutoBullet _bullet, Vector3 _playerPos, Vector3 _enemyPos, float _bulletSpeed, float _maxDistance, int _bulletDamage, int _penetrateCount, List<AutoBullet> _autoBulletList, int _simulNum, int _angleLevel) {
+    private void SimulAutoBulletInstantiate(AutoBullet _bullet, Vector3 _playerPos, Vector3 _enemyPos, float _bulletSpeed, float _maxDistance, int _bulletDamage, int _penetrateCount, List<AutoBullet> _autoBulletList, int _simulNum, int _angleLevel)
+    {
         Vector3 attackVector = (_enemyPos - _playerPos).normalized;
         
         float theta;
@@ -69,12 +77,12 @@ public class AutoBulletSystem : AttackOptionBase, IOnUpdate
             }
 
             Vector3 vec = Quaternion.Euler(0, theta, 0) * attackVector;
-
             AutoBulletInstantiate(_bullet, _playerPos, vec, _bulletSpeed, _maxDistance, _bulletDamage, _penetrateCount, _autoBulletList);
         }
     }
 
-    private void AutoBulletInstantiate(AutoBullet _bullet, Vector3 _playerPos, Vector3 _attackVector, float _bulletSpeed, float _maxDistance, int _bulletDamage, int _penetrateCount, List<AutoBullet> _bulletList){
+    private void AutoBulletInstantiate(AutoBullet _bullet, Vector3 _playerPos, Vector3 _attackVector, float _bulletSpeed, float _maxDistance, int _bulletDamage, int _penetrateCount, List<AutoBullet> _bulletList)
+    {
         //弾丸を生成
         AutoBullet bulletInstance = GameObject.Instantiate(_bullet, _playerPos, Quaternion.identity);
         bulletInstance.Init(_attackVector, _bulletSpeed, _maxDistance, _bulletDamage, _penetrateCount);
@@ -86,43 +94,55 @@ public class AutoBulletSystem : AttackOptionBase, IOnUpdate
         _bulletList.Add(bulletInstance);
     }
 
-    private Vector3? LaunchDetection(Vector3 _playerPos, List<EnemyBase> _enemyList, float _maxDistance) {
+    private Vector3? LaunchDetection(Vector3 _playerPos, List<EnemyBase> _enemyList, float _maxDistance)
+    {
     // 最小距離の初期値
-    float nearestDistance = float.MaxValue;
-    Vector3? launchDestinationPos = null;
+        float nearestDistance = float.MaxValue;
+        Vector3? launchDestinationPos = null;
 
-    foreach(var enemy in _enemyList) {
-        // エネミーとの距離を計測
-        float dis = Vector3.Distance(enemy.transform.position, _playerPos);
+        foreach(var enemy in _enemyList)
+        {
+            // エネミーとの距離を計測
+            float dis = Vector3.Distance(enemy.transform.position, _playerPos);
 
-        // エネミーが最大距離以内かチェック
-        if(dis <= _maxDistance) {
-            // レイキャストで障害物の有無をチェック
-            if(Physics.Raycast(_playerPos, (enemy.transform.position - _playerPos).normalized, out RaycastHit hitInfo, dis)) {
+            // エネミーが最大距離以内かチェック
+            if(dis <= _maxDistance)
+            {
+                // レイキャストで障害物の有無をチェック
+                if(Physics.Raycast(_playerPos, (enemy.transform.position - _playerPos).normalized, out RaycastHit hitInfo, dis))
+                {
                 // Raycastで衝突したオブジェクトが自分自身でないことを確認
-                if(hitInfo.collider.gameObject != enemy.gameObject) {
-                    continue;
+                    if(hitInfo.collider.gameObject != enemy.gameObject)
+                    {
+                        continue;
+                    }
+                }
+            // 最小距離の更新
+                if(dis < nearestDistance)
+                {
+                    nearestDistance = dis;
+                    launchDestinationPos = enemy.transform.position;
                 }
             }
-            // 最小距離の更新
-            if(dis < nearestDistance) {
-                nearestDistance = dis;
-                launchDestinationPos = enemy.transform.position;
-            }
         }
+
+        return launchDestinationPos;
     }
 
-    return launchDestinationPos;
-}
-
-    private List<EnemyBase> GetEnemiesWithinRange(Vector3 _playerPos, List<EnemyBase> _enemyList, float _maxDistance) {
+    private List<EnemyBase> GetEnemiesWithInRange(Vector3 _playerPos, List<EnemyBase> _enemyList, float _maxDistance)
+    {
         List<EnemyBase> enemiesWithinRange = new List<EnemyBase>();
 
-        foreach(var enemy in _enemyList) {
+        foreach(var enemy in _enemyList)
+        {
             float dis = Vector3.Distance(enemy.transform.position, _playerPos);
-            if(dis <= _maxDistance) {
-                if(Physics.Raycast(_playerPos, (enemy.transform.position - _playerPos).normalized, out RaycastHit hitInfo, dis)) {
-                    if(hitInfo.collider.gameObject == enemy.gameObject) {
+
+            if(dis <= _maxDistance)
+            {
+                if(Physics.Raycast(_playerPos, (enemy.transform.position - _playerPos).normalized, out RaycastHit hitInfo, dis))
+                {
+                    if(hitInfo.collider.gameObject == enemy.gameObject)
+                    {
                         enemiesWithinRange.Add(enemy);
                     }
                 }
