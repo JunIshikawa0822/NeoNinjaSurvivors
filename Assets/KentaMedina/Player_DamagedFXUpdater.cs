@@ -14,7 +14,8 @@ public class Player_DamagedFXUpdater : DamageFXUpdater
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         materialPropertyBlock = new MaterialPropertyBlock();
         nColor.a = additionalAlpha;
-        damagedOverlay.color = nColor;
+        secondaryTint.a = additionalAlpha;
+        damagedOverlay.color = secondaryTint;
     }
     public override void InitializeFlash()
     {
@@ -30,8 +31,8 @@ public class Player_DamagedFXUpdater : DamageFXUpdater
         while (additionalAlpha >= 0f)
         {
             additionalAlpha -= increment * 2f;
-            nColor.a = additionalAlpha;
-            damagedOverlay.color = nColor;
+            secondaryTint.a = additionalAlpha;
+            damagedOverlay.color = secondaryTint;
             yield return new WaitForSeconds(increment);
         }
     }
