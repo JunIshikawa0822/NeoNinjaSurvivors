@@ -58,6 +58,9 @@ public class GameStatus
     [SerializeField] public Shuriken shuriken;
     public List<Shuriken> shurikenList = new List<Shuriken>();
 
+    [Header("BigShuriken")]
+    [SerializeField] public BigShuriken bigShuriken;
+
     [Header("AutoBullet")]
     [SerializeField] public AutoBullet autoBullet;
     public List<AutoBullet> autoBulletList = new List<AutoBullet>();
@@ -69,6 +72,9 @@ public class GameStatus
     [SerializeField] public Aura aura;
     [System.NonSerialized] public Aura activeAuraInstance = null;
     [System.NonSerialized] public Dictionary<EnemyBase, float> enemyTimers = new Dictionary<EnemyBase, float>();
+
+    [Header("Thunder")]
+    [SerializeField] public Thunder thunder;
 
     [Header("LineRenderer")]
     [SerializeField]
@@ -209,7 +215,7 @@ public class GameStatus
     public BulletObjectData bulletObjectData;
     public ReflectBulletObjectData reflectBulletObjectData;
     public AutoBulletObjectData autoBulletObjectData;
-
+    public ThunderObjectData thunderObjectData;
     public AuraObjectData auraObjectData;
 
     public enum InputNameType
