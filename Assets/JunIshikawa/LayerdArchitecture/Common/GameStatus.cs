@@ -52,6 +52,8 @@ public class GameStatus
 
     [Header("ReflectBullet")]
     [SerializeField] public ReflectBullet reflectBullet;
+    public bool isReflectBulletUsing = false;
+    public int refelectBulletLevel = 1;
     public List<ReflectBullet> reflectBulletList = new List<ReflectBullet>();
 
     [Header("Shuriken")]
@@ -133,6 +135,8 @@ public class GameStatus
     [Header("FootHold")]
     [SerializeField]
     public GameObject footholdObject;
+    [SerializeField]
+    public GameObject footholdPredictObject;
 
     [Range(1,5),SerializeField]
     public float footholdSetDistance;

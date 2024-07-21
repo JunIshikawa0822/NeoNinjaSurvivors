@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AuraSystem : AttackOptionBase, IOnUpdate
 {
-    public void OnUpdate(){
+    public void OnUpdate()
+    {
         if (gameStat.auraObjectData.isAuraUsing && gameStat.activeAuraInstance == null) {
             AuraActivation(gameStat.aura,ref gameStat.activeAuraInstance, gameStat.player.transform.position);
         } else if (!gameStat.auraObjectData.isAuraUsing && gameStat.activeAuraInstance != null) {

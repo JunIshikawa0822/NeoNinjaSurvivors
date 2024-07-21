@@ -24,7 +24,8 @@ public class GameMain : MonoBehaviour
             new DrawSystem(),
             new LevelSystem(),
             new UISystem(),
-            new TimeSystem()
+            new TimeSystem(),
+            new FootholdSystem()
         };
 
         allUpdateSystems = new List<IOnUpdate>();

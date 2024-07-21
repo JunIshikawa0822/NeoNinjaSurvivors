@@ -7,6 +7,9 @@ public class ReflectBulletSystem : AttackOptionBase, IOnUpdate
 {
     public void OnUpdate()
     {
+
+        if (gameStat.isReflectBulletUsing == false) return;
+
         if (gameStat.bulletList.Count > 0)
         {
             for (int i = gameStat.bulletList.Count - 1; i >= 0; i--)
