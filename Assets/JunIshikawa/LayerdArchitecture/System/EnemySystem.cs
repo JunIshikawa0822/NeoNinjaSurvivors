@@ -7,8 +7,6 @@ public class EnemySystem : SystemBase, IOnUpdate
 
     public void OnUpdate()
     {
-        gameStat.elapsedTime += Time.deltaTime;
-
         if (gameStat.enemyList.Count > 0)
         {
             //エネミーのNavMesh挙動
@@ -38,6 +36,8 @@ public class EnemySystem : SystemBase, IOnUpdate
             }
         }
 
+        if(gameStat.isLevelUp) return;
+        gameStat.elapsedTime += Time.deltaTime;
         //エネミー生成工場（１秒ごとに生成確率に応じて生成される）無限増殖怖いので50体に制限
         if(gameStat.elapsedTime > gameStat.spawnInterval && gameStat.enemyList.Count < gameStat.spawnLimitNum){
             float randomParam = Random.Range(0,100f);
