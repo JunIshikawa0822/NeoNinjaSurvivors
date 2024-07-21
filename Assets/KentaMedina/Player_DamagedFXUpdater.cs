@@ -44,7 +44,7 @@ public class Player_DamagedFXUpdater : DamageFXUpdater
             additionalAlpha -= increment * 2f;
             secondaryTint.a = additionalAlpha;
             damagedOverlay.color = secondaryTint;
-            m_Vignette.intensity.Override(additionalAlpha * 0.4f);
+            m_Vignette.intensity.value = additionalAlpha * 0.8f;
             yield return new WaitForSeconds(increment);
         }
     }
