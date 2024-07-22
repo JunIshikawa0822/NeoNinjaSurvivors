@@ -99,6 +99,7 @@ public class UISystem : SystemBase, IOnLateUpdate
         button.pointerExitEvent += () => button.buttonImage.color = Color.white;
         button.pointerDownEvent += () => gameStat.isPanelSelected = true;
         button.pointerDownEvent += () => gameStat.selectedPanelNumber = _panelNum;
+
     }
 
     private void DebugButtonInit(GameObject _buttonUI)
