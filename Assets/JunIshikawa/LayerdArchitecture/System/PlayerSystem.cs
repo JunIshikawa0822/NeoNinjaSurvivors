@@ -10,6 +10,7 @@ public class PlayerSystem : SystemBase, IOnUpdate
         base.SetUp();
 
         gameStat.player.EntityComponentSetUp();
+        gameStat.player.EntityHpSetUp(gameStat.playerObjectData.playerMaxHp);
         gameStat.player.Init(false);
     }
 

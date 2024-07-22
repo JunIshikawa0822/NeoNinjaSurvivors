@@ -14,7 +14,6 @@ public class EnemySystem : SystemBase, IOnUpdate
             {
                 if (!gameStat.isLevelUp)
                 {
-                    
                     gameStat.enemyList[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
                     gameStat.enemyList[i].OnUpdate();
                     //動かす
@@ -105,7 +104,6 @@ public class EnemySystem : SystemBase, IOnUpdate
         }
         
     }
-
     private void ArmEnemyInstantiate(ArmEnemy _armEnemy, EnemyData _data, List<EnemyBase> _enemyList, Vector3 _playerPos, int _enemyNum,float _spawnRadius)
     {
         Vector3 center = _playerPos;
