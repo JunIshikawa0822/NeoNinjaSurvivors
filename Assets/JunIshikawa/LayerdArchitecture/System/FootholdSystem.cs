@@ -11,19 +11,29 @@ public class FootholdSystem : SystemBase, IOnUpdate
 
     public void OnUpdate()
     {
-        if (gameStat.isFootHoldInputUp)
-        {
-            Debug.Log("A");
-            if (!isPlayerStandOnFoothold(gameStat.footholdObject, gameStat.playerLayer))
-            {
-                Vector3 footholdPos = FootholdPos(
+        Vector3 footholdPos = FootholdPos(
                     gameStat.player.transform.position,
                     gameStat.playerMouseVector,
                     gameStat.footholdSetDistance,
                     gameStat.playerMoveRayHitLayer
                     );
 
-                if ((footholdPos - gameStat.player.transform.position).magnitude < 2) return;
+        if (gameStat.isFootHoldInput)
+        {
+            gameStat.footholdPredictObject.SetActive(true);
+            FootholdSet(gameStat.footholdPredictObject, footholdPos);         
+        }
+        else
+        {
+            gameStat.footholdPredictObject.SetActive(false);
+        }
+
+        if (gameStat.isFootHoldInputUp)
+        {
+            Debug.Log("Ys");
+            if (isPlayerStandOnFoothold(gameStat.footholdObject, gameStat.playerLayer) == false)
+            {
+                //if ((footholdPos - gameStat.player.transform.position).magnitude < 2) return;
 
                 FootholdSet(gameStat.footholdObject, footholdPos);
                 Debug.Log("Foothold");
@@ -73,6 +83,7 @@ public class FootholdSystem : SystemBase, IOnUpdate
             isStand = false;
         }
 
+        Debug.Log(isStand);
         return isStand;
     }
 }
