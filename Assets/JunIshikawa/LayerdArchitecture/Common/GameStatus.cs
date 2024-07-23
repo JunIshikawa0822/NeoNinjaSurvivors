@@ -191,6 +191,10 @@ public class GameStatus
     [SerializeField]
     public TextMeshProUGUI timerText;
 
+    [Header("Reward")]
+    [SerializeField]
+    public List<Texture2D> rewardTexture = new List<Texture2D>(); 
+
     [Header("Timer")]
     [System.NonSerialized]
     public float seconds;

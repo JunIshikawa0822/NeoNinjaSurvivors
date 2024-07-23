@@ -22,7 +22,7 @@ public class AuraObjectData : ScriptableObject
         }
     }
 
-    [SerializeField] private Dictionary<int, AuraParameters> auraLevels = new Dictionary<int, AuraParameters>();
+    [SerializeField] private List<AuraParameters> auraLevels = new List<AuraParameters>();
 
     [System.NonSerialized] public float elapsedAuraTime = 0f;
 
@@ -30,30 +30,30 @@ public class AuraObjectData : ScriptableObject
 
     public void InitializeAuraLevels()
     {
-        // レベルごとの設定をDictionaryに追加
-        auraLevels.Add(1, new AuraParameters(5f, 3f, 5f, 1));
-        auraLevels.Add(2, new AuraParameters(6f, 2.5f, 6f, 2));
-        auraLevels.Add(3, new AuraParameters(7f, 2f, 7f, 3));
-        auraLevels.Add(4, new AuraParameters(7f, 2f, 7f, 3));
-        auraLevels.Add(5, new AuraParameters(7f, 2f, 7f, 3));
-        auraLevels.Add(6, new AuraParameters(7f, 2f, 7f, 3));
-        auraLevels.Add(7, new AuraParameters(7f, 2f, 7f, 3));
+        auraLevels.Clear();
+        auraLevels.Add(new AuraParameters(5f, 3f, 5f, 1));
+        auraLevels.Add(new AuraParameters(6f, 2.5f, 6f, 2));
+        auraLevels.Add(new AuraParameters(7f, 2f, 7f, 3));
+        auraLevels.Add(new AuraParameters(8f, 1.5f, 8f, 4));
+        auraLevels.Add(new AuraParameters(9f, 1f, 9f, 5));
+        auraLevels.Add(new AuraParameters(10f, 0.5f, 10f, 6));
+        auraLevels.Add(new AuraParameters(11f, 0.25f, 11f, 7));
     }
 
     public void SetLevel(int level)
     {
-        if (auraLevels.TryGetValue(level, out currentParameters))
+        if (level < 1 || level > auraLevels.Count)
         {
-            Debug.Log("オーラレベル更新 : "+ level);
+            Debug.LogWarning("異様なレベル検知です: " + level);
+            return;
         }
-        else
-        {
-            Debug.LogWarning("異様なレベル検知です");
-        }
+
+        currentParameters = auraLevels[level - 1];
+        Debug.Log("オーラレベル更新 : " + level);
     }
 
-    public float AuraRadius => currentParameters.auraRadius;
-    public float AuraNockBackInterval => currentParameters.auraNockBackInterval;
-    public float AuraNockBackStrength => currentParameters.auraNockBackStrength;
-    public int AuraDamage => currentParameters.auraDamage;
+    public float AuraRadius => currentParameters?.auraRadius ?? 0f;
+    public float AuraNockBackInterval => currentParameters?.auraNockBackInterval ?? 0f;
+    public float AuraNockBackStrength => currentParameters?.auraNockBackStrength ?? 0f;
+    public int AuraDamage => currentParameters?.auraDamage ?? 0;
 }
