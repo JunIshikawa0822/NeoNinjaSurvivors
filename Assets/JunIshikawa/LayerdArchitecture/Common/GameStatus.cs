@@ -72,11 +72,15 @@ public class GameStatus
 
     [Header("Aura")]
     [SerializeField] public Aura aura;
+
+    [SerializeField] public bool isAuraUsing = false;
     [System.NonSerialized] public Aura activeAuraInstance = null;
     [System.NonSerialized] public Dictionary<EnemyBase, float> enemyTimers = new Dictionary<EnemyBase, float>();
 
     [Header("Thunder")]
     [SerializeField] public Thunder thunder;
+
+    [SerializeField] public bool isThunderAttack = false;
 
     [Header("LineRenderer")]
     [SerializeField]

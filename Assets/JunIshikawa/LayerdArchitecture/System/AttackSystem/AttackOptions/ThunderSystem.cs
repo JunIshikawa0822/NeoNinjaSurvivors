@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThunderSystem : AttackOptionBase, IOnUpdate
 {
     public void OnUpdate(){
-        if(gameStat.thunderObjectData.isThunderAttack)
+        if(gameStat.isThunderAttack)
         {
             gameStat.thunderObjectData.thunderTime += Time.deltaTime;
             if(gameStat.thunderObjectData.thunderTime > gameStat.thunderObjectData.thunderInterval)
@@ -15,7 +15,6 @@ public class ThunderSystem : AttackOptionBase, IOnUpdate
                 gameStat.thunderObjectData.thunderTime = 0f; 
             }
         }
-        
     }
 
     private void ThunderboltAttack(Thunder _thunder, Vector3 _playerPos, float _thunderRange, int _thunderDamage)

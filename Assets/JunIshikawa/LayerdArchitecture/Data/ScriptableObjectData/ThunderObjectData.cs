@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ThunderObjectData", menuName = "ScriptableObject/ThunderObjectData", order = 0)]
 public class ThunderObjectData : ScriptableObject
 {
-    public bool isThunderAttack = false;
+    
     //落雷範囲
     public float thunderRange = 10f;
     //落雷発生間隔

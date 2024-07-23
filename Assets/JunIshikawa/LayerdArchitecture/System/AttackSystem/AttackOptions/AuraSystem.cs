@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class AuraSystem : AttackOptionBase, IOnUpdate
 {
+    public override void AttackOptionSetUp()
+    {
+        gameStat.auraObjectData.InitializeAuraLevels();
+        gameStat.auraObjectData.SetLevel(1);
+    }
+
     public void OnUpdate()
     {
-        if (gameStat.auraObjectData.isAuraUsing && gameStat.activeAuraInstance == null) {
+        if (gameStat.isAuraUsing && gameStat.activeAuraInstance == null) {
             AuraActivation(gameStat.aura,ref gameStat.activeAuraInstance, gameStat.player.transform.position);
-        } else if (!gameStat.auraObjectData.isAuraUsing && gameStat.activeAuraInstance != null) {
+        } else if (!gameStat.isAuraUsing && gameStat.activeAuraInstance != null) {
             AuraDeActivation(ref gameStat.activeAuraInstance);
-        } else if(gameStat.auraObjectData.isAuraUsing && gameStat.activeAuraInstance != null) {
-            AuraScale(ref gameStat.activeAuraInstance,gameStat.auraObjectData.auraRadius, gameStat.player.transform.position);
-            AuraProcess(gameStat.activeAuraInstance, gameStat.auraObjectData.auraRadius, gameStat.auraObjectData.auraNockBackStrength, gameStat.auraObjectData.auraNockBackInterval, gameStat.auraObjectData.auraDamage, gameStat.enemyTimers);
-            // gameStat.elapsedAuraTime += Time.deltaTime;
-            // if(gameStat.elapsedAuraTime >= gameStat.auraNockBackInterval) {
-            //     //ここで全ての射程圏内の敵にノックバックを与える
-            //     AuraProcess(gameStat.activeAuraInstance, gameStat.auraRadius, gameStat.auraNockBackStrength, gameStat.auraDamage);
-            //     gameStat.elapsedAuraTime = 0f;
-            // }
+        } else if(gameStat.isAuraUsing && gameStat.activeAuraInstance != null) {
+            AuraScale(ref gameStat.activeAuraInstance,gameStat.auraObjectData.AuraRadius, gameStat.player.transform.position);
+            AuraProcess(gameStat.activeAuraInstance, gameStat.auraObjectData.AuraRadius, gameStat.auraObjectData.AuraNockBackStrength, gameStat.auraObjectData.AuraNockBackInterval, gameStat.auraObjectData.AuraDamage, gameStat.enemyTimers);
         }
 
         
@@ -48,7 +48,6 @@ public class AuraSystem : AttackOptionBase, IOnUpdate
 
                 if (Time.time >= _enemyTimers[enemy])
                 {
-                    Debug.Log("ノックバック" + enemy);
                     enemy.EnemyGetDamage(_auraDamage,_activeAuraInstance.transform.position, enemy.transform.position, _auraNBStrength);
                     _enemyTimers[enemy] = Time.time + _auraNBInterval;
                 }

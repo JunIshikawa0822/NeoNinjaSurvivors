@@ -24,7 +24,7 @@ public class AttackOptionBase
         float r = Random.Range(-90, 90);
         Debug.Log(r);
 
-        Vector3 rangeVec;
+        Vector3 rangeVec = Vector3.zero;
 
         foreach (EnemyBase enemy in _enemyList)
         {

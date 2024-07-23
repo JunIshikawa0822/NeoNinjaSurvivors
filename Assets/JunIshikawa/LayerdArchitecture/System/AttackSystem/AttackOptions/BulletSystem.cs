@@ -5,6 +5,11 @@ using static UnityEditor.PlayerSettings;
 
 public class BulletSystem : AttackOptionBase, IOnUpdate
 {
+    public override void AttackOptionSetUp()
+    {
+        gameStat.bulletObjectData.InitializeBulletLevels();
+        gameStat.bulletObjectData.SetLevel(1);
+    }
     public void OnUpdate()
     {
         
@@ -22,13 +27,13 @@ public class BulletSystem : AttackOptionBase, IOnUpdate
                 gameStat.bullet,
                 gameStat.player.transform.position,
                 gameStat.playerMouseVector,
-                gameStat.bulletObjectData.bulletSpeed,
-                gameStat.bulletObjectData.maxDistance,
-                gameStat.bulletObjectData.bulletDamage,
-                gameStat.bulletObjectData.penetrateCount,
+                gameStat.bulletObjectData.BulletSpeed,
+                gameStat.bulletObjectData.MaxDistance,
+                gameStat.bulletObjectData.BulletDamage,
+                gameStat.bulletObjectData.PenetrateCount,
                 gameStat.bulletList,
-                gameStat.bulletObjectData.simulNumLevel,
-                gameStat.bulletObjectData.bulletAngleLevelArray[gameStat.bulletObjectData.angleLevel]);
+                gameStat.bulletObjectData.SimulNumLevel,
+                gameStat.bulletObjectData.bulletAngleLevelArray[gameStat.bulletObjectData.AngleLevel]);
         }
         
     }
