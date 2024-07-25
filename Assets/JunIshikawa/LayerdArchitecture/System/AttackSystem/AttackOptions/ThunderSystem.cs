@@ -8,10 +8,10 @@ public class ThunderSystem : AttackOptionBase, IOnUpdate
         if(gameStat.isThunderAttack)
         {
             gameStat.thunderObjectData.thunderTime += Time.deltaTime;
-            if(gameStat.thunderObjectData.thunderTime > gameStat.thunderObjectData.thunderInterval)
+            if(gameStat.thunderObjectData.thunderTime > gameStat.thunderObjectData.ThunderInterval)
             {
                 //ここで一定範囲内に落雷
-                ThunderboltAttack(gameStat.thunder, gameStat.player.transform.position, gameStat.thunderObjectData.thunderRange, gameStat.thunderObjectData.thunderDamage);
+                ThunderboltAttack(gameStat.thunder, gameStat.player.transform.position, gameStat.thunderObjectData.ThunderRange, gameStat.thunderObjectData.ThunderDamage);
                 gameStat.thunderObjectData.thunderTime = 0f; 
             }
         }
@@ -46,7 +46,7 @@ public class ThunderSystem : AttackOptionBase, IOnUpdate
             if (enemy == null) return;
 
             //敵のダメージ関数を起動
-            enemy.EnemyGetDamage(_thunder.ThunderDamage(), gameStat.player.transform.position, enemy.transform.position, gameStat.thunderObjectData.thunderNockBackStrength);
+            enemy.EnemyGetDamage(_thunder.ThunderDamage(), gameStat.player.transform.position, enemy.transform.position, gameStat.thunderObjectData.ThunderNockBackStrength);
         }
     }
 }

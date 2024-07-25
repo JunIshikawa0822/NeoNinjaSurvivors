@@ -86,6 +86,7 @@ public class UISystem : SystemBase, IOnLateUpdate
                 switch(gameStat.currentRewardsSet[gameStat.selectedPanelNumber])
                 {
                     case "Aura":
+                        gameStat.isAuraUsing = true;
                         gameStat.auraSkillLevel++;
                         gameStat.auraObjectData.SetLevel(gameStat.auraSkillLevel);
                         break;
@@ -97,6 +98,7 @@ public class UISystem : SystemBase, IOnLateUpdate
                         gameStat.shurikenSkillLevel++;
                         break;
                     case "Thunder":
+                        gameStat.isThunderAttack = true;
                         gameStat.thunderSkillLevel++;
                         break;
                     default:
