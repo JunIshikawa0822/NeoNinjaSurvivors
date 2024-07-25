@@ -14,12 +14,12 @@ public class EnemySystem : SystemBase, IOnUpdate
             {
                 if (!gameStat.isLevelUp)
                 {
-                    gameStat.enemyList[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
-                    gameStat.enemyList[i].OnUpdate();
+                    if(gameStat.enemyList[i] == null) return;
                     //動かす
                     gameStat.enemyList[i].NavMeshAgentIsStopped(false);
                     gameStat.enemyList[i].NavMeshDestinationSet(gameStat.player.transform.position);
-
+                    gameStat.enemyList[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    gameStat.enemyList[i].OnUpdate();
                     //プレイヤーを向く
                     if (gameStat.enemyList[i].transform.position.x < gameStat.player.transform.position.x)
                     {
@@ -36,6 +36,7 @@ public class EnemySystem : SystemBase, IOnUpdate
         }
 
         if(gameStat.isLevelUp) return;
+        
         gameStat.elapsedTime += Time.deltaTime;
         //エネミー生成工場（１秒ごとに生成確率に応じて生成される）無限増殖怖いので50体に制限
         if(gameStat.elapsedTime > gameStat.spawnInterval && gameStat.enemyList.Count < gameStat.spawnLimitNum){

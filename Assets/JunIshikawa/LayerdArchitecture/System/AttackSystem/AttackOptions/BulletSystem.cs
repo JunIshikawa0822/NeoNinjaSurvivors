@@ -5,6 +5,11 @@ using static UnityEditor.PlayerSettings;
 
 public class BulletSystem : AttackOptionBase, IOnUpdate
 {
+    public override void AttackOptionSetUp()
+    {
+        //gameStat.bulletObjectData.InitializeBulletLevels();
+        gameStat.bulletObjectData.SetLevel(gameStat.bulletSkillLevel);
+    }
     public void OnUpdate()
     {
         
@@ -22,13 +27,13 @@ public class BulletSystem : AttackOptionBase, IOnUpdate
                 gameStat.bullet,
                 gameStat.player.transform.position,
                 gameStat.playerMouseVector,
-                gameStat.bulletObjectData.bulletSpeed,
-                gameStat.bulletObjectData.maxDistance,
-                gameStat.bulletObjectData.bulletDamage,
-                gameStat.bulletObjectData.penetrateCount,
+                gameStat.bulletObjectData.BulletSpeed,
+                gameStat.bulletObjectData.MaxDistance,
+                gameStat.bulletObjectData.BulletDamage,
+                gameStat.bulletObjectData.PenetrateCount,
                 gameStat.bulletList,
-                gameStat.bulletObjectData.simulNumLevel,
-                gameStat.bulletObjectData.bulletAngleLevelArray[gameStat.bulletObjectData.angleLevel]);
+                gameStat.bulletObjectData.SimulNumLevel,
+                gameStat.bulletObjectData.bulletAngleLevelArray[gameStat.bulletObjectData.AngleLevel]);
         }
         
     }
@@ -91,11 +96,11 @@ public class BulletSystem : AttackOptionBase, IOnUpdate
         }
         else if (_collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("敵だよ");
+            //Debug.Log("敵だよ");
             EnemyBase enemy = _collision.gameObject.GetComponent<EnemyBase>();
             if (enemy == null) return;
 
-            Debug.Log("当たった");
+            //Debug.Log("当たった");
             //敵のダメージ関数を起動
             enemy.EntityGetDamage(_bullet.BulletDamage());
             //弾丸の貫通可能回数を１減らす

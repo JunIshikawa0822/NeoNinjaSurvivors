@@ -7,6 +7,7 @@ using UnityEngine;
 public class TimeSystem : SystemBase, IOnUpdate
 {
     public void OnUpdate() {
+        if(gameStat.isLevelUp) return; 
         TimeControl(ref gameStat.seconds,ref gameStat.minutes,ref gameStat.oldSeconds, gameStat.timerText);
     }
 

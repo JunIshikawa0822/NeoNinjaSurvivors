@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEditor.Experimental.GraphView;
 using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.Rendering.DebugUI;
-using UnityEngine.UIElements;
+using System;
 
 public class UISystem : SystemBase, IOnLateUpdate
 {
@@ -81,6 +81,30 @@ public class UISystem : SystemBase, IOnLateUpdate
             if (gameStat.isPanelSelected == true)
                 gameStat.isLevelUp = false;
                 gameStat.isPanelSelected = false;
+                //選んだRewardのスキルレベルを１上昇させる
+                //Debug.Log(gameStat.currentRewardsSet[gameStat.selectedPanelNumber]);
+                switch(gameStat.currentRewardsSet[gameStat.selectedPanelNumber])
+                {
+                    case "Aura":
+                        gameStat.isAuraUsing = true;
+                        gameStat.auraSkillLevel++;
+                        gameStat.auraObjectData.SetLevel(gameStat.auraSkillLevel);
+                        break;
+                    case "Bullet":
+                        gameStat.bulletSkillLevel++;
+                        gameStat.bulletObjectData.SetLevel(gameStat.bulletSkillLevel);
+                        break;
+                    case "Shuriken":
+                        gameStat.shurikenSkillLevel++;
+                        break;
+                    case "Thunder":
+                        gameStat.isThunderAttack = true;
+                        gameStat.thunderSkillLevel++;
+                        break;
+                    default:
+                        Debug.LogWarning("異常なSkillLevel検知");
+                        break;
+                }
         };
     }
 
@@ -95,10 +119,29 @@ public class UISystem : SystemBase, IOnLateUpdate
         TriggerInsert(button, EventTriggerType.PointerExit).callback.AddListener((eventDate) => { button.PointerExitEvent(); });
         TriggerInsert(button, EventTriggerType.PointerDown).callback.AddListener((eventDate) => { button.PointerDownEvent(); });
 
-        button.pointerOverEvent += () => button.buttonImage.color = Color.black;
-        button.pointerExitEvent += () => button.buttonImage.color = Color.white;
-        button.pointerDownEvent += () => gameStat.isPanelSelected = true;
-        button.pointerDownEvent += () => gameStat.selectedPanelNumber = _panelNum;
+        button.pointerOverEvent += () => button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 1f); // マウスオーバーで半透明の黒
+        button.pointerExitEvent += () => {
+            if(!gameStat.isPanelSelected || gameStat.selectedPanelNumber != _panelNum) 
+                button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 0.5f); // パネルが選択されていない場合または選択パネルが異なる場合は不透明の黒に戻す
+            else
+                button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 1f); // 選択パネルが同じ場合は半透明の黒
+        };
+        button.pointerDownEvent += () => {
+            if(gameStat.isPanelSelected && gameStat.selectedPanelNumber == _panelNum)
+            {
+                button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 0.5f);
+                gameStat.isPanelSelected = false;
+            } else if(gameStat.isPanelSelected && gameStat.selectedPanelNumber != _panelNum) {
+                button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 1f);
+                gameStat.selectPanelsList[gameStat.selectedPanelNumber].GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 0.5f);
+                gameStat.isPanelSelected = true;
+                gameStat.selectedPanelNumber = _panelNum;
+            } else {
+                gameStat.isPanelSelected = true;
+                gameStat.selectedPanelNumber = _panelNum;
+                button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 1f);
+            }
+        };
     }
 
     private void DebugButtonInit(GameObject _buttonUI)

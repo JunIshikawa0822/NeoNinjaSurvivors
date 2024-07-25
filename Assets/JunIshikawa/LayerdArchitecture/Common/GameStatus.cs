@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Cinemachine;
+using System;
 
 //変数のみを格納するクラス
 [System.Serializable]
@@ -47,16 +48,18 @@ public class GameStatus
     [SerializeField] public int spawnLimitNum  = 50;
 
     [Header("Bullet")]
+    
     [SerializeField] public Bullet bullet;
     public List<Bullet> bulletList = new List<Bullet>();
 
     [Header("ReflectBullet")]
     [SerializeField] public ReflectBullet reflectBullet;
     public bool isReflectBulletUsing = false;
-    public int refelectBulletLevel = 1;
+    
     public List<ReflectBullet> reflectBulletList = new List<ReflectBullet>();
 
     [Header("Shuriken")]
+    
     [SerializeField] public Shuriken shuriken;
     public List<Shuriken> shurikenList = new List<Shuriken>();
 
@@ -71,12 +74,17 @@ public class GameStatus
     [SerializeField] public List<EnemyBase> currentTargetEnemies = new List<EnemyBase>();
 
     [Header("Aura")]
+    
     [SerializeField] public Aura aura;
+
+    [SerializeField] public bool isAuraUsing = false;
     [System.NonSerialized] public Aura activeAuraInstance = null;
     [System.NonSerialized] public Dictionary<EnemyBase, float> enemyTimers = new Dictionary<EnemyBase, float>();
 
     [Header("Thunder")]
+    
     [SerializeField] public Thunder thunder;
+    [SerializeField] public bool isThunderAttack = false;
 
     [Header("LineRenderer")]
     [SerializeField]
@@ -186,6 +194,18 @@ public class GameStatus
 
     [SerializeField]
     public TextMeshProUGUI timerText;
+
+    [Header("Reward")]
+    [SerializeField]
+    public List<Texture2D> rewardTextures = new List<Texture2D>(); 
+    public List<String> currentRewardsSet = new List<String>();
+    [SerializeField] public int thunderSkillLevel = 1;
+    [SerializeField] public int auraSkillLevel = 1;
+    [SerializeField] public int shurikenSkillLevel = 1;
+    [SerializeField] public int bulletSkillLevel = 1;
+    [SerializeField] public int refelectBulletLevel = 1;
+    [System.NonSerialized] public bool isLevelUpOnce = false;
+
 
     [Header("Timer")]
     [System.NonSerialized]
