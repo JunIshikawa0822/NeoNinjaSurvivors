@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThunderSystem : AttackOptionBase, IOnUpdate
 {
     public void OnUpdate(){
-        if(gameStat.isThunderAttack)
+        if(gameStat.isThunderUsing)
         {
             gameStat.thunderObjectData.thunderTime += Time.deltaTime;
             if(gameStat.thunderObjectData.thunderTime > gameStat.thunderObjectData.ThunderInterval)

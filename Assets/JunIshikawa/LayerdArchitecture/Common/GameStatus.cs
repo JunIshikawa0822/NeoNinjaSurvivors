@@ -85,7 +85,7 @@ public class GameStatus
     [Header("Thunder")]
     
     [SerializeField] public Thunder thunder;
-    [SerializeField] public bool isThunderAttack = false;
+    [SerializeField] public bool isThunderUsing = false;
 
     [Header("LineRenderer")]
     [SerializeField]
