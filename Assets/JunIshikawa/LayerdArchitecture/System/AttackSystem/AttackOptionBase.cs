@@ -59,7 +59,7 @@ public class AttackOptionBase
         }
 
         //Debug.DrawLine(_playerTrans.position, rangeVec, Color.red, 2f);
-        return rangeVec;
+        return rangeVec.normalized;
     }
 
     protected void AttackTimer(float _time)
