@@ -1781,6 +1781,7 @@ MonoBehaviour:
     - {fileID: 2800000, guid: b23190cd15ed98948a318ca5f8175a18, type: 3}
     - {fileID: 2800000, guid: a2c1433f5e148ed45b103cf512bc068f, type: 3}
     - {fileID: 2800000, guid: 17bbccc28777eae45b571bf9467c6cc8, type: 3}
+    currentRewardsSet: []
     thunderSkillLevel: 1
     auraSkillLevel: 1
     shurikenSkillLevel: 1
@@ -2784,7 +2785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.23137255}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.49019608}
   m_EffectDistance: {x: 4, y: 4}
   m_UseGraphicAlpha: 1
 --- !u!1 &1043694544
@@ -2903,7 +2904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.23137255}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.49019608}
   m_EffectDistance: {x: 4, y: 4}
   m_UseGraphicAlpha: 1
 --- !u!1001 &1074232962
@@ -3358,7 +3359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.23137255}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.49019608}
   m_EffectDistance: {x: 4, y: 4}
   m_UseGraphicAlpha: 1
 --- !u!1 &1335785106

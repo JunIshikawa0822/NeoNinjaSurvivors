@@ -117,11 +117,29 @@ public class UISystem : SystemBase, IOnLateUpdate
         TriggerInsert(button, EventTriggerType.PointerExit).callback.AddListener((eventDate) => { button.PointerExitEvent(); });
         TriggerInsert(button, EventTriggerType.PointerDown).callback.AddListener((eventDate) => { button.PointerDownEvent(); });
 
-        button.pointerOverEvent += () => button.buttonImage.color = Color.black;
-        button.pointerExitEvent += () => button.buttonImage.color = Color.white;
-        button.pointerDownEvent += () => gameStat.isPanelSelected = true;
-        button.pointerDownEvent += () => gameStat.selectedPanelNumber = _panelNum;
-
+        button.pointerOverEvent += () => button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 1f); // マウスオーバーで半透明の黒
+        button.pointerExitEvent += () => {
+            if(!gameStat.isPanelSelected || gameStat.selectedPanelNumber != _panelNum) 
+                button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 0.5f); // パネルが選択されていない場合または選択パネルが異なる場合は不透明の黒に戻す
+            else
+                button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 1f); // 選択パネルが同じ場合は半透明の黒
+        };
+        button.pointerDownEvent += () => {
+            if(gameStat.isPanelSelected && gameStat.selectedPanelNumber == _panelNum)
+            {
+                button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 0.5f);
+                gameStat.isPanelSelected = false;
+            } else if(gameStat.isPanelSelected && gameStat.selectedPanelNumber != _panelNum) {
+                button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 1f);
+                gameStat.selectPanelsList[gameStat.selectedPanelNumber].GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 0.5f);
+                gameStat.isPanelSelected = true;
+                gameStat.selectedPanelNumber = _panelNum;
+            } else {
+                gameStat.isPanelSelected = true;
+                gameStat.selectedPanelNumber = _panelNum;
+                button.GetComponent<Outline>().effectColor = new Color(0f, 0f, 0f, 1f);
+            }
+        };
     }
 
     private void DebugButtonInit(GameObject _buttonUI)
