@@ -98,7 +98,7 @@ public class UISystem : SystemBase, IOnLateUpdate
                         gameStat.shurikenSkillLevel++;
                         break;
                     case "Thunder":
-                        gameStat.isThunderAttack = true;
+                        gameStat.isThunderUsing = true;
                         gameStat.thunderSkillLevel++;
                         break;
                     default:
