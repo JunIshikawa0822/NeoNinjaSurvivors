@@ -15,7 +15,7 @@ public class AttackOptionBase
         this.gameStat = _gameStat;
     }
 
-    public void AttackOptionSetUp()
+    public virtual void AttackOptionSetUp()
     {
         attackBool = false;
         attackTimer = 0;
