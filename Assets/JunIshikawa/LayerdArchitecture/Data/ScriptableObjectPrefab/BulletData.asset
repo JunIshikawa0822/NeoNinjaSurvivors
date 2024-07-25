@@ -12,9 +12,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3556f4174f6424b9023e67e6cbe124, type: 3}
   m_Name: BulletData
   m_EditorClassIdentifier: 
-  bulletSpeed: 0.05
-  maxDistance: 100
-  bulletDamage: 1
-  penetrateCount: 1
-  simulNumLevel: 1
-  angleLevel: 1
+  bulletLevels:
+  - bulletSpeed: 0.1
+    maxDistance: 100
+    bulletDamage: 5
+    penetrateCount: 1
+    simulNumLevel: 1
+    angleLevel: 1
+  - bulletSpeed: 4
+    maxDistance: 120
+    bulletDamage: 2
+    penetrateCount: 2
+    simulNumLevel: 2
+    angleLevel: 2
+  - bulletSpeed: 5
+    maxDistance: 150
+    bulletDamage: 3
+    penetrateCount: 3
+    simulNumLevel: 3
+    angleLevel: 3
+  - bulletSpeed: 6
+    maxDistance: 180
+    bulletDamage: 4
+    penetrateCount: 4
+    simulNumLevel: 4
+    angleLevel: 4
+  - bulletSpeed: 7
+    maxDistance: 200
+    bulletDamage: 5
+    penetrateCount: 5
+    simulNumLevel: 5
+    angleLevel: 5
+  - bulletSpeed: 8
+    maxDistance: 220
+    bulletDamage: 6
+    penetrateCount: 6
+    simulNumLevel: 6
+    angleLevel: 6
+  - bulletSpeed: 9
+    maxDistance: 250
+    bulletDamage: 7
+    penetrateCount: 7
+    simulNumLevel: 7
+    angleLevel: 7

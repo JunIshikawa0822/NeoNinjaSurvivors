@@ -6,8 +6,8 @@ public class AuraSystem : AttackOptionBase, IOnUpdate
 {
     public override void AttackOptionSetUp()
     {
-        //gameStat.auraObjectData.InitializeAuraLevels();
-        gameStat.auraObjectData.SetLevel(1);
+        gameStat.auraObjectData.InitializeAuraLevels();
+        gameStat.auraObjectData.SetLevel(gameStat.auraSkillLevel);
     }
 
     public void OnUpdate()

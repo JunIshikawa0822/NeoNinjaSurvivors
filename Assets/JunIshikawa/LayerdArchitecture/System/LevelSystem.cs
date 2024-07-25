@@ -72,6 +72,7 @@ public class LevelSystem : SystemBase, IOnLateUpdate
         {
             gameStat.playerLevel++;
             gameStat.isLevelUp = true;
+            gameStat.isLevelUpOnce = true;
         }
     }
 }

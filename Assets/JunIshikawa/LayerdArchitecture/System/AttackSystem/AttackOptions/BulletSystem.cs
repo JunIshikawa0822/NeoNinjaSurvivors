@@ -8,7 +8,7 @@ public class BulletSystem : AttackOptionBase, IOnUpdate
     public override void AttackOptionSetUp()
     {
         //gameStat.bulletObjectData.InitializeBulletLevels();
-        gameStat.bulletObjectData.SetLevel(1);
+        gameStat.bulletObjectData.SetLevel(gameStat.bulletSkillLevel);
     }
     public void OnUpdate()
     {

@@ -24,6 +24,7 @@ public class GameMain : MonoBehaviour
             new DrawSystem(),
             new LevelSystem(),
             new UISystem(),
+            new RewardSystem(),
             new TimeSystem(),
             new FootholdSystem()
         };
