@@ -11,7 +11,7 @@ public class PlayerSystem : SystemBase, IOnUpdate
 
         gameStat.player.EntityComponentSetUp();
         gameStat.player.EntityHpSetUp(gameStat.playerObjectData.playerMaxHp);
-        gameStat.player.Init(false);
+        gameStat.player.Init(false, gameStat.playerObjectData.invincibleTime);
     }
 
     public void OnUpdate()

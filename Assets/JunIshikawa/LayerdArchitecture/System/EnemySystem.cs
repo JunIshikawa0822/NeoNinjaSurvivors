@@ -94,6 +94,7 @@ public class EnemySystem : SystemBase, IOnUpdate
             enemy.EnemyInit(_data.enemyAttackPoint, _data.enemyExp);
 
             enemy.onCollideEvent += EnemyCollide;
+            enemy.onCollideStayEvent += EnemyCollide;
 
             enemy.onDestroyEnemyEvent += GetEnemyExp;
             enemy.onDestroyEnemyEvent += EnemyRemove;
@@ -126,6 +127,7 @@ public class EnemySystem : SystemBase, IOnUpdate
             enemy.EnemyInit(_data.enemyAttackPoint, _data.enemyExp);
 
             enemy.onCollideEvent += EnemyCollide;
+            enemy.onCollideStayEvent += EnemyCollide;
 
             enemy.onDestroyEnemyEvent += GetEnemyExp;
             enemy.onDestroyEnemyEvent += EnemyRemove;
@@ -159,6 +161,7 @@ public class EnemySystem : SystemBase, IOnUpdate
             enemy.EnemyInit(_data.enemyAttackPoint, _data.enemyExp);
 
             enemy.onCollideEvent += EnemyCollide;
+            enemy.onCollideStayEvent += EnemyCollide;
 
             enemy.onDestroyEnemyEvent += GetEnemyExp;
             enemy.onDestroyEnemyEvent += EnemyRemove;
@@ -189,6 +192,7 @@ public class EnemySystem : SystemBase, IOnUpdate
             enemy.EnemyInit(_data.enemyAttackPoint, _data.enemyExp);
 
             enemy.onCollideEvent += EnemyCollide;
+            enemy.onCollideStayEvent += EnemyCollide;
 
             enemy.onDestroyEnemyEvent += GetEnemyExp;
             enemy.onDestroyEnemyEvent += EnemyRemove;
@@ -218,6 +222,7 @@ public class EnemySystem : SystemBase, IOnUpdate
             enemy.EnemyInit(_data.enemyAttackPoint, _data.enemyExp);
 
             enemy.onCollideEvent += EnemyCollide;
+            enemy.onCollideStayEvent += EnemyCollide;
 
             enemy.onDestroyEnemyEvent += GetEnemyExp;
             enemy.onDestroyEnemyEvent += EnemyRemove;
@@ -247,6 +252,7 @@ public class EnemySystem : SystemBase, IOnUpdate
             enemy.EnemyInit(_data.enemyAttackPoint, _data.enemyExp);
 
             enemy.onCollideEvent += EnemyCollide;
+            enemy.onCollideStayEvent += EnemyCollide;
 
             enemy.onDestroyEnemyEvent += GetEnemyExp;
             enemy.onDestroyEnemyEvent += EnemyRemove;

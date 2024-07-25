@@ -312,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5649508903654719804, guid: 9826aa1abd6e6ba44987f0cee1826543, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -504,7 +504,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3303642706948906231, guid: a8466f873a403874ba114a8a687c2ad3, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5268445541849941636, guid: a8466f873a403874ba114a8a687c2ad3, type: 3}
       propertyPath: m_Name
@@ -1692,7 +1692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1803,6 +1803,7 @@ MonoBehaviour:
     spawnLimitNum: 50
     bullet: {fileID: 6146447326056385268, guid: 6d56eee9cf5e69442b22527be001498b, type: 3}
     bulletList: []
+    isBulletUsing: 1
     reflectBullet: {fileID: 6055203319012902949, guid: e71e9727882cc7b41ba82001ff1a4b2b, type: 3}
     isReflectBulletUsing: 0
     refelectBulletLevel: 1
@@ -1884,6 +1885,8 @@ MonoBehaviour:
     autoBulletObjectData: {fileID: 11400000, guid: 3d69bb866f725004998381642e12bc6a, type: 2}
     thunderObjectData: {fileID: 11400000, guid: 378f17ae740df684a96cb76177f617b5, type: 2}
     auraObjectData: {fileID: 11400000, guid: 66706a0c6e367664bab944d31dd4fd55, type: 2}
+    attackRange: 8
+    coolTime: 1
 --- !u!1 &738006856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,7 +2413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6680817585184140652, guid: 8f6fe1e2e10c3b9488036553a1037aa7, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2716,7 +2719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8088146470701165317, guid: 2fdaf8ea9a72ff54ab004c2bba4cd47b, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2973,7 +2976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511769464345399960, guid: 5ca5038d893fae546ae64181f8f29aeb, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8644893666203251798, guid: 5ca5038d893fae546ae64181f8f29aeb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3074,7 +3077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8648455271476714990, guid: b0693eeb79cbf344db66d5829eef1ea3, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3244,7 +3247,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 928814640889101201, guid: 4149b55f03c658e4a84cc5a15f4b52bb, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1261980558116822290, guid: 4149b55f03c658e4a84cc5a15f4b52bb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4291,9 +4294,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1931241329}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4500,7 +4503,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 190718052966655894, guid: 0462577a678526b44bc201494baeecff, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2951480181157809711, guid: 0462577a678526b44bc201494baeecff, type: 3}
       propertyPath: m_Name

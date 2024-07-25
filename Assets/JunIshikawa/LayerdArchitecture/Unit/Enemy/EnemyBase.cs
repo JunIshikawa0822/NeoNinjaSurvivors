@@ -81,13 +81,17 @@ public class EnemyBase : EntityBase
 
     private void OnCollisionEnter(Collision _collision)
     {
+        
         if (onCollideEvent == null) return;
+        Debug.Log("Enter");
         onCollideEvent?.Invoke(_collision, this);
     }
 
     private void OnCollisionStay(Collision _collision)
     {
+       
         if (onCollideStayEvent == null) return;
+        Debug.Log("Stay");
         onCollideStayEvent?.Invoke(_collision, this);
     }
 
