@@ -19,13 +19,19 @@ public class Player : EntityBase
     private bool warpDamageAnimParam;
 
     private bool isOnWarp = false;
+    private bool isInvincible;
 
-    public void Init(bool _attackAnimParam)
+    private WaitForSeconds invincibleInterval;
+    private float invincibleTime;
+
+    public void Init(bool _attackAnimParam, float _invincibleTime)
     {
         ParameterSet(_attackAnimParam);
-    }
+        isInvincible = false;
+        invincibleTime = _invincibleTime;
 
-    
+        invincibleInterval = new WaitForSeconds(invincibleTime);
+    }
 
     public void OnUpdate()
     {
@@ -90,8 +96,26 @@ public class Player : EntityBase
     }
 
     public void PlayerGetDamage(int _damagePoint){
+
+        if (isInvincible)
+        {
+            return;
+        }
+
         base.EntityGetDamage(_damagePoint);
+        StartCoroutine(InvincibleTime(invincibleTime));
         //Player_Damage_Effect
         //Debug.Log("DamagePoint : " + _damagePoint);
     }
+
+    private IEnumerator InvincibleTime(float _time)
+    {
+        isInvincible = true;
+
+        yield return invincibleInterval;
+
+        isInvincible = false;
+    }
+
+    
 }

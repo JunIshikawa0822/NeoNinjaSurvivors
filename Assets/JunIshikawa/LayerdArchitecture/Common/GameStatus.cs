@@ -51,6 +51,7 @@ public class GameStatus
     
     [SerializeField] public Bullet bullet;
     public List<Bullet> bulletList = new List<Bullet>();
+    public bool isBulletUsing = false;
 
     [Header("ReflectBullet")]
     [SerializeField] public ReflectBullet reflectBullet;
@@ -241,6 +242,10 @@ public class GameStatus
     public AutoBulletObjectData autoBulletObjectData;
     public ThunderObjectData thunderObjectData;
     public AuraObjectData auraObjectData;
+
+    [Header("AutoAttack")]
+    public float attackRange;
+    public float coolTime = 3;
 
     public enum InputNameType
     {

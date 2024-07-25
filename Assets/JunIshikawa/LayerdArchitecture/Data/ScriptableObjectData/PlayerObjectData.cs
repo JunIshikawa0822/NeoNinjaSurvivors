@@ -7,5 +7,8 @@ public class PlayerObjectData : ScriptableObject
 {
     [SerializeField]
     public int playerMaxHp;
+
+    [SerializeField]
+    public float invincibleTime;
 }
 

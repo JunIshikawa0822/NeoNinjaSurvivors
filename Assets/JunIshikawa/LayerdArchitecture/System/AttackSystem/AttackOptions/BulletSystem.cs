@@ -5,11 +5,6 @@ using static UnityEditor.PlayerSettings;
 
 public class BulletSystem : AttackOptionBase, IOnUpdate
 {
-    public override void AttackOptionSetUp()
-    {
-        //gameStat.bulletObjectData.InitializeBulletLevels();
-        gameStat.bulletObjectData.SetLevel(gameStat.bulletSkillLevel);
-    }
     public void OnUpdate()
     {
         
@@ -21,21 +16,41 @@ public class BulletSystem : AttackOptionBase, IOnUpdate
             }
         }
 
-        if (gameStat.isAttackInput == true)
-        {
-            SimulBulletInstantiate(
-                gameStat.bullet,
-                gameStat.player.transform.position,
-                gameStat.playerMouseVector,
-                gameStat.bulletObjectData.BulletSpeed,
-                gameStat.bulletObjectData.MaxDistance,
-                gameStat.bulletObjectData.BulletDamage,
-                gameStat.bulletObjectData.PenetrateCount,
-                gameStat.bulletList,
-                gameStat.bulletObjectData.SimulNumLevel,
-                gameStat.bulletObjectData.bulletAngleLevelArray[gameStat.bulletObjectData.AngleLevel]);
-        }
         
+        if (gameStat.isBulletUsing == true)
+        {
+            if (this.attackBool)
+            {
+                SimulBulletInstantiate(
+                    gameStat.bullet,
+                    gameStat.player.transform.position,
+                    this.AutoAttackVector(gameStat.player.transform, gameStat.enemyList, gameStat.attackRange),
+                    gameStat.bulletObjectData.bulletSpeed,
+                    gameStat.bulletObjectData.maxDistance,
+                    gameStat.bulletObjectData.bulletDamage,
+                    gameStat.bulletObjectData.penetrateCount,
+                    gameStat.bulletList,
+                    gameStat.bulletObjectData.simulNumLevel,
+                    gameStat.bulletObjectData.bulletAngleLevelArray[gameStat.bulletObjectData.angleLevel]);
+
+                attackBool = false;
+
+                Debug.Log("発射ァ!!!!");
+            }
+        }
+
+        //float r = 0;
+        //Debug.Log(r);
+        //Vector3 vec = gameStat.player.transform.position + gameStat.player.transform.up;//s,t(vec.x, vec.z)
+        //Vector3 poi = gameStat.player.transform.position;//a,b(poi.x, poi.z)
+        //float x = Mathf.Cos(r * Mathf.Deg2Rad) * (vec.x - poi.x) - Mathf.Sin(r * Mathf.Deg2Rad) * (vec.z - poi.z);
+        //float z = Mathf.Sin(r * Mathf.Deg2Rad) * (vec.x - poi.x) + Mathf.Cos(r * Mathf.Deg2Rad) * (vec.z - poi.z);
+        //Vector3 roundVec = new Vector3(-x, 0, z);
+
+        ////Vector3 rangeVec = gameStat.player.transform.position + roundVec;
+        //Debug.DrawLine(gameStat.player.transform.position, gameStat.player.transform.position + roundVec * 5, Color.blue, 5);
+
+        AttackTimer(gameStat.coolTime);
     }
 
     //弾丸同時生成
@@ -96,11 +111,11 @@ public class BulletSystem : AttackOptionBase, IOnUpdate
         }
         else if (_collision.gameObject.CompareTag("Enemy"))
         {
-            //Debug.Log("敵だよ");
+            Debug.Log("敵だよ");
             EnemyBase enemy = _collision.gameObject.GetComponent<EnemyBase>();
             if (enemy == null) return;
 
-            //Debug.Log("当たった");
+            Debug.Log("当たった");
             //敵のダメージ関数を起動
             enemy.EntityGetDamage(_bullet.BulletDamage());
             //弾丸の貫通可能回数を１減らす

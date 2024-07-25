@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   playerMaxHp: 20
+  invincibleTime: 0.2
