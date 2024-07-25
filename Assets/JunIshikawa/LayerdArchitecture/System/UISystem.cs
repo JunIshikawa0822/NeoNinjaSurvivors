@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEditor.Experimental.GraphView;
 using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.Rendering.DebugUI;
-using UnityEngine.UIElements;
+using System;
 
 public class UISystem : SystemBase, IOnLateUpdate
 {
@@ -81,6 +81,28 @@ public class UISystem : SystemBase, IOnLateUpdate
             if (gameStat.isPanelSelected == true)
                 gameStat.isLevelUp = false;
                 gameStat.isPanelSelected = false;
+                //選んだRewardのスキルレベルを１上昇させる
+                //Debug.Log(gameStat.currentRewardsSet[gameStat.selectedPanelNumber]);
+                switch(gameStat.currentRewardsSet[gameStat.selectedPanelNumber])
+                {
+                    case "Aura":
+                        gameStat.auraSkillLevel++;
+                        gameStat.auraObjectData.SetLevel(gameStat.auraSkillLevel);
+                        break;
+                    case "Bullet":
+                        gameStat.bulletSkillLevel++;
+                        gameStat.bulletObjectData.SetLevel(gameStat.bulletSkillLevel);
+                        break;
+                    case "Shuriken":
+                        gameStat.shurikenSkillLevel++;
+                        break;
+                    case "Thunder":
+                        gameStat.thunderSkillLevel++;
+                        break;
+                    default:
+                        Debug.LogWarning("異常なSkillLevel検知");
+                        break;
+                }
         };
     }
 

@@ -198,13 +198,14 @@ public class GameStatus
     [Header("Reward")]
     [SerializeField]
     public List<Texture2D> rewardTextures = new List<Texture2D>(); 
+    public List<String> currentRewardsSet = new List<String>();
     [SerializeField] public int thunderSkillLevel = 1;
     [SerializeField] public int auraSkillLevel = 1;
     [SerializeField] public int shurikenSkillLevel = 1;
     [SerializeField] public int bulletSkillLevel = 1;
     [SerializeField] public int refelectBulletLevel = 1;
-
     [System.NonSerialized] public bool isLevelUpOnce = false;
+
 
     [Header("Timer")]
     [System.NonSerialized]

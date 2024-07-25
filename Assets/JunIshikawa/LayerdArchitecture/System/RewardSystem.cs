@@ -40,6 +40,8 @@ public class RewardSystem : SystemBase, IOnLateUpdate
 
     private void SkillRandomSet(List<GameObject> _selectPanelsList, List<Texture2D> _rewardTextures)
     {
+        // 前回のRewardセットを清算する
+        gameStat.currentRewardsSet.Clear();
         // テクスチャのリストをコピーして使用
         List<Texture2D> availableTextures = new List<Texture2D>(_rewardTextures);
 
@@ -84,6 +86,7 @@ public class RewardSystem : SystemBase, IOnLateUpdate
                     Debug.LogWarning("異常なSkillLevel検知");
                     break;
             }
+            gameStat.currentRewardsSet.Add(selectedTexture.name);
 
             // 使用したテクスチャをリストから削除
             availableTextures.RemoveAt(randomIndex);
