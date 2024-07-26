@@ -91,15 +91,24 @@ public class UISystem : SystemBase, IOnLateUpdate
                         gameStat.auraObjectData.SetLevel(gameStat.auraSkillLevel);
                         break;
                     case "Bullet":
+                        gameStat.isBulletUsing = true;
                         gameStat.bulletSkillLevel++;
                         gameStat.bulletObjectData.SetLevel(gameStat.bulletSkillLevel);
                         break;
                     case "Shuriken":
+                        gameStat.isShurikenUsing = true;
                         gameStat.shurikenSkillLevel++;
+                        gameStat.shurikenObjectData.SetLevel(gameStat.shurikenSkillLevel);
                         break;
                     case "Thunder":
                         gameStat.isThunderUsing = true;
                         gameStat.thunderSkillLevel++;
+                        gameStat.thunderObjectData.SetLevel(gameStat.thunderSkillLevel);
+                        break;
+                    case "Funnel":
+                        gameStat.isFunnelUsing = true;
+                        gameStat.funnelSkillLevel++;
+                        gameStat.funnelObjectData.SetLevel(gameStat.funnelSkillLevel);
                         break;
                     default:
                         Debug.LogWarning("異常なSkillLevel検知");
