@@ -44,9 +44,12 @@ public class RewardSystem : SystemBase, IOnLateUpdate
         gameStat.currentRewardsSet.Clear();
         // テクスチャのリストをコピーして使用
         List<Texture2D> availableTextures = new List<Texture2D>(_rewardTextures);
-
+        gameStat.levelUpEnterButton.GetComponent<Image>().color = Color.white;
         foreach (var selectPanel in _selectPanelsList)
         {
+            selectPanel.GetComponent<Outline>().effectColor = new Color(0f,0f,0f,0.5f);
+            
+
             if (availableTextures.Count == 0)
             {
                 Debug.LogWarning("Not enough textures to assign to all select panels.");

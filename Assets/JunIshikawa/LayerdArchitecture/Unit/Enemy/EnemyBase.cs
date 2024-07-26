@@ -83,7 +83,7 @@ public class EnemyBase : EntityBase
     {
         
         if (onCollideEvent == null) return;
-        Debug.Log("Enter");
+        //Debug.Log("Enter");
         onCollideEvent?.Invoke(_collision, this);
     }
 
@@ -91,7 +91,7 @@ public class EnemyBase : EntityBase
     {
        
         if (onCollideStayEvent == null) return;
-        Debug.Log("Stay");
+        //Debug.Log("Stay");
         onCollideStayEvent?.Invoke(_collision, this);
     }
 
