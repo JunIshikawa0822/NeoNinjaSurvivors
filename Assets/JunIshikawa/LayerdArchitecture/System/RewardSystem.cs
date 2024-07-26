@@ -85,6 +85,8 @@ public class RewardSystem : SystemBase, IOnLateUpdate
                 case "Thunder":
                     selectedSkillText.text = "Level : " + gameStat.thunderSkillLevel;
                     break;
+                case "Fannel":
+                    //selectedSkillText.text = "Level : " + gameStat.SkillLevel;
                 default:
                     Debug.LogWarning("異常なSkillLevel検知");
                     break;

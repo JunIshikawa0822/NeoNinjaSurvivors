@@ -68,7 +68,7 @@ public class AttackOptionBase
         {
             attackTimer = 0;
             attackBool = true;
-            Debug.Log("はいTrue");
+
         }
 
         attackTimer += Time.deltaTime;
