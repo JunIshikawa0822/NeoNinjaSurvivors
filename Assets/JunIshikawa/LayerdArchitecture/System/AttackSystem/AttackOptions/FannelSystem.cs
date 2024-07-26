@@ -19,14 +19,14 @@ public class FunnelSystem : AttackOptionBase, IOnUpdate
             if (this.attackBool)
             {
                 SimulFunnelInstantiate(
-                    gameStat.funnelObjectData.simulNum,
+                    gameStat.funnelObjectData.SimulNumLevel,
                     gameStat.funnel,
                     gameStat.player.transform,
                     gameStat.funnelObjectData.radius,
                     gameStat.funnelObjectData.theta,
                     gameStat.funnelObjectData.moveMaxDistance,
                     gameStat.funnelObjectData.speed,
-                    gameStat.funnelObjectData.damage,
+                    gameStat.funnelObjectData.FunnelDamage,
                     gameStat.funnelList
                     );
 
@@ -34,7 +34,7 @@ public class FunnelSystem : AttackOptionBase, IOnUpdate
             }
         }
 
-        AttackTimer(gameStat.funnelObjectData.coolTime);
+        AttackTimer(gameStat.funnelObjectData.CoolTime);
     }
 
     private void SimulFunnelInstantiate(int _simulNum, Funnel _funnel, Transform _playerTrans, float _radius, float _theta, float _moveMaxDistance, float _speed, int _damage, List<Funnel> _funnelList)
