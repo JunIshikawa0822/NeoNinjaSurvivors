@@ -14,8 +14,9 @@ public class BulletObjectData : ScriptableObject
         public int penetrateCount;
         public int simulNumLevel;
         public int angleLevel;
+        public float coolTime;
 
-        public BulletParameters(float speed, float distance, int damage, int penetrate, int simulNum, int angle)
+        public BulletParameters(float speed, float distance, int damage, int penetrate, int simulNum, int angle, float _coolTime)
         {
             bulletSpeed = speed;
             maxDistance = distance;
@@ -23,6 +24,7 @@ public class BulletObjectData : ScriptableObject
             penetrateCount = penetrate;
             simulNumLevel = simulNum;
             angleLevel = angle;
+            coolTime = _coolTime;
         }
     }
 
@@ -35,13 +37,13 @@ public class BulletObjectData : ScriptableObject
     public void InitializeBulletLevels()
     {
         bulletLevels.Clear();
-        bulletLevels.Add(new BulletParameters(3f, 100f, 1, 1, 1, 1));
-        bulletLevels.Add(new BulletParameters(4f, 120f, 2, 2, 2, 2));
-        bulletLevels.Add(new BulletParameters(5f, 150f, 3, 3, 3, 3));
-        bulletLevels.Add(new BulletParameters(6f, 180f, 4, 4, 4, 4));
-        bulletLevels.Add(new BulletParameters(7f, 200f, 5, 5, 5, 5));
-        bulletLevels.Add(new BulletParameters(8f, 220f, 6, 6, 6, 6));
-        bulletLevels.Add(new BulletParameters(9f, 250f, 7, 7, 7, 7));
+        bulletLevels.Add(new BulletParameters(0.01f, 100f, 1, 1, 1, 1, 2f));
+        bulletLevels.Add(new BulletParameters(0.01f, 120f, 2, 2, 2, 2, 1.7f));
+        bulletLevels.Add(new BulletParameters(0.01f, 150f, 3, 3, 3, 3, 1.5f));
+        bulletLevels.Add(new BulletParameters(0.01f, 180f, 4, 4, 4, 4, 1f));
+        bulletLevels.Add(new BulletParameters(0.01f, 200f, 5, 5, 5, 5, 0.8f));
+        bulletLevels.Add(new BulletParameters(0.01f, 220f, 6, 6, 6, 6, 0.7f));
+        bulletLevels.Add(new BulletParameters(0.01f, 250f, 7, 7, 7, 7, 0.6f));
     }
 
     public void SetLevel(int level)
@@ -62,4 +64,5 @@ public class BulletObjectData : ScriptableObject
     public int PenetrateCount => currentParameters?.penetrateCount ?? 1;
     public int SimulNumLevel => currentParameters?.simulNumLevel ?? 1;
     public int AngleLevel => currentParameters?.angleLevel ?? 1;
+    public float CoolTime => currentParameters?.coolTime ?? 0;
 }

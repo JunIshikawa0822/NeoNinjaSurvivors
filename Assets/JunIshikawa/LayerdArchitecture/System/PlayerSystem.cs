@@ -45,7 +45,7 @@ public class PlayerSystem : SystemBase, IOnUpdate
             PlayerAttack(gameStat.player, false);
         }
 
-        //PlayerAnimation(gameStat.player);
+        gameStat.player.IsOnLevelUpSet(gameStat.isLevelUp);
     }
 
     

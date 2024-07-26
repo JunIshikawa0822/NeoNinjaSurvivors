@@ -20,14 +20,18 @@ public class Player : EntityBase
 
     private bool isOnWarp = false;
     private bool isInvincible;
+    private bool isOnLevelUp;
 
     private WaitForSeconds invincibleInterval;
     private float invincibleTime;
+
+    
 
     public void Init(bool _attackAnimParam, float _invincibleTime)
     {
         ParameterSet(_attackAnimParam);
         isInvincible = false;
+        isOnLevelUp = false;
         invincibleTime = _invincibleTime;
 
         invincibleInterval = new WaitForSeconds(invincibleTime);
@@ -62,6 +66,11 @@ public class Player : EntityBase
     public void ParameterSet(bool _attackAnimParam)
     {
         attackAnimParam = _attackAnimParam;
+    }
+
+    public void IsOnLevelUpSet(bool _isLevelUp)
+    {
+        isOnLevelUp = _isLevelUp;
     }
 
     public bool IsOnWarpEnable()
@@ -99,6 +108,7 @@ public class Player : EntityBase
 
         if (isInvincible)
         {
+            Debug.Log("無敵");
             return;
         }
 
@@ -110,12 +120,13 @@ public class Player : EntityBase
 
     private IEnumerator InvincibleTime(float _time)
     {
-        isInvincible = true;
-
+        if (!isOnLevelUp)
+        {
+            isInvincible = true;
+        }
+        
         yield return invincibleInterval;
 
         isInvincible = false;
     }
-
-    
 }
