@@ -36,7 +36,7 @@ public class FunnelObjectData : ScriptableObject
 
     private FunnelParameters currentParameters;
 
-    public void InitializeBulletLevels()
+    public void InitializeFunnelLevels()
     {
         funnelLevels.Clear();
         funnelLevels.Add(new FunnelParameters(3, 1, 6));

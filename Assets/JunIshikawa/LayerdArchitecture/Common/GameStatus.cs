@@ -211,6 +211,7 @@ public class GameStatus
     [SerializeField] public int shurikenSkillLevel = 1;
     [SerializeField] public int bulletSkillLevel = 1;
     [SerializeField] public int refelectBulletLevel = 1;
+    [SerializeField] public int funnelSkillLevel = 1;
     [System.NonSerialized] public bool isLevelUpOnce = false;
 
 

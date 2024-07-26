@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3633,10 +3633,10 @@ MonoBehaviour:
     spawnProbabilities:
     - 100
     - 60
-    - 0
-    - 0
-    - 0
-    - 0
+    - 30
+    - 20
+    - 10
+    - 10
     elapsedTime: 0
     spawnLimitNum: 50
     bullet: {fileID: 6146447326056385268, guid: 6d56eee9cf5e69442b22527be001498b, type: 3}
@@ -3695,12 +3695,13 @@ MonoBehaviour:
     - Bullet
     - Shuriken
     - Thunder
-    - Fannel
+    - Funnel
     thunderSkillLevel: 1
     auraSkillLevel: 1
     shurikenSkillLevel: 1
     bulletSkillLevel: 1
     refelectBulletLevel: 1
+    funnelSkillLevel: 1
     levelUpPanel: {fileID: 1564978471}
     levelUpEnterButton: {fileID: 344063120}
     selectPanelsList:

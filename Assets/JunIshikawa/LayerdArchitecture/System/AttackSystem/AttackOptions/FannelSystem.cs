@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class FunnelSystem : AttackOptionBase, IOnUpdate
 {
+    public override void AttackOptionSetUp()
+    {
+        gameStat.funnelObjectData.InitializeFunnelLevels();
+        gameStat.funnelObjectData.SetLevel(gameStat.funnelSkillLevel);
+    }
+
     public void OnUpdate()
     {
         if(gameStat.funnelList.Count > 0)
