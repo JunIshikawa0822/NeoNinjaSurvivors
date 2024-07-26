@@ -7,9 +7,10 @@ public class BulletSystem : AttackOptionBase, IOnUpdate
 {
     public override void AttackOptionSetUp()
     {
-        //gameStat.bulletObjectData.InitializeBulletLevels();
+        gameStat.bulletObjectData.InitializeBulletLevels();
         gameStat.bulletObjectData.SetLevel(gameStat.bulletSkillLevel);
     }
+
     public void OnUpdate()
     {
         if (gameStat.bulletList.Count > 0)
@@ -41,19 +42,7 @@ public class BulletSystem : AttackOptionBase, IOnUpdate
                 Debug.Log("発射ァ!!!!");
             }
         }
-
-        //float r = 0;
-        //Debug.Log(r);
-        //Vector3 vec = gameStat.player.transform.position + gameStat.player.transform.up;//s,t(vec.x, vec.z)
-        //Vector3 poi = gameStat.player.transform.position;//a,b(poi.x, poi.z)
-        //float x = Mathf.Cos(r * Mathf.Deg2Rad) * (vec.x - poi.x) - Mathf.Sin(r * Mathf.Deg2Rad) * (vec.z - poi.z);
-        //float z = Mathf.Sin(r * Mathf.Deg2Rad) * (vec.x - poi.x) + Mathf.Cos(r * Mathf.Deg2Rad) * (vec.z - poi.z);
-        //Vector3 roundVec = new Vector3(-x, 0, z);
-
-        ////Vector3 rangeVec = gameStat.player.transform.position + roundVec;
-        //Debug.DrawLine(gameStat.player.transform.position, gameStat.player.transform.position + roundVec * 5, Color.blue, 5);
-
-        AttackTimer(gameStat.coolTime);
+        AttackTimer(gameStat.bulletObjectData.CoolTime);
     }
 
     //弾丸同時生成

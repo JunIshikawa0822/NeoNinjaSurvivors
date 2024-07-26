@@ -60,9 +60,9 @@ public class GameStatus
     public List<ReflectBullet> reflectBulletList = new List<ReflectBullet>();
 
     [Header("Shuriken")]
-    
     [SerializeField] public Shuriken shuriken;
     public List<Shuriken> shurikenList = new List<Shuriken>();
+    public bool isShurikenUsing = false;
 
     [Header("BigShuriken")]
     [SerializeField] public BigShuriken bigShuriken;
@@ -249,10 +249,11 @@ public class GameStatus
     public ThunderObjectData thunderObjectData;
     public AuraObjectData auraObjectData;
     public FunnelObjectData funnelObjectData;
+    public ShurikenObjectData shurikenObjectData;
 
     [Header("AutoAttack")]
     public float attackRange;
-    public float coolTime = 3;
+    //public float coolTime = 3;
 
     public enum InputNameType
     {
