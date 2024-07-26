@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ThunderSystem : AttackOptionBase, IOnUpdate
 {
+    public override void AttackOptionSetUp()
+    {
+        gameStat.thunderObjectData.InitializeThunderLevels();
+        gameStat.thunderObjectData.SetLevel(gameStat.thunderSkillLevel);
+    }
+
     public void OnUpdate(){
         if(gameStat.isThunderUsing)
         {
@@ -25,7 +31,7 @@ public class ThunderSystem : AttackOptionBase, IOnUpdate
         // ランダムな距離を生成
         float distance = Random.Range(0f, _thunderRange);
         
-        // 楕円座標系を使って新しい位置を計算
+        // 円座標系を使って新しい位置を計算
         Vector3 thunderPos = new Vector3(
             _playerPos.x + Mathf.Cos(angle) * distance,
             _playerPos.y,
@@ -37,6 +43,7 @@ public class ThunderSystem : AttackOptionBase, IOnUpdate
         thunderInstance.Init(_thunderDamage);
         thunderInstance.thunderTriggerEvent += ThunderTrigger;
     }
+
 
     private void ThunderTrigger(Collider _other, Thunder _thunder){
         if (_other.gameObject.CompareTag("Enemy"))

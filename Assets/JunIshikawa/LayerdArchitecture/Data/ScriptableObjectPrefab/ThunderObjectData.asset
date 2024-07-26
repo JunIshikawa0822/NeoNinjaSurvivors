@@ -12,8 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ba8fccc27484141b610ed4e8001f4c, type: 3}
   m_Name: ThunderObjectData
   m_EditorClassIdentifier: 
-  isThunderAttack: 0
-  thunderRange: 5
-  thunderInterval: 1
-  thunderDamage: 2
-  thunderNockBackStrength: 10
+  thunderLevels:
+  - thunderRange: 10
+    thunderInterval: 5
+    thunderDamage: 5
+    thunderNockBackStrength: 5
+  - thunderRange: 12
+    thunderInterval: 4.5
+    thunderDamage: 6
+    thunderNockBackStrength: 6
+  - thunderRange: 14
+    thunderInterval: 4
+    thunderDamage: 7
+    thunderNockBackStrength: 7
+  - thunderRange: 16
+    thunderInterval: 3.5
+    thunderDamage: 8
+    thunderNockBackStrength: 8
+  - thunderRange: 18
+    thunderInterval: 3
+    thunderDamage: 9
+    thunderNockBackStrength: 9
+  - thunderRange: 20
+    thunderInterval: 2.5
+    thunderDamage: 10
+    thunderNockBackStrength: 10
+  - thunderRange: 22
+    thunderInterval: 2
+    thunderDamage: 11
+    thunderNockBackStrength: 11
