@@ -15,7 +15,7 @@ public class Bullet: MonoBehaviour
     //弾丸がListから削除されるAction
     public event Action<Bullet> bulletRemoveEvent;
     //
-    public event Action<Collision , Bullet> bulletCollideEvent;
+    public event Action<Collision, Bullet> bulletCollideEvent;
 
     public void Init(Vector3 _moveDir , float _bulletSpeed , float _maxDistance , int _bulletDamage , int _penetrateCount)
     {

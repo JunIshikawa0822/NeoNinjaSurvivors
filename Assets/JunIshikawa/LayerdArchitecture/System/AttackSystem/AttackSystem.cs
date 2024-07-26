@@ -15,7 +15,8 @@ public class AttackSystem : SystemBase, IOnUpdate
             new ReflectBulletSystem(),
             new AutoBulletSystem(),
             new AuraSystem(),
-            new ThunderSystem()
+            new ThunderSystem(),
+            new FunnelSystem()
         };
 
         allUpdateAttackOptionsList = new List<IOnUpdate>();

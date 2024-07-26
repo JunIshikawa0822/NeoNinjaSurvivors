@@ -7,7 +7,6 @@ public class BulletSystem : AttackOptionBase, IOnUpdate
 {
     public void OnUpdate()
     {
-        
         if (gameStat.bulletList.Count > 0)
         {
             for (int i = gameStat.bulletList.Count - 1; i >= 0; i--)
@@ -16,7 +15,6 @@ public class BulletSystem : AttackOptionBase, IOnUpdate
             }
         }
 
-        
         if (gameStat.isBulletUsing == true)
         {
             if (this.attackBool)

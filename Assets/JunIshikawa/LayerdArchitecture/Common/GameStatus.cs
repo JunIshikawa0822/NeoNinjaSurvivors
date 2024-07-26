@@ -87,6 +87,12 @@ public class GameStatus
     [SerializeField] public Thunder thunder;
     [SerializeField] public bool isThunderUsing = false;
 
+    [Header("Funnel")]
+    [SerializeField] public Funnel funnel;
+    [SerializeField] public bool isFunnelUsing = false;
+    [System.NonSerialized] public List<Funnel> funnelList = new List<Funnel>();
+    [System.NonSerialized] public int funnelListCount = 0;
+
     [Header("LineRenderer")]
     [SerializeField]
     public LineRenderer playerLineRenderer;
@@ -242,6 +248,7 @@ public class GameStatus
     public AutoBulletObjectData autoBulletObjectData;
     public ThunderObjectData thunderObjectData;
     public AuraObjectData auraObjectData;
+    public FunnelObjectData funnelObjectData;
 
     [Header("AutoAttack")]
     public float attackRange;
