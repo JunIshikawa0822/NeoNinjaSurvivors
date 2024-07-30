@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3556f4174f6424b9023e67e6cbe124, type: 3}
+  m_Name: BulletData
+  m_EditorClassIdentifier: 
+  bulletLevels:
+  - bulletSpeed: 0.01
+    maxDistance: 100
+    bulletDamage: 1
+    penetrateCount: 1
+    simulNumLevel: 1
+    angleLevel: 1
+    coolTime: 2
+  - bulletSpeed: 0.02
+    maxDistance: 120
+    bulletDamage: 2
+    penetrateCount: 2
+    simulNumLevel: 2
+    angleLevel: 2
+    coolTime: 1.7
+  - bulletSpeed: 0.03
+    maxDistance: 150
+    bulletDamage: 3
+    penetrateCount: 3
+    simulNumLevel: 3
+    angleLevel: 3
+    coolTime: 1.5
+  - bulletSpeed: 6
+    maxDistance: 180
+    bulletDamage: 4
+    penetrateCount: 4
+    simulNumLevel: 4
+    angleLevel: 4
+    coolTime: 1
+  - bulletSpeed: 7
+    maxDistance: 200
+    bulletDamage: 5
+    penetrateCount: 5
+    simulNumLevel: 5
+    angleLevel: 5
+    coolTime: 0.8
+  - bulletSpeed: 8
+    maxDistance: 220
+    bulletDamage: 6
+    penetrateCount: 6
+    simulNumLevel: 6
+    angleLevel: 6
+    coolTime: 0.7
+  - bulletSpeed: 9
+    maxDistance: 250
+    bulletDamage: 7
+    penetrateCount: 7
+    simulNumLevel: 7
+    angleLevel: 7
+    coolTime: 0.6
